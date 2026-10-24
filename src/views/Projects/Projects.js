@@ -19,13 +19,35 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2D3748 100%)',
     shortDescription: 'Designed, manufactured, and characterized a fiber-coupled dual-convex-lens surface-mount UV LED system to discharge the free-falling gold test mass in the LISA gravitational wave mission.',
     fullDescription: [
-      'The Laser Interferometer Space Antenna (LISA) mission aims to complement the gravitational wave frequency ranges observed by ground-based detectors like LIGO, providing critical insight into supermassive black holes and compact binary systems. LISA leverages a Michelson-like interferometer formed by three spacecraft in an equilateral triangle configuration to cancel out laser frequency noise and detect minute phase shifts caused by passing gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses that serve as the inertial end-points of the interferometer.',
-      'As these gold test masses float in space, cosmic rays and solar energetic particles cause charge accumulation on their surfaces, introducing electrostatic forces that risk corrupting sub-picometer displacement measurements. To mitigate this, the Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect—requiring photon energies capable of overcoming the work function of polluted gold surfaces (approximately 5.28 eV).',
-      'While Deep UV LEDs offer superior size and power efficiency over traditional mercury lamps, previously tested ball-lens UV LEDs required complex pulsing current drivers, extra mechanical housing, and exhibited longer peak wavelengths that struggled to reliably overcome the gold work function. Surface-Mount (SM) UV LEDs offered shorter wavelengths capable of overcoming the 5.28 eV barrier, though they had not yet been flown in space systems and lacked built-in optics to focus their wide emission profile.',
-      'To harness the full efficiency of SM UV LEDs, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:',
-      '• Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three precision spacers and a washer, capped with an SMA-compatible interface for optical fiber coupling.',
-      '• Thermal & Mechanical Copper Base: Manufactured a high-thermal-conductivity copper mounting base adapted from the legacy ball-lens home plate by machining a central aperture and two M3 mounting holes. The SM UV LED was soldered onto a breakout PCB using leaded solder—preventing tin whisker growth (which causes short circuits in vacuum) and allowing lower soldering temperatures to protect surrounding electronics—while ensuring the board absorbed mechanical strain and launch vibrations rather than the LED.',
-      '• Optical Characterization & Validation: Performed Current-Voltage-Power (IVP) scans up to a 20 mA maximum current and conducted linear step scans using DataRay’s WinCamD beam profiler. Applying thin-lens focal length equations and empirical beam profiling, I determined an optimal inter-lens separation of 10 mm to maximize light coupled into the fiber, boosting collimated optical power from 79 µW to 130 µW (+65%) and significantly accelerating the test mass discharging rate.'
+      {
+        label: 'Mission',
+        text: 'The Laser Interferometer Space Antenna (LISA) mission complements ground-based detectors like LIGO using a three-spacecraft Michelson interferometer to detect gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses as the inertial end-points of the interferometer.'
+      },
+      {
+        label: 'Problem',
+        text: 'Cosmic rays and solar energetic particles cause charge accumulation on these floating gold test masses, introducing electrostatic forces that risk corrupting measurements.'
+      },
+      {
+        label: 'Solution',
+        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
+      },
+      {
+        label: 'Contribution',
+        text: 'Unlike legacy ball-lens UV LEDs (which had longer peak wavelengths and required pulsing drivers), Surface-Mount (SM) UV LEDs provide shorter wavelengths capable of overcoming the 5.28 eV barrier, but lack built-in focusing optics. To harness their full efficiency, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:'
+      },
+      {
+        bullet: 'Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three spacers and a washer, capped with an SMA interface for fiber coupling.'
+      },
+      {
+        bullet: 'Thermal & Mechanical Copper Base: Machined a high-thermal-conductivity copper base adapted from the ball-lens architecture (central aperture + two M3 holes). Soldered the SM UV LED onto a breakout PCB using leaded solder to prevent vacuum tin whiskers and reduce thermal stress, while isolating the LED from mechanical strain and vibrations.'
+      },
+      {
+        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
+      }
+    ],
+    collaborators: [
+      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' },
+      { name: 'John Conklin', url: 'https://www.linkedin.com/in/john-conklin-56480b197/' }
     ],
     tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
     gallery: [
@@ -243,12 +265,60 @@ function Projects() {
                 <h4>Project Overview</h4>
                 {Array.isArray(selectedProject.fullDescription) ? (
                   <div className="modal-description-blocks">
-                    {selectedProject.fullDescription.map((para, idx) => (
-                      <p key={idx} className="modal-description">{para}</p>
-                    ))}
+                    {selectedProject.fullDescription.map((item, idx) => {
+                      if (typeof item === 'string') {
+                        return <p key={idx} className="modal-description">{item}</p>;
+                      }
+                      if (item.label) {
+                        return (
+                          <p key={idx} className="modal-description">
+                            <strong className="modal-desc-label">{item.label}: </strong>
+                            {item.text}
+                          </p>
+                        );
+                      }
+                      if (item.bullet) {
+                        const colonIdx = item.bullet.indexOf(':');
+                        return (
+                          <div key={idx} className="modal-bullet-item">
+                            <span className="modal-bullet-dot">•</span>
+                            <span className="modal-description">
+                              {colonIdx !== -1 ? (
+                                <>
+                                  <strong>{item.bullet.slice(0, colonIdx + 1)}</strong>
+                                  {item.bullet.slice(colonIdx + 1)}
+                                </>
+                              ) : (
+                                item.bullet
+                              )}
+                            </span>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
                 ) : (
                   <p className="modal-description">{selectedProject.fullDescription}</p>
+                )}
+
+                {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
+                  <p className="modal-collaborators">
+                    <strong className="modal-desc-label">Collaborators: </strong>
+                    {selectedProject.collaborators.map((collab, idx) => (
+                      <React.Fragment key={idx}>
+                        <a
+                          href={collab.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="collaborator-link"
+                        >
+                          {collab.name}
+                        </a>
+                        {idx < selectedProject.collaborators.length - 1 ? ', ' : ''}
+                      </React.Fragment>
+                    ))}
+                  </p>
                 )}
               </div>
 

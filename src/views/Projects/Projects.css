@@ -273,6 +273,45 @@
   text-align: left;
 }
 
+.modal-desc-label {
+  color: #1B2A4A;
+  font-weight: 700;
+}
+
+.modal-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-left: 6px;
+}
+
+.modal-bullet-dot {
+  color: #EC79B8;
+  font-weight: 900;
+  line-height: 1.65;
+}
+
+.modal-collaborators {
+  margin: 16px 0 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(27, 42, 74, 0.15);
+  font-size: 0.98rem;
+  color: #444;
+  text-align: left;
+}
+
+.collaborator-link {
+  color: #EC79B8;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.collaborator-link:hover {
+  color: #1B2A4A;
+  text-decoration: underline;
+}
+
 .modal-tech-list {
   display: flex;
   flex-wrap: wrap;
