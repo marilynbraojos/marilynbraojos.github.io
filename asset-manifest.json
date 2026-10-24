@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/personal_website/static/css/main.49e28e1c.css",
-    "main.js": "/personal_website/static/js/main.c0abcb78.js",
+    "main.css": "/personal_website/static/css/main.c6597504.css",
+    "main.js": "/personal_website/static/js/main.94bfc781.js",
     "static/js/453.e2428e9c.chunk.js": "/personal_website/static/js/453.e2428e9c.chunk.js",
     "static/media/copper_base.webp": "/personal_website/static/media/copper_base.c90ddab0cf42cca055a6.webp",
     "static/media/lens_components_unlabeled.webp": "/personal_website/static/media/lens_components_unlabeled.bdb0e31168061dc5f065.webp",
@@ -65,12 +65,12 @@
     "static/media/snowboarding.webp": "/personal_website/static/media/snowboarding.5d1dc5905a373e85fb38.webp",
     "static/media/dancing_marissa.webp": "/personal_website/static/media/dancing_marissa.0451487a41f12e167972.webp",
     "index.html": "/personal_website/index.html",
-    "main.49e28e1c.css.map": "/personal_website/static/css/main.49e28e1c.css.map",
-    "main.c0abcb78.js.map": "/personal_website/static/js/main.c0abcb78.js.map",
+    "main.c6597504.css.map": "/personal_website/static/css/main.c6597504.css.map",
+    "main.94bfc781.js.map": "/personal_website/static/js/main.94bfc781.js.map",
     "453.e2428e9c.chunk.js.map": "/personal_website/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.49e28e1c.css",
-    "static/js/main.c0abcb78.js"
+    "static/css/main.c6597504.css",
+    "static/js/main.94bfc781.js"
   ]
 }
