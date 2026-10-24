@@ -1,8 +1,15 @@
 {
   "files": {
-    "main.css": "/personal_website/static/css/main.5aa40723.css",
-    "main.js": "/personal_website/static/js/main.30690fb9.js",
+    "main.css": "/personal_website/static/css/main.49e28e1c.css",
+    "main.js": "/personal_website/static/js/main.c0abcb78.js",
     "static/js/453.e2428e9c.chunk.js": "/personal_website/static/js/453.e2428e9c.chunk.js",
+    "static/media/copper_base.webp": "/personal_website/static/media/copper_base.c90ddab0cf42cca055a6.webp",
+    "static/media/lens_components_unlabeled.webp": "/personal_website/static/media/lens_components_unlabeled.bdb0e31168061dc5f065.webp",
+    "static/media/cap_inner_diameter.webp": "/personal_website/static/media/cap_inner_diameter.07c51dcd688fb48cbf0e.webp",
+    "static/media/outer_casing_outer_diameter.webp": "/personal_website/static/media/outer_casing_outer_diameter.911e6459781b8e1c4257.webp",
+    "static/media/lens_components_labeled.webp": "/personal_website/static/media/lens_components_labeled.c825cbaa81ce0a5556fe.webp",
+    "static/media/lens_assembly.webp": "/personal_website/static/media/lens_assembly.cdb4835c7e5049a5b7a0.webp",
+    "static/media/copper_base_tapguide.webp": "/personal_website/static/media/copper_base_tapguide.2ce849ea39b17c4b32a1.webp",
     "static/media/milan.webp": "/personal_website/static/media/milan.c410fb0b89dd469f1b26.webp",
     "static/media/heat_game.webp": "/personal_website/static/media/heat_game.4698be5b020071ef7758.webp",
     "static/media/cave_pr.webp": "/personal_website/static/media/cave_pr.06e529251615d336c5b8.webp",
@@ -47,6 +54,7 @@
     "static/media/basil.webp": "/personal_website/static/media/basil.bc56ff2f4b22f81ad70c.webp",
     "static/media/jamil.webp": "/personal_website/static/media/jamil.37a1eaa4e753cf517634.webp",
     "static/media/lucy.webp": "/personal_website/static/media/lucy.2668c879d173317114c8.webp",
+    "static/media/full_assembly_cad.webp": "/personal_website/static/media/full_assembly_cad.3d2e675261525e56ba29.webp",
     "static/media/renly.webp": "/personal_website/static/media/renly.1109eaecef899c3db5e2.webp",
     "static/media/spacetrek.webp": "/personal_website/static/media/spacetrek.9d27722fd92ea63b2a4e.webp",
     "static/media/not_dog_oni.webp": "/personal_website/static/media/not_dog_oni.a278b8bbf899f9362c53.webp",
@@ -57,12 +65,12 @@
     "static/media/snowboarding.webp": "/personal_website/static/media/snowboarding.5d1dc5905a373e85fb38.webp",
     "static/media/dancing_marissa.webp": "/personal_website/static/media/dancing_marissa.0451487a41f12e167972.webp",
     "index.html": "/personal_website/index.html",
-    "main.5aa40723.css.map": "/personal_website/static/css/main.5aa40723.css.map",
-    "main.30690fb9.js.map": "/personal_website/static/js/main.30690fb9.js.map",
+    "main.49e28e1c.css.map": "/personal_website/static/css/main.49e28e1c.css.map",
+    "main.c0abcb78.js.map": "/personal_website/static/js/main.c0abcb78.js.map",
     "453.e2428e9c.chunk.js.map": "/personal_website/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5aa40723.css",
-    "static/js/main.30690fb9.js"
+    "static/css/main.49e28e1c.css",
+    "static/js/main.c0abcb78.js"
   ]
 }
