@@ -1,7 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.css';
 
+import lisaComponentsUnlabeled from '../../assets/projects/lisa/lens_components_unlabeled.webp';
+import lisaComponentsLabeled from '../../assets/projects/lisa/lens_components_labeled.webp';
+import lisaLensAssembly from '../../assets/projects/lisa/lens_assembly.webp';
+import lisaFullAssemblyCad from '../../assets/projects/lisa/full_assembly_cad.webp';
+import lisaCopperBase from '../../assets/projects/lisa/copper_base.webp';
+import lisaCopperBaseTapguide from '../../assets/projects/lisa/copper_base_tapguide.webp';
+import lisaCapInnerDiameter from '../../assets/projects/lisa/cap_inner_diameter.webp';
+import lisaOuterCasingDiameter from '../../assets/projects/lisa/outer_casing_outer_diameter.webp';
+
 const PROJECTS_DATA = [
+  {
+    id: 'lisa-charge-management',
+    title: 'LISA Charge Management Device: Dual-Lens UV LED Discharging System',
+    category: 'Space Instrumentation & Optomechanical Design',
+    image: lisaComponentsUnlabeled,
+    gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2D3748 100%)',
+    shortDescription: 'Designed, manufactured, and characterized a fiber-coupled dual-convex-lens surface-mount UV LED system to discharge the free-falling gold test mass in the LISA gravitational wave mission.',
+    fullDescription: [
+      'The Laser Interferometer Space Antenna (LISA) mission aims to complement the gravitational wave frequency ranges observed by ground-based detectors like LIGO, providing critical insight into supermassive black holes and compact binary systems. LISA leverages a Michelson-like interferometer formed by three spacecraft in an equilateral triangle configuration to cancel out laser frequency noise and detect minute phase shifts caused by passing gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses that serve as the inertial end-points of the interferometer.',
+      'As these gold test masses float in space, cosmic rays and solar energetic particles cause charge accumulation on their surfaces, introducing electrostatic forces that risk corrupting sub-picometer displacement measurements. To mitigate this, the Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect—requiring photon energies capable of overcoming the work function of polluted gold surfaces (approximately 5.28 eV).',
+      'While Deep UV LEDs offer superior size and power efficiency over traditional mercury lamps, previously tested ball-lens UV LEDs required complex pulsing current drivers, extra mechanical housing, and exhibited longer peak wavelengths that struggled to reliably overcome the gold work function. Surface-Mount (SM) UV LEDs offered shorter wavelengths capable of overcoming the 5.28 eV barrier, though they had not yet been flown in space systems and lacked built-in optics to focus their wide emission profile.',
+      'To harness the full efficiency of SM UV LEDs, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:',
+      '• Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three precision spacers and a washer, capped with an SMA-compatible interface for optical fiber coupling.',
+      '• Thermal & Mechanical Copper Base: Manufactured a high-thermal-conductivity copper mounting base adapted from the legacy ball-lens home plate by machining a central aperture and two M3 mounting holes. The SM UV LED was soldered onto a breakout PCB using leaded solder—preventing tin whisker growth (which causes short circuits in vacuum) and allowing lower soldering temperatures to protect surrounding electronics—while ensuring the board absorbed mechanical strain and launch vibrations rather than the LED.',
+      '• Optical Characterization & Validation: Performed Current-Voltage-Power (IVP) scans up to a 20 mA maximum current and conducted linear step scans using DataRay’s WinCamD beam profiler. Applying thin-lens focal length equations and empirical beam profiling, I determined an optimal inter-lens separation of 10 mm to maximize light coupled into the fiber, boosting collimated optical power from 79 µW to 130 µW (+65%) and significantly accelerating the test mass discharging rate.'
+    ],
+    tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
+    gallery: [
+      { src: lisaComponentsLabeled, label: 'Labeled Discharging System Components (PCB, SM UV LED, Copper Base, Convex Lenses, Spacers, Cap & Casing)' },
+      { src: lisaComponentsUnlabeled, label: 'Manufactured Prototype Hardware & Optical Components' },
+      { src: lisaLensAssembly, label: 'Exploded CAD View of Dual-Lens & Spacer Stack Assembly' },
+      { src: lisaFullAssemblyCad, label: 'CAD Assembly of Copper Base, Lens Housing & M3 Fasteners' },
+      { src: lisaCopperBase, label: 'Machined High-Thermal-Conductivity Copper Base Plate' },
+      { src: lisaCopperBaseTapguide, label: 'Precision Machined M3 Tap & Mounting Interface on Copper Base' },
+      { src: lisaOuterCasingDiameter, label: 'Dimensional Tolerance Verification of Outer Casing (9.95 mm)' },
+      { src: lisaCapInnerDiameter, label: 'Caliper Tolerance Inspection of SMA Adapter Cap Inner Diameter (8.00 mm)' }
+    ]
+  },
   {
     id: 'terrain-classification',
     title: 'Uncertainty-Aware Terrain Classification in Mobile Vehicles',
@@ -111,11 +148,16 @@ const PROJECTS_DATA = [
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setSelectedProject(null);
+        if (selectedGalleryImg) {
+          setSelectedGalleryImg(null);
+        } else {
+          setSelectedProject(null);
+        }
       }
     };
     if (selectedProject) {
@@ -128,7 +170,7 @@ function Projects() {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedProject]);
+  }, [selectedProject, selectedGalleryImg]);
 
   return (
     <div className="projects-container">
@@ -147,7 +189,11 @@ function Projects() {
             onClick={() => setSelectedProject(project)}
           >
             <div className="card-image-wrapper" style={{ background: project.gradient }}>
-              <span className="card-icon">{project.icon}</span>
+              {project.image ? (
+                <img src={project.image} alt={project.title} className="card-cover-image" />
+              ) : (
+                <span className="card-icon">{project.icon}</span>
+              )}
               <div className="card-overlay-badge">Click for details</div>
             </div>
 
@@ -171,14 +217,23 @@ function Projects() {
 
       {/* MODAL POPUP */}
       {selectedProject && (
-        <div className="modal-backdrop" onClick={() => setSelectedProject(null)}>
+        <div className="modal-backdrop" onClick={() => { setSelectedGalleryImg(null); setSelectedProject(null); }}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setSelectedProject(null)}>
+            <button className="modal-close-btn" onClick={() => { setSelectedGalleryImg(null); setSelectedProject(null); }}>
               ✕
             </button>
 
-            <div className="modal-hero-banner" style={{ background: selectedProject.gradient }}>
-              <span className="modal-icon">{selectedProject.icon}</span>
+            <div 
+              className={`modal-hero-banner ${selectedProject.image ? 'has-hero-image' : ''}`}
+              style={{ 
+                background: selectedProject.image 
+                  ? `linear-gradient(180deg, rgba(27, 42, 74, 0.55) 0%, rgba(27, 42, 74, 0.88) 100%), url(${selectedProject.image}) center/cover no-repeat` 
+                  : selectedProject.gradient 
+              }}
+            >
+              {!selectedProject.image && (
+                <span className="modal-icon">{selectedProject.icon}</span>
+              )}
               <span className="modal-category-badge">{selectedProject.category}</span>
               <h2 className="modal-title">{selectedProject.title}</h2>
             </div>
@@ -186,7 +241,15 @@ function Projects() {
             <div className="modal-body">
               <div className="modal-section">
                 <h4>Project Overview</h4>
-                <p className="modal-description">{selectedProject.fullDescription}</p>
+                {Array.isArray(selectedProject.fullDescription) ? (
+                  <div className="modal-description-blocks">
+                    {selectedProject.fullDescription.map((para, idx) => (
+                      <p key={idx} className="modal-description">{para}</p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="modal-description">{selectedProject.fullDescription}</p>
+                )}
               </div>
 
               <div className="modal-section">
@@ -202,18 +265,44 @@ function Projects() {
                 <h4>Project Gallery</h4>
                 <div className="modal-gallery-grid">
                   {selectedProject.gallery.map((img, idx) => (
-                    <div 
-                      key={idx} 
-                      className="gallery-placeholder-card" 
-                      style={{ background: img.color }}
-                    >
-                      <div className="placeholder-icon">🖼️</div>
-                      <span className="placeholder-label">{img.label}</span>
-                    </div>
+                    img.src ? (
+                      <div 
+                        key={idx} 
+                        className="gallery-image-card"
+                        onClick={() => setSelectedGalleryImg(img)}
+                      >
+                        <div className="gallery-image-frame">
+                          <img src={img.src} alt={img.label} className="gallery-real-img" />
+                        </div>
+                        <span className="gallery-image-caption">{img.label}</span>
+                      </div>
+                    ) : (
+                      <div 
+                        key={idx} 
+                        className="gallery-placeholder-card" 
+                        style={{ background: img.color }}
+                      >
+                        <div className="placeholder-icon">🖼️</div>
+                        <span className="placeholder-label">{img.label}</span>
+                      </div>
+                    )
                   ))}
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* LIGHTBOX FOR FULL-SIZE PROJECT GALLERY IMAGE */}
+      {selectedGalleryImg && (
+        <div className="project-lightbox-backdrop" onClick={() => setSelectedGalleryImg(null)}>
+          <div className="project-lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={() => setSelectedGalleryImg(null)}>
+              ✕
+            </button>
+            <img src={selectedGalleryImg.src} alt={selectedGalleryImg.label} className="project-lightbox-img" />
+            <p className="project-lightbox-caption">{selectedGalleryImg.label}</p>
           </div>
         </div>
       )}

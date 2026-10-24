@@ -1,15 +1,19 @@
 .gallery-container {
   min-height: 100vh;
   padding: 100px 20px 60px 20px;
-  max-width: 1250px;
-  margin: 0 auto;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #f7f8fa 0%, #fde8f3 50%, #FFF0F5 100%);
 }
 
 .gallery-header {
   text-align: center;
   margin-bottom: 35px;
   position: relative;
+  width: 100%;
+  max-width: 1250px;
 }
 
 .gallery-title {
@@ -106,6 +110,9 @@
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 24px;
   padding: 10px;
+  width: 100%;
+  max-width: 1250px;
+  box-sizing: border-box;
 }
 
 /* POLAROID CARD STYLING */

@@ -1,5 +1,5 @@
 .about-container {
-    background-color: #FFF0F5;
+    background: linear-gradient(180deg, #f7f8fa 0%, #fde8f3 50%, #FFF0F5 100%);
     min-height: 100vh;   
 }
 
