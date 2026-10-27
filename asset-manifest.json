@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/personal_website/static/css/main.c6597504.css",
-    "main.js": "/personal_website/static/js/main.94bfc781.js",
+    "main.js": "/personal_website/static/js/main.f6893e8c.js",
     "static/js/453.e2428e9c.chunk.js": "/personal_website/static/js/453.e2428e9c.chunk.js",
     "static/media/copper_base.webp": "/personal_website/static/media/copper_base.c90ddab0cf42cca055a6.webp",
     "static/media/lens_components_unlabeled.webp": "/personal_website/static/media/lens_components_unlabeled.bdb0e31168061dc5f065.webp",
@@ -29,12 +29,14 @@
     "static/media/seaweed_art_cbl.webp": "/personal_website/static/media/seaweed_art_cbl.2a4630cf318bcefcf50a.webp",
     "static/media/boeing.webp": "/personal_website/static/media/boeing.8273d7f309bb66c5d353.webp",
     "static/media/suwon.webp": "/personal_website/static/media/suwon.60af818973ca9455e5de.webp",
+    "static/media/control_panel.webp": "/personal_website/static/media/control_panel.d248ba457bca6c859562.webp",
     "static/media/bean.webp": "/personal_website/static/media/bean.7d23a1fd7d07b7aafdaa.webp",
     "static/media/headshot.png": "/personal_website/static/media/headshot.101d73eb79d86dc6e1da.png",
     "static/media/not_dog_tofu.webp": "/personal_website/static/media/not_dog_tofu.ed2a02d8fff65c557d8f.webp",
     "static/media/turtle_skippy.webp": "/personal_website/static/media/turtle_skippy.d483cf0a23b1d67e7213.webp",
     "static/media/streetlight.webp": "/personal_website/static/media/streetlight.4992ab8968aa0233b81d.webp",
     "static/media/dinka_maria.webp": "/personal_website/static/media/dinka_maria.f9d004b6168e795ea580.webp",
+    "static/media/telescope_setup.webp": "/personal_website/static/media/telescope_setup.914ece56c195707cb3c4.webp",
     "static/media/barbie_world.webp": "/personal_website/static/media/barbie_world.135703b9986fa0cf30b6.webp",
     "static/media/lauren.webp": "/personal_website/static/media/lauren.9da570ab14919aba79d9.webp",
     "static/media/favicon.png": "/personal_website/static/media/favicon.17cb3e52aa8d9397fa6b.png",
@@ -51,6 +53,7 @@
     "static/media/tobi_parents_nikki.webp": "/personal_website/static/media/tobi_parents_nikki.be42825eda8e1c843f72.webp",
     "static/media/coolest_bro.webp": "/personal_website/static/media/coolest_bro.55b6ed9dfa0115da7fd9.webp",
     "static/media/gpod.webp": "/personal_website/static/media/gpod.a1d3a6e1732b129db6c8.webp",
+    "static/media/hexapod.webp": "/personal_website/static/media/hexapod.84e605087e892cd75cff.webp",
     "static/media/basil.webp": "/personal_website/static/media/basil.bc56ff2f4b22f81ad70c.webp",
     "static/media/jamil.webp": "/personal_website/static/media/jamil.37a1eaa4e753cf517634.webp",
     "static/media/lucy.webp": "/personal_website/static/media/lucy.2668c879d173317114c8.webp",
@@ -66,11 +69,11 @@
     "static/media/dancing_marissa.webp": "/personal_website/static/media/dancing_marissa.0451487a41f12e167972.webp",
     "index.html": "/personal_website/index.html",
     "main.c6597504.css.map": "/personal_website/static/css/main.c6597504.css.map",
-    "main.94bfc781.js.map": "/personal_website/static/js/main.94bfc781.js.map",
+    "main.f6893e8c.js.map": "/personal_website/static/js/main.f6893e8c.js.map",
     "453.e2428e9c.chunk.js.map": "/personal_website/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c6597504.css",
-    "static/js/main.94bfc781.js"
+    "static/js/main.f6893e8c.js"
   ]
 }
