@@ -10,6 +10,10 @@ import lisaCopperBaseTapguide from '../../assets/projects/lisa/copper_base_tapgu
 import lisaCapInnerDiameter from '../../assets/projects/lisa/cap_inner_diameter.webp';
 import lisaOuterCasingDiameter from '../../assets/projects/lisa/outer_casing_outer_diameter.webp';
 
+import lisaTelescopeSetup from '../../assets/projects/lisa_telescope/telescope_setup.webp';
+import lisaTelescopeControlPanel from '../../assets/projects/lisa_telescope/control_panel.webp';
+import lisaTelescopeGimbalMount from '../../assets/projects/lisa_telescope/hexapod.webp';
+
 const PROJECTS_DATA = [
   {
     id: 'lisa-charge-management',
@@ -123,17 +127,46 @@ const PROJECTS_DATA = [
   },
   {
     id: 'lisa-test-automation',
-    title: 'LISA Telescope Test Automation',
-    category: 'Space Instrumentation',
-    icon: '🔭',
+    title: 'LISA Telescope Optical Test Automation',
+    category: 'Space Instrumentation & Robotics Automation',
+    image: lisaTelescopeSetup,
     gradient: 'linear-gradient(135deg, #4A5568 0%, #1A202C 100%)',
-    shortDescription: 'Automated hardware-in-the-loop testing framework for verifying precision optics and alignment for the LISA gravitational wave space mission.',
-    fullDescription: 'Developed an automated testing and control suite for precision optical characterization of the Laser Interferometer Space Antenna (LISA) telescope components. The system automates sensor calibration, optical axis alignment verification, and environmental stress testing under ultra-clean vacuum conditions.',
-    tech: ['Python', 'LabVIEW', 'Optics Characterization', 'Hardware-in-the-Loop', 'Automation'],
+    shortDescription: 'Automated multi-device optical testing and Tkinter GUI control panel for verifying wavefront error performance across the LISA space telescope flight units.',
+    fullDescription: [
+      {
+        label: 'Mission',
+        text: 'To detect gravitational waves in a frequency band complementary to LIGO, each of the three LISA spacecraft houses two telescopes functioning as afocal beam expanders to send and receive laser light between spacecraft for differential interferometry.'
+      },
+      {
+        label: 'Problem',
+        text: 'Confirming that the telescopes meet optical performance specifications requires wavefront error (WFE) measurements across a 5 x 5 grid of field angles (25 measurements per run) over multiple clocking orientations to eliminate gravity effects. With two telescopes per spacecraft plus spares (~8 flight units total), manual testing is impractical for obtaining reproducible results.'
+      },
+      {
+        label: 'Solution',
+        text: 'Automate the optical test assembly, including the 6-DOF hexapod, interferometer, motorized gimbal mount for the autocollimating flat (ACF) mirror, and nanopositioners, to execute repeatable WFE, co-boresight, and pupil mapping evaluations.'
+      },
+      {
+        label: 'Contribution',
+        text: 'During my internship at NASA Goddard Space Flight Center, I developed Python automation software and an integrated control interface for the optical testbench:'
+      },
+      {
+        bullet: '6-DOF Hexapod Trajectory Automation: Built and validated a Python program using an emulator to step the hexapod through custom CSV trajectories and lookup tables while supporting the interferometer with high stiffness and stability. Implemented operator pause/resume controls, mode switching, and automatic logging of desired positions alongside encoder readouts to quantify positioning error.'
+      },
+      {
+        bullet: 'Motorized Gimbal Mount & Interferometer Integration: Evaluated baseline control software for the motorized gimbal mount to electronically adjust the ACF mirror, double-passing the beam through the telescope to null the interferometer at new field angles. Established network interface baselines for 4D Technology 4Sight software to automate iterative phase interferogram capture.'
+      },
+      {
+        bullet: 'Desktop Control Panel GUI: Designed a Python Tkinter graphical user interface consolidating device connections, CSV trajectory uploads, live target vs. encoder readouts, and operator controls into a standalone desktop application.'
+      }
+    ],
+    collaborators: [
+      { name: 'Dr. Jeff Livas (NASA GSFC)' }
+    ],
+    tech: ['Python', 'Tkinter GUI', '6-DOF Hexapod Control', 'Optical Interferometry', 'Wavefront Error (WFE) Testing', 'Hardware-in-the-Loop'],
     gallery: [
-      { label: 'Optical Bench Alignment Rig', color: '#1A202C' },
-      { label: 'Automated Interferometry Test Pipeline', color: '#2D3748' },
-      { label: 'Precision Measurement Results', color: '#4A5568' }
+      { src: lisaTelescopeSetup, label: 'LISA Telescope Optical Test Setup Assembly (ACF Mirror Gimbal Mount, Telescope, Nanopositioners, Interferometer & Hexapod)' },
+      { src: lisaTelescopeControlPanel, label: 'Python Tkinter GUI Control Panel for LISA Telescope Optical Testing' },
+      { src: lisaTelescopeGimbalMount, label: 'Motorized Gimbal Mount for the Autocollimating Flat (ACF) Mirror' }
     ]
   },
   {
@@ -307,14 +340,18 @@ function Projects() {
                     <strong className="modal-desc-label">Collaborators: </strong>
                     {selectedProject.collaborators.map((collab, idx) => (
                       <React.Fragment key={idx}>
-                        <a
-                          href={collab.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="collaborator-link"
-                        >
-                          {collab.name}
-                        </a>
+                        {collab.url ? (
+                          <a
+                            href={collab.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="collaborator-link"
+                          >
+                            {collab.name}
+                          </a>
+                        ) : (
+                          <span>{collab.name}</span>
+                        )}
                         {idx < selectedProject.collaborators.length - 1 ? ', ' : ''}
                       </React.Fragment>
                     ))}
