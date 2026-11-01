@@ -25,30 +25,45 @@ function Home() {
             </div>
 
             <p className="hero-bio">
-              I am a PhD student in robotics with the aerospace engineering department at Georgia Tech with an expected graduation of May 2027. My research focuses on increasing resilience and autonomy in space systems with atomic clock predictive modeling and uncertainty-aware algorithms.
+              I am a PhD candidate in robotics with the aerospace engineering department at Georgia Tech with an expected graduation of August 2027. My research focuses on increasing resilience and autonomy in space systems with atomic clock predictive modeling and uncertainty-aware intelligent algorithms.
             </p>
 
             <div className="education-highlights">
-              <div className="edu-item">
+              <a
+                href="https://ssdl.gatech.edu/2025/02/04/marilyn-braojos-gutierrez/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="edu-item edu-item-link"
+              >
                 <div>
                   <strong>PhD in Aerospace Engineering Robotics</strong>
-                  <span className="edu-sub">Georgia Tech — Exp. May 2027</span>
+                  <span className="edu-sub">Georgia Tech — Exp. August 2027</span>
                 </div>
-              </div>
+              </a>
 
-              <div className="edu-item">
+              <a
+                href="https://dc.phys.ufl.edu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="edu-item edu-item-link"
+              >
                 <div>
                   <strong>MS in Mechanical Engineering</strong>
                   <span className="edu-sub">University of Florida — 2022</span>
                 </div>
-              </div>
+              </a>
 
-              <div className="edu-item">
+              <a
+                href="https://merge.mae.ufl.edu/about/people/mergelab_research_alumni/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="edu-item edu-item-link"
+              >
                 <div>
                   <strong>BS in Mechanical Engineering & BS in Neuroscience</strong>
                   <span className="edu-sub">University of Florida — 2020</span>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>

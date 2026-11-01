@@ -11,23 +11,57 @@ const ENTRY_IDS = {
   message: "entry.940829274"
 };
 
+function isValidContactInfo(value) {
+  const val = value.trim();
+  if (!val) return false;
+
+  // 1. Email format: name@domain.tld
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (emailRegex.test(val)) return true;
+
+  // 2. Phone number format: optional +, digits, spaces, dashes, dots, parentheses (10 to 15 digits total)
+  const phoneCharsRegex = /^[+]?[\d\s\-().]+$/;
+  const digitCount = (val.match(/\d/g) || []).length;
+  if (phoneCharsRegex.test(val) && digitCount >= 10 && digitCount <= 15) return true;
+
+  // 3. LinkedIn profile URL format: e.g. linkedin.com/in/username or https://www.linkedin.com/in/username
+  const linkedinRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[A-Za-z0-9\-_%]+\/?(\?.*)?$/i;
+  if (linkedinRegex.test(val)) return true;
+
+  return false;
+}
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     contact: '',
     message: ''
   });
+  const [contactError, setContactError] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
+    const field = e.target.dataset.field;
+    const value = e.target.value;
     setFormData({
       ...formData,
-      [e.target.dataset.field]: e.target.value
+      [field]: value
     });
+    if (field === 'contact' && contactError) {
+      if (isValidContactInfo(value)) {
+        setContactError('');
+      }
+    }
   };
 
   const handleSubmit = (e) => {
+    if (!isValidContactInfo(formData.contact)) {
+      e.preventDefault();
+      setContactError('Please enter a valid email address, phone number, or LinkedIn URL (e.g. linkedin.com/in/username).');
+      return;
+    }
+    setContactError('');
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -39,7 +73,6 @@ function Contact() {
     <div className="contact-container">
       <div className="contact-card">
         <div className="contact-header">
-          <span className="contact-icon">✉️</span>
           <h1 className="contact-title">Get in Touch</h1>
           <p className="contact-subtitle">
             Have a question, research inquiry, or project proposal? Send me a message below!
@@ -101,9 +134,13 @@ function Contact() {
                   data-field="contact"
                   value={formData.contact}
                   onChange={handleChange}
-                  placeholder="e.g. jane@example.com"
+                  placeholder="e.g. jane@example.com, (555) 123-4567, or linkedin.com/in/jane"
+                  className={contactError ? 'input-error' : ''}
                   required
                 />
+                {contactError && (
+                  <span className="field-error-text">{contactError}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -125,7 +162,7 @@ function Contact() {
                 className="submit-btn" 
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message 🚀'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </>

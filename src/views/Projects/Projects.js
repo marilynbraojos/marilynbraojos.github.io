@@ -232,7 +232,7 @@ function Projects() {
       <div className="projects-header">
         <h1 className="projects-title">Projects</h1>
         <p className="projects-subtitle">
-          Explore research initiatives, engineering designs, and software tools. Click on any project to view details and image galleries.
+          Check out my engineering portfolio filled with research and personal projects! Click on any project to view more details.
         </p>
       </div>
 

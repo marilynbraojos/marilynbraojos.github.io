@@ -5,6 +5,7 @@
   align-items: center;
   padding: 100px 20px 40px 20px;
   box-sizing: border-box;
+  background: linear-gradient(180deg, #f7f8fa 0%, #fde8f3 50%, #FFF0F5 100%);
 }
 
 .hero-section {
@@ -91,6 +92,13 @@
   padding: 6px 16px;
   border-radius: 20px;
   letter-spacing: 0.3px;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.tag-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(236, 121, 184, 0.75), 0 0 24px rgba(236, 121, 184, 0.4);
 }
 
 .hero-bio {
@@ -116,6 +124,18 @@
   padding: 10px 16px;
   border-radius: 12px;
   border: 1px solid rgba(27, 42, 74, 0.06);
+}
+
+.edu-item-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.edu-item-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(236, 121, 184, 0.45);
+  box-shadow: 0 4px 12px rgba(236, 121, 184, 0.15);
 }
 
 .edu-icon {
