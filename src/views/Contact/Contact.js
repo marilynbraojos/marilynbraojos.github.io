@@ -3,7 +3,7 @@ import './Contact.css';
 
 // Exact Google Form Action URL & Entry IDs extracted from form link:
 // Form: "Mari's Website Contact Request" (under marilynbraojos@gmail.com)
-const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeRPzgPC_PJlEjLZzkri32sYZTy07okQC8sL0Q3sQKwbKwn4g/formResponse";
+const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeRPzgPC_PJlEjLZzkri32sYZTy07okQC8sL0Q3sQKwbKwn4g/formResponse";
 
 const ENTRY_IDS = {
   name: "entry.1725655938",
@@ -56,17 +56,37 @@ function Contact() {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (!isValidContactInfo(formData.contact)) {
-      e.preventDefault();
       setContactError('Please enter a valid email address, phone number, or LinkedIn URL (e.g. linkedin.com/in/username).');
       return;
     }
     setContactError('');
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 800);
+
+    const body = new URLSearchParams();
+    body.append(ENTRY_IDS.name, formData.name);
+    body.append(ENTRY_IDS.contact, formData.contact);
+    body.append(ENTRY_IDS.message, formData.message);
+    body.append('fvv', '1');
+    body.append('pageHistory', '0');
+
+    fetch(GOOGLE_FORM_ACTION_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: body.toString()
+    })
+      .then(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      });
   };
 
   return (
@@ -81,7 +101,6 @@ function Contact() {
 
         {submitted ? (
           <div className="success-message">
-            <div className="success-icon">✨</div>
             <h2>Message Sent!</h2>
             <p>Thank you for reaching out, {formData.name || 'there'}! Your response has been submitted directly to my contact requests.</p>
             <button 
@@ -95,22 +114,10 @@ function Contact() {
             </button>
           </div>
         ) : (
-          <>
-            {/* Hidden iframe processes silent background POST directly to your Google Form */}
-            <iframe
-              name="hidden_iframe"
-              id="hidden_iframe"
-              style={{ display: 'none' }}
-              title="hidden_iframe"
-            ></iframe>
-
-            <form
-              action={GOOGLE_FORM_ACTION_URL}
-              method="POST"
-              target="hidden_iframe"
-              onSubmit={handleSubmit}
-              className="contact-form"
-            >
+          <form
+            onSubmit={handleSubmit}
+            className="contact-form"
+          >
               <div className="form-group">
                 <label htmlFor="name">Your Name</label>
                 <input
@@ -164,8 +171,7 @@ function Contact() {
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
-            </form>
-          </>
+          </form>
         )}
       </div>
     </div>
