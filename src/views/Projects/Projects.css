@@ -310,15 +310,17 @@
 
 .modal-bullet-item {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 8px;
   padding-left: 6px;
 }
 
 .modal-bullet-dot {
   color: #EC79B8;
+  font-size: 1rem;
   font-weight: 900;
   line-height: 1.65;
+  flex-shrink: 0;
 }
 
 .modal-collaborators {
