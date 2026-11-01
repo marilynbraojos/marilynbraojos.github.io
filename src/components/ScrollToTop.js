@@ -25,9 +25,14 @@ function ScrollToTop() {
     };
   }, []);
 
-  // Scroll to top on route change
+  // Scroll to top and track page view in Google Analytics on route change
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', 'G-C7S1WL86PM', {
+        page_path: pathname
+      });
+    }
   }, [pathname]);
 
   return null;
