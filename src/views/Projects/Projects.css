@@ -298,6 +298,11 @@
   text-align: left;
 }
 
+.modal-italic-note {
+  color: #1B2A4A;
+  font-size: 0.98rem;
+}
+
 .modal-desc-label {
   color: #1B2A4A;
   font-weight: 700;

@@ -14,18 +14,66 @@ import lisaTelescopeSetup from '../../assets/projects/lisa_telescope/telescope_s
 import lisaTelescopeControlPanel from '../../assets/projects/lisa_telescope/control_panel.webp';
 import lisaTelescopeGimbalMount from '../../assets/projects/lisa_telescope/hexapod.webp';
 
+import kalmanLoopAlgo from '../../assets/projects/uncertainty_aware_kalman_filter/loop_algo.png';
+import kalmanLoopStd from '../../assets/projects/uncertainty_aware_kalman_filter/loop_std.png';
+import kalmanEkf from '../../assets/projects/uncertainty_aware_kalman_filter/ekf.png';
+import kalmanHusky from '../../assets/projects/uncertainty_aware_kalman_filter/husky.png';
+import kalmanTurtlebot from '../../assets/projects/uncertainty_aware_kalman_filter/turtlebot.png';
+
 const PROJECTS_DATA = [
   {
     id: 'uncertainty-aware-kalman-filter',
-    title: 'Uncertainty-Aware Kalman Filter',
+    title: 'Uncertainty-Aware Closed-Loop Control in Mobile Robots',
     category: 'Robotics & State Estimation',
     status: 'Just Started',
-    icon: '🧭',
+    image: kalmanLoopAlgo,
     gradient: 'linear-gradient(135deg, #2C5282 0%, #1A365D 100%)',
-    shortDescription: 'Developing an uncertainty-aware Kalman filtering architecture for resilient state estimation in autonomous space and robotic systems.',
-    fullDescription: 'This research focuses on designing an uncertainty-aware Kalman filter framework capable of dynamically adapting state estimation covariance and sensor weighting under degraded or fault-prone sensing conditions. Currently in its initial phase, the work aims to improve navigation and localization resilience for autonomous robotic platforms.',
-    tech: ['State Estimation', 'Kalman Filtering', 'Uncertainty Quantification', 'Python', 'Robotics'],
-    gallery: []
+    shortDescription: 'Real-time adaptive Extended Kalman Filter that scales measurement covariance using proprioceptive uncertainty estimates to maintain reliable closed-loop state estimation.',
+    fullDescription: [
+      {
+        italicNote: 'This work comprises my final doctoral research project.'
+      },
+      {
+        label: 'Case Study',
+        text: 'In 2023, the Japanese lunar lander Hakuto-R crashed during descent after its onboard altimeter encountered an unexpected cliff edge. Treating the sudden altitude discrepancy as a sensor fault, the navigation filter rejected the altimeter readings and relied exclusively on its internal state prediction. The lander hovered until it exhausted its propellant and fell to the lunar surface.',
+        link: {
+          url: 'https://www.space.com/moon-lander-ispace-hakuto-r-crash-lunar-terrain',
+          text: 'Space.com: Hakuto-R Lunar Lander Crash Analysis'
+        }
+      },
+      {
+        label: 'Problem',
+        text: 'Standard Extended Kalman Filters (EKFs) fuse sensor measurements and state predictions using a fixed measurement covariance matrix (R) tuned in laboratory conditions under static Gaussian noise assumptions. When a robot encounters out-of-distribution terrain or sensor faults in nonlinear environments, a static R matrix cannot adapt instrument trust in real time, causing filter divergence and control failure.'
+      },
+      {
+        label: 'Solution',
+        text: 'Integrate real-time uncertainty awareness directly into the vehicle state estimation loop via an adaptive hybrid EKF that dynamically scales sensor trust.'
+      },
+      {
+        label: 'Approach & Contribution',
+        text: 'I am developing a real-time hybrid EKF that maps proprioceptive uncertainty to the filter measurement update:'
+      },
+      {
+        bullet: 'Proprioceptive Uncertainty Extraction: Uses IMU, motor current, and wheel odometry signatures to quantify real-time measurement uncertainty.'
+      },
+      {
+        bullet: 'Exponential Covariance Scaling: Scales the measurement covariance matrix (R) by the exponential of the extracted uncertainty. When uncertainty is zero, the filter fully trusts the sensor measurement; as uncertainty increases, the Kalman gain approaches zero and the filter weights the predicted state over the corrupted measurement.'
+      },
+      {
+        bullet: 'Simulation & Hardware Validation: Implemented in ROS and Gazebo using the Clearpath Husky model to benchmark against existing literature under high-fidelity physics, followed by hardware demonstration on a TurtleBot platform. Performance is evaluated against a baseline static-R EKF by measuring trajectory tracking error under fault-injection scenarios.'
+      },
+      {
+        italicNote: 'Results from this work are expected to be submitted to a peer-reviewed journal around the time of my doctoral defense.'
+      }
+    ],
+    tech: ['Extended Kalman Filter (EKF)', 'Adaptive State Estimation', 'Uncertainty Quantification', 'ROS / Gazebo', 'Clearpath Husky', 'TurtleBot', 'Python'],
+    gallery: [
+      { src: kalmanLoopStd, label: 'Standard Autonomous Control Loop (Sensor Data, Kalman Filter, Planner, Low-Level Controller & Actuation)' },
+      { src: kalmanLoopAlgo, label: 'Proposed Uncertainty-Aware Control Loop with Detection Model Scaling the Kalman Filter' },
+      { src: kalmanEkf, label: 'Extended Kalman Filter (EKF) Measurement Update & Time Prediction Architecture' },
+      { src: kalmanHusky, label: 'Clearpath Husky A200 Mobile Robot Platform (Simulated in ROS Gazebo)' },
+      { src: kalmanTurtlebot, label: 'TurtleBot Mobile Robot Platform for Hardware Demonstration' }
+    ]
   },
   {
     id: 'terrain-classification',
@@ -334,11 +382,33 @@ function Projects() {
                       if (typeof item === 'string') {
                         return <p key={idx} className="modal-description">{item}</p>;
                       }
+                      if (item.italicNote) {
+                        return (
+                          <p key={idx} className="modal-description modal-italic-note">
+                            <em>{item.italicNote}</em>
+                          </p>
+                        );
+                      }
                       if (item.label) {
                         return (
                           <p key={idx} className="modal-description">
                             <strong className="modal-desc-label">{item.label}: </strong>
                             {item.text}
+                            {item.link && (
+                              <>
+                                {' '}
+                                (
+                                <a
+                                  href={item.link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="collaborator-link"
+                                >
+                                  {item.link.text}
+                                </a>
+                                )
+                              </>
+                            )}
                           </p>
                         );
                       }
