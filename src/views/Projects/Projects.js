@@ -16,64 +16,27 @@ import lisaTelescopeGimbalMount from '../../assets/projects/lisa_telescope/hexap
 
 const PROJECTS_DATA = [
   {
-    id: 'lisa-charge-management',
-    title: 'LISA Charge Management Device: Dual-Lens UV LED Discharging System',
-    category: 'Space Instrumentation & Optomechanical Design',
-    image: lisaComponentsUnlabeled,
-    gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2D3748 100%)',
-    shortDescription: 'Designed, manufactured, and characterized a fiber-coupled dual-convex-lens surface-mount UV LED system to discharge the free-falling gold test mass in the LISA gravitational wave mission.',
-    fullDescription: [
-      {
-        label: 'Mission',
-        text: 'The Laser Interferometer Space Antenna (LISA) mission complements ground-based detectors like LIGO using a three-spacecraft Michelson interferometer to detect gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses as the inertial end-points of the interferometer.'
-      },
-      {
-        label: 'Problem',
-        text: 'Cosmic rays and solar energetic particles cause charge accumulation on these floating gold test masses, introducing electrostatic forces that risk corrupting measurements.'
-      },
-      {
-        label: 'Solution',
-        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
-      },
-      {
-        label: 'Contribution',
-        text: 'Unlike legacy ball-lens UV LEDs (which had longer peak wavelengths and required pulsing drivers), Surface-Mount (SM) UV LEDs provide shorter wavelengths capable of overcoming the 5.28 eV barrier, but lack built-in focusing optics. To harness their full efficiency, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:'
-      },
-      {
-        bullet: 'Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three spacers and a washer, capped with an SMA interface for fiber coupling.'
-      },
-      {
-        bullet: 'Thermal & Mechanical Copper Base: Machined a high-thermal-conductivity copper base adapted from the ball-lens architecture (central aperture + two M3 holes). Soldered the SM UV LED onto a breakout PCB using leaded solder to prevent vacuum tin whiskers and reduce thermal stress, while isolating the LED from mechanical strain and vibrations.'
-      },
-      {
-        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
-      }
-    ],
-    collaborators: [
-      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' },
-      { name: 'John Conklin', url: 'https://www.linkedin.com/in/john-conklin-56480b197/' }
-    ],
-    tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
-    gallery: [
-      { src: lisaComponentsLabeled, label: 'Labeled Discharging System Components (PCB, SM UV LED, Copper Base, Convex Lenses, Spacers, Cap & Casing)' },
-      { src: lisaComponentsUnlabeled, label: 'Manufactured Prototype Hardware & Optical Components' },
-      { src: lisaLensAssembly, label: 'Exploded CAD View of Dual-Lens & Spacer Stack Assembly' },
-      { src: lisaFullAssemblyCad, label: 'CAD Assembly of Copper Base, Lens Housing & M3 Fasteners' },
-      { src: lisaCopperBase, label: 'Machined High-Thermal-Conductivity Copper Base Plate' },
-      { src: lisaCopperBaseTapguide, label: 'Precision Machined M3 Tap & Mounting Interface on Copper Base' },
-      { src: lisaOuterCasingDiameter, label: 'Dimensional Tolerance Verification of Outer Casing (9.95 mm)' },
-      { src: lisaCapInnerDiameter, label: 'Caliper Tolerance Inspection of SMA Adapter Cap Inner Diameter (8.00 mm)' }
-    ]
+    id: 'uncertainty-aware-kalman-filter',
+    title: 'Uncertainty-Aware Kalman Filter',
+    category: 'Robotics & State Estimation',
+    status: 'Just Started',
+    icon: '🧭',
+    gradient: 'linear-gradient(135deg, #2C5282 0%, #1A365D 100%)',
+    shortDescription: 'Developing an uncertainty-aware Kalman filtering architecture for resilient state estimation in autonomous space and robotic systems.',
+    fullDescription: 'This research focuses on designing an uncertainty-aware Kalman filter framework capable of dynamically adapting state estimation covariance and sensor weighting under degraded or fault-prone sensing conditions. Currently in its initial phase, the work aims to improve navigation and localization resilience for autonomous robotic platforms.',
+    tech: ['State Estimation', 'Kalman Filtering', 'Uncertainty Quantification', 'Python', 'Robotics'],
+    gallery: []
   },
   {
     id: 'terrain-classification',
-    title: 'Uncertainty-Aware Terrain Classification in Mobile Vehicles',
+    title: 'Uncertainty-Aware Terrain Classification in Mobile Robots',
     category: 'Robotics & Machine Learning',
+    status: 'In Progress',
     icon: '🤖',
     gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2A4365 100%)',
-    shortDescription: 'Probabilistic terrain classification and confidence estimation for autonomous ground vehicle navigation across off-road environments.',
-    fullDescription: 'This project focuses on developing real-time, uncertainty-aware terrain classification algorithms for autonomous mobile ground vehicles operating in unmapped and challenging environments. By quantifying prediction uncertainty alongside class probabilities, the vehicle can make safer, risk-informed path planning decisions when traversing mud, gravel, sand, or obstacles.',
-    tech: ['Python', 'PyTorch', 'ROS', 'Computer Vision', 'Bayesian Neural Networks'],
+    shortDescription: 'End-to-end machine learning pipeline for proprioceptive terrain identification robust to sensor fault modes on mobile rovers.',
+    fullDescription: 'This project focuses on developing real-time, uncertainty-aware terrain classification algorithms for autonomous mobile rovers operating in unmapped and challenging environments. By designing an end-to-end machine learning pipeline robust to multiple sensor fault modes and quantifying prediction uncertainty alongside class probabilities, the rover can make safer, risk-informed navigation decisions.',
+    tech: ['Python', 'PyTorch', 'ROS2', 'Fault-Tolerant ML', 'Uncertainty Quantification'],
     gallery: [
       { label: 'Terrain Classification Heatmap', color: '#1B2A4A' },
       { label: 'Vehicle Trajectory & Risk Map', color: '#2C5282' },
@@ -81,29 +44,25 @@ const PROJECTS_DATA = [
     ]
   },
   {
-    id: 'gt-statics-ai',
-    title: 'Building Open Access GT Statics Course with AI Agent as Supplemental Instructor',
-    category: 'AI & Education Technology',
-    icon: '🎓',
-    gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
-    shortDescription: 'Developing open-access courseware for Georgia Tech Statics integrated with an AI-driven supplemental teaching assistant for real-time student guidance.',
-    fullDescription: 'An innovative educational initiative designed to create high-quality, open-access course materials for Engineering Statics at Georgia Tech. The platform integrates an interactive AI supplemental instructor trained on domain-specific statics principles to answer student queries, guide step-by-step free-body diagram analysis, and offer tailored practice problems 24/7.',
-    tech: ['AI Agents', 'LLMs', 'Open Educational Resources', 'React', 'Python'],
-    gallery: [
-      { label: 'Interactive AI Instructor Interface', color: '#B83280' },
-      { label: 'Statics Course Modules', color: '#D53F8C' },
-      { label: 'Student Analytics Dashboard', color: '#ED64A6' }
-    ]
+    id: 'turtlebot-automation',
+    title: 'TurtleBot Automation',
+    category: 'Robotics & Autonomous Navigation',
+    gradient: 'linear-gradient(135deg, #2C5282 0%, #1B2A4A 100%)',
+    shortDescription: 'Autonomous navigation, perception, and control algorithms implemented on a TurtleBot mobile robot using ROS2.',
+    fullDescription: 'Developed autonomous navigation, obstacle avoidance, perception, and control pipelines on a TurtleBot mobile robot platform using ROS2 and Python.',
+    tech: ['ROS2', 'Python', 'Autonomous Navigation', 'Mobile Robotics', 'Perception & Control'],
+    gallery: []
   },
   {
     id: 'clock-bias-correction',
     title: 'Correcting Clock Bias with Predictive Intelligent Models',
-    category: 'Signal Processing & Data Science',
+    category: 'Signal Processing & Deep Learning',
+    status: 'Completed — Peer-Reviewed Journal Submission Complete (Awaiting Reviewer Feedback)',
     icon: '⏱️',
     gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%)',
-    shortDescription: 'Machine learning models to predict and mitigate timing drift and clock bias in satellite and high-precision sensor systems.',
-    fullDescription: 'High-precision systems such as GPS satellites and distributed sensor networks rely heavily on sub-nanosecond synchronization. This research uses time-series forecasting and predictive intelligent models to detect, model, and correct clock drift and frequency offsets dynamically, significantly improving positioning accuracy and sensor fusion synchronization.',
-    tech: ['Time-Series Modeling', 'Signal Processing', 'Python', 'Scikit-Learn', 'MATLAB'],
+    shortDescription: 'Autoregressive deep learning and transformer architectures to predict long-term satellite atomic clock bias and mitigate timing drift in GNSS-limited environments.',
+    fullDescription: 'High-precision space systems and GPS satellites rely heavily on sub-nanosecond synchronization. This research develops autoregressive deep learning and transformer model architectures to predict and correct atomic clock drift and bias over extended time horizons (achieving <2 ns accuracy in GPS clock drift corrections and 6-hour time horizon predictions in GNSS-limited areas). Completed with peer-reviewed journal submission currently awaiting reviewer feedback.',
+    tech: ['Deep Learning', 'Transformers', 'Time-Series Forecasting', 'Atomic Clocks', 'Python', 'PyTorch'],
     gallery: [
       { label: 'Clock Drift Prediction Curve', color: '#1A365D' },
       { label: 'Residual Error Distribution', color: '#2B6CB0' },
@@ -111,14 +70,36 @@ const PROJECTS_DATA = [
     ]
   },
   {
+    id: 'step-summer-camp',
+    title: 'STEP Summer Camp: Autonomous Boat & Rover Prototyping',
+    category: 'Robotics Mentorship & Embedded Systems',
+    icon: '🚤',
+    gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
+    shortDescription: 'Mentored 20+ groups of high school students in designing, building, and programming functional boat and rover prototypes using PVC and Arduino UNO.',
+    fullDescription: 'As a Graduate Teaching Assistant for the Georgia Tech STEP Summer Camp, I mentored over 20 teams of high school students through the end-to-end engineering design process, guiding them in fabricating structural frames out of PVC, wiring motors and sensors, and programming autonomous and remote-controlled boat and rover prototypes using Arduino UNO microcontrollers.',
+    tech: ['Arduino UNO', 'Robotics Prototyping', 'Embedded C/C++', 'PVC Fabrication', 'STEM Mentorship'],
+    gallery: []
+  },
+  {
+    id: 'ssdl-website-frontend',
+    title: 'Georgia Tech Space Systems Design Lab (SSDL) Website Front-End',
+    category: 'Web Development & UI Maintenance',
+    icon: '💻',
+    gradient: 'linear-gradient(135deg, #4A5568 0%, #2D3748 100%)',
+    shortDescription: 'Maintained and updated the front-end web architecture and research pages for the Georgia Tech Space Systems Design Lab.',
+    fullDescription: 'Served as the webmaster and front-end maintainer for the Georgia Tech Space Systems Design Lab (SSDL) website from 2023 to 2025. Managed content updates, mission profiles, publication directories, and responsive front-end layout improvements to showcase the lab’s satellite missions and graduate research.',
+    tech: ['Front-End Development', 'HTML / CSS', 'JavaScript', 'Web Maintenance', 'UI Design'],
+    gallery: []
+  },
+  {
     id: 'sample-return-lander',
-    title: 'Sample Return Lander Fault Protection Tools',
+    title: 'Mars Sample Return (SRL) Fault Protection Engineering Tools',
     category: 'Aerospace & Systems Engineering',
     icon: '🚀',
     gradient: 'linear-gradient(135deg, #9B2C2C 0%, #742A2A 100%)',
-    shortDescription: 'Automated fault detection, isolation, and recovery (FDIR) software architectures for planetary sample return landing vehicles.',
-    fullDescription: 'Designed and evaluated fault protection (FDIR) logic and verification tools for a high-reliability planetary sample return lander. The system monitors critical flight states, sensor telemetry, and actuator health during entry, descent, and landing (EDL), autonomously executing safe-mode protocols to ensure mission success.',
-    tech: ['FDIR Architectures', 'Systems Engineering', 'C++', 'Flight Software', 'Stateflow'],
+    shortDescription: 'Designed UI and functionality for the Mars Sample Return SRL mitigation matrix and developed FMECA and FTA across 12 subsystems at NASA JPL.',
+    fullDescription: 'During my Fault Protection Engineering internship at NASA Jet Propulsion Laboratory (JPL), I designed the user interface and core functionality for the Mars Sample Return Sample Retrieval Lander (SRL) mitigation matrix using FileMaker Pro. Additionally, I developed Failure Modes, Effects, and Criticality Analyses (FMECA) and Fault Tree Analyses (FTA) across 12 spacecraft subsystems to identify and mitigate single-point system failures.',
+    tech: ['Fault Protection (FDIR)', 'FMECA & FTA', 'FileMaker Pro UI', 'Systems Engineering', 'NASA JPL'],
     gallery: [
       { label: 'Lander State Machine Diagram', color: '#742A2A' },
       { label: 'Fault Tree Analysis Simulation', color: '#9B2C2C' },
@@ -171,32 +152,82 @@ const PROJECTS_DATA = [
   },
   {
     id: 'throttle-body-integration',
-    title: 'Throttle Body Integration into Pipe System',
+    title: 'Pipe Mating Plate Design & Throttle Body Integration',
     category: 'Mechanical & Fluid Systems',
     icon: '⚙️',
     gradient: 'linear-gradient(135deg, #DD6B20 0%, #7B341E 100%)',
-    shortDescription: 'Design, computational fluid dynamics (CFD) analysis, and physical testing of an integrated throttle body assembly for fluid flow control.',
-    fullDescription: 'A comprehensive mechanical engineering project involving the CAD modeling, structural analysis, and CFD simulation of a custom throttle body mechanism integrated within a pressurized pipe system. Physical prototype testing validated flow coefficients, pressure drops, and actuation response speeds.',
-    tech: ['SolidWorks', 'ANSYS CFD', 'Fluid Dynamics', 'Prototyping', 'Flow Measurement'],
+    shortDescription: 'Designed three iterations of a custom pipe mating plate in SolidWorks to adapt a throttle body into a pipe system and conducted a 20+ product trade study at Raytheon Technologies.',
+    fullDescription: 'During my Mechanical Engineering internship at Raytheon Technologies, I designed three iterations of a custom pipe mating plate using SolidWorks to seamlessly adapt a throttle body assembly into an existing pressurized pipe system for air regulation. Alongside the CAD modeling and mechanical integration, I completed a comprehensive trade study evaluating over 20 off-the-shelf (OTS) products for pipe system air regulation.',
+    tech: ['SolidWorks', 'Mechanical Design', 'CAD Prototyping', 'Trade Study Analysis', 'Fluid Regulation'],
     gallery: [
       { label: '3D CAD Pipe Assembly', color: '#7B341E' },
-      { label: 'CFD Velocity Vector Contour', color: '#9C4221' },
-      { label: 'Physical Flow Bench Prototype', color: '#DD6B20' }
+      { label: 'Mating Plate Iterations', color: '#9C4221' },
+      { label: 'Air Regulation Trade Study', color: '#DD6B20' }
+    ]
+  },
+  {
+    id: 'lisa-charge-management',
+    title: 'LISA Charge Management Device: Dual-Lens UV LED Discharging System',
+    category: 'Space Instrumentation & Optomechanical Design',
+    image: lisaComponentsUnlabeled,
+    gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2D3748 100%)',
+    shortDescription: 'Designed, manufactured, and characterized a fiber-coupled dual-convex-lens surface-mount UV LED system to discharge the free-falling gold test mass in the LISA gravitational wave mission.',
+    fullDescription: [
+      {
+        label: 'Mission',
+        text: 'The Laser Interferometer Space Antenna (LISA) mission complements ground-based detectors like LIGO using a three-spacecraft Michelson interferometer to detect gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses as the inertial end-points of the interferometer.'
+      },
+      {
+        label: 'Problem',
+        text: 'Cosmic rays and solar energetic particles cause charge accumulation on these floating gold test masses, introducing electrostatic forces that risk corrupting measurements.'
+      },
+      {
+        label: 'Solution',
+        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
+      },
+      {
+        label: 'Contribution',
+        text: 'Unlike legacy ball-lens UV LEDs (which had longer peak wavelengths and required pulsing drivers), Surface-Mount (SM) UV LEDs provide shorter wavelengths capable of overcoming the 5.28 eV barrier, but lack built-in focusing optics. To harness their full efficiency, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:'
+      },
+      {
+        bullet: 'Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three spacers and a washer, capped with an SMA interface for fiber coupling.'
+      },
+      {
+        bullet: 'Thermal & Mechanical Copper Base: Machined a high-thermal-conductivity copper base adapted from the ball-lens architecture (central aperture + two M3 holes). Soldered the SM UV LED onto a breakout PCB using leaded solder to prevent vacuum tin whiskers and reduce thermal stress, while isolating the LED from mechanical strain and vibrations.'
+      },
+      {
+        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
+      }
+    ],
+    collaborators: [
+      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' },
+      { name: 'John Conklin', url: 'https://www.linkedin.com/in/john-conklin-56480b197/' }
+    ],
+    tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
+    gallery: [
+      { src: lisaComponentsLabeled, label: 'Labeled Discharging System Components (PCB, SM UV LED, Copper Base, Convex Lenses, Spacers, Cap & Casing)' },
+      { src: lisaComponentsUnlabeled, label: 'Manufactured Prototype Hardware & Optical Components' },
+      { src: lisaLensAssembly, label: 'Exploded CAD View of Dual-Lens & Spacer Stack Assembly' },
+      { src: lisaFullAssemblyCad, label: 'CAD Assembly of Copper Base, Lens Housing & M3 Fasteners' },
+      { src: lisaCopperBase, label: 'Machined High-Thermal-Conductivity Copper Base Plate' },
+      { src: lisaCopperBaseTapguide, label: 'Precision Machined M3 Tap & Mounting Interface on Copper Base' },
+      { src: lisaOuterCasingDiameter, label: 'Dimensional Tolerance Verification of Outer Casing (9.95 mm)' },
+      { src: lisaCapInnerDiameter, label: 'Caliper Tolerance Inspection of SMA Adapter Cap Inner Diameter (8.00 mm)' }
     ]
   },
   {
     id: 'appliance-modeling',
-    title: 'Modeling Common Appliances',
-    category: 'Thermal & Systems Modeling',
+    title: 'CAD Modeling & GD&T of Common Appliance Parts',
+    category: 'Mechanical Design & Manufacturing',
     icon: '⚡',
     gradient: 'linear-gradient(135deg, #319795 0%, #234E52 100%)',
-    shortDescription: 'Mathematical modeling and energy efficiency analysis of residential appliances under dynamic operating conditions.',
-    fullDescription: 'First-principles thermodynamic and electrical modeling of everyday household appliances (refrigerators, HVAC systems, heat pumps) to predict power consumption and dynamic thermal performance. The models enable smart grid energy optimization and predictive maintenance scheduling.',
-    tech: ['MATLAB / Simulink', 'Thermodynamics', 'Energy Optimization', 'Data Analytics'],
+    shortDescription: 'Modeled common residential appliance components in SolidWorks using Geometric Dimensioning and Tolerancing (GD&T) and Model-Based Definition (MBD) at GE Appliances.',
+    fullDescription: 'During my co-op as an Area Business Leader at General Electric (GE) Appliances, I modeled common residential appliance parts using SolidWorks, applying Geometric Dimensioning and Tolerancing (GD&T) standards and Model-Based Definitions (MBD) to support production quality, manufacturing tolerances, and assembly line operations.',
+    tech: ['SolidWorks', 'GD&T', 'Model-Based Definition (MBD)', 'Manufacturing Operations', 'GE Appliances'],
     gallery: [
-      { label: 'Thermodynamic Cycle Simulation', color: '#234E52' },
-      { label: 'Energy Consumption Profiles', color: '#285E61' },
-      { label: 'Simulink System Architecture', color: '#319795' }
+      { label: 'SolidWorks Appliance Part CAD', color: '#234E52' },
+      { label: 'GD&T Tolerance Specifications', color: '#285E61' },
+      { label: 'Model-Based Definition View', color: '#319795' }
     ]
   }
 ];
@@ -244,16 +275,17 @@ function Projects() {
             onClick={() => setSelectedProject(project)}
           >
             <div className="card-image-wrapper" style={{ background: project.gradient }}>
-              {project.image ? (
+              {project.image && (
                 <img src={project.image} alt={project.title} className="card-cover-image" />
-              ) : (
-                <span className="card-icon">{project.icon}</span>
               )}
               <div className="card-overlay-badge">Click for details</div>
             </div>
 
             <div className="card-body">
               <span className="category-badge">{project.category}</span>
+              {project.status && (
+                <span className="project-status-badge">{project.status}</span>
+              )}
               <h3 className="card-title">{project.title}</h3>
               <p className="card-description">{project.shortDescription}</p>
 
@@ -286,10 +318,10 @@ function Projects() {
                   : selectedProject.gradient 
               }}
             >
-              {!selectedProject.image && (
-                <span className="modal-icon">{selectedProject.icon}</span>
-              )}
               <span className="modal-category-badge">{selectedProject.category}</span>
+              {selectedProject.status && (
+                <span className="modal-status-badge">{selectedProject.status}</span>
+              )}
               <h2 className="modal-title">{selectedProject.title}</h2>
             </div>
 
@@ -368,34 +400,35 @@ function Projects() {
                 </div>
               </div>
 
-              <div className="modal-section">
-                <h4>Project Gallery</h4>
-                <div className="modal-gallery-grid">
-                  {selectedProject.gallery.map((img, idx) => (
-                    img.src ? (
-                      <div 
-                        key={idx} 
-                        className="gallery-image-card"
-                        onClick={() => setSelectedGalleryImg(img)}
-                      >
-                        <div className="gallery-image-frame">
-                          <img src={img.src} alt={img.label} className="gallery-real-img" />
+              {selectedProject.gallery && selectedProject.gallery.length > 0 && (
+                <div className="modal-section">
+                  <h4>Project Gallery</h4>
+                  <div className="modal-gallery-grid">
+                    {selectedProject.gallery.map((img, idx) => (
+                      img.src ? (
+                        <div 
+                          key={idx} 
+                          className="gallery-image-card"
+                          onClick={() => setSelectedGalleryImg(img)}
+                        >
+                          <div className="gallery-image-frame">
+                            <img src={img.src} alt={img.label} className="gallery-real-img" />
+                          </div>
+                          <span className="gallery-image-caption">{img.label}</span>
                         </div>
-                        <span className="gallery-image-caption">{img.label}</span>
-                      </div>
-                    ) : (
-                      <div 
-                        key={idx} 
-                        className="gallery-placeholder-card" 
-                        style={{ background: img.color }}
-                      >
-                        <div className="placeholder-icon">🖼️</div>
-                        <span className="placeholder-label">{img.label}</span>
-                      </div>
-                    )
-                  ))}
+                      ) : (
+                        <div 
+                          key={idx} 
+                          className="gallery-placeholder-card" 
+                          style={{ background: img.color }}
+                        >
+                          <span className="placeholder-label">{img.label}</span>
+                        </div>
+                      )
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
