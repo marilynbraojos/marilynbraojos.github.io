@@ -53,6 +53,8 @@ import suwonImg from '../../assets/gallery/suwon.webp';
 import zooImg from '../../assets/gallery/zoo_san_diego.webp';
 import bestieKimmyImg from '../../assets/gallery/bestie_kimmy.png';
 import bestieTeresaImg from '../../assets/gallery/bestie_teresa.png';
+import dancingAtPlaygroundImg from '../../assets/gallery/dancing_at_playground.webp';
+import afterWeddingImg from '../../assets/gallery/after_wedding.webp';
 
 // Main Gallery Items
 const GALLERY_ITEMS = [
@@ -61,6 +63,9 @@ const GALLERY_ITEMS = [
   { id: 26, description: "Snowboarding", location: "Breckenridge, CO", image: snowboardingImg, rotation: "2.1deg" },
   { id: 35, description: "Botanical Garden with Kimmy", location: "Miami, FL", image: bestieKimmyImg, rotation: "-1.8deg" },
   { id: 36, description: "Engagement Celebration with Teresa", location: "Atlanta, GA", image: bestieTeresaImg, rotation: "2.0deg" },
+  { id: 38, description: "After Getting Married", location: "St. Petersburg, FL", image: afterWeddingImg, rotation: "-1.8deg" },
+  { id: 37, description: "Dancing at Playground LA", location: "Los Angeles, CA", image: dancingAtPlaygroundImg, rotation: "1.7deg" },
+  { id: 34, description: "Private with Marissa", location: "Los Angeles, CA", image: dancingMarissaImg, rotation: "-1.9deg" },
   { id: 2, description: "Barbie World", location: "Los Angeles, CA", image: barbieImg, rotation: "2.1deg" },
   { id: 3, description: "Janaki's Bachelorette", location: "Chicago, IL", image: beanImg, rotation: "-2.4deg" },
   { id: 4, description: "Boeing Factory", location: "Seattle, WA", image: boeingImg, rotation: "1.6deg" },
@@ -90,8 +95,7 @@ const GALLERY_ITEMS = [
   { id: 30, description: "GT Space Systems Design Lab Crew", location: "Atlanta, GA", image: ssdlImg, rotation: "2.2deg" },
   { id: 31, description: "Streetlight <3", location: "Gainesville, FL", image: streetlightImg, rotation: "-1.6deg" },
   { id: 32, description: "Korea", location: "Suwon, South Korea", image: suwonImg, rotation: "1.8deg" },
-  { id: 33, description: "San Diego Safari Park", location: "San Diego, CA", image: zooImg, rotation: "-2.1deg" },
-  { id: 34, description: "Private with Marissa", location: "Los Angeles, CA", image: dancingMarissaImg, rotation: "1.9deg" }
+  { id: 33, description: "San Diego Safari Park", location: "San Diego, CA", image: zooImg, rotation: "-2.1deg" }
 ];
 
 // Secret Animal Gallery Items (Snoopy Easter Egg)

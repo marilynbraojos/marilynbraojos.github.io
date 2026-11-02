@@ -212,64 +212,56 @@ const PROJECTS_DATA = [
     ]
   },
   {
-    id: 'turtlebot-automation',
-    title: 'TurtleBot Automation',
-    category: 'Robotics & Autonomous Navigation',
-    gradient: 'linear-gradient(135deg, #2C5282 0%, #1B2A4A 100%)',
-    shortDescription: 'Autonomous navigation, perception, and control algorithms implemented on a TurtleBot mobile robot using ROS2.',
-    fullDescription: 'Developed autonomous navigation, obstacle avoidance, perception, and control pipelines on a TurtleBot mobile robot platform using ROS2 and Python.',
+    id: 'lisa-charge-management',
+    title: 'LISA Charge Management Device: Dual-Lens UV LED Discharging System',
+    category: 'Space Instrumentation & Optomechanical Design',
+    image: lisaComponentsUnlabeled,
+    gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2D3748 100%)',
+    shortDescription: 'Designed, manufactured, and characterized a fiber-coupled dual-convex-lens surface-mount UV LED system to discharge the free-falling gold test mass in the LISA gravitational wave mission.',
+    fullDescription: [
+      {
+        label: 'Mission',
+        text: 'The Laser Interferometer Space Antenna (LISA) mission complements ground-based detectors like LIGO using a three-spacecraft Michelson interferometer to detect gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses as the inertial end-points of the interferometer.'
+      },
+      {
+        label: 'Problem',
+        text: 'Cosmic rays and solar energetic particles cause charge accumulation on these floating gold test masses, introducing electrostatic forces that risk corrupting measurements.'
+      },
+      {
+        label: 'Solution',
+        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
+      },
+      {
+        label: 'Contribution',
+        text: 'Unlike legacy ball-lens UV LEDs (which had longer peak wavelengths and required pulsing drivers), Surface-Mount (SM) UV LEDs provide shorter wavelengths capable of overcoming the 5.28 eV barrier, but lack built-in focusing optics. To harness their full efficiency, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:'
+      },
+      {
+        bullet: 'Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three spacers and a washer, capped with an SMA interface for fiber coupling.'
+      },
+      {
+        bullet: 'Thermal & Mechanical Copper Base: Machined a high-thermal-conductivity copper base adapted from the ball-lens architecture (central aperture + two M3 holes). Soldered the SM UV LED onto a breakout PCB using leaded solder to prevent vacuum tin whiskers and reduce thermal stress, while isolating the LED from mechanical strain and vibrations.'
+      },
+      {
+        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
+      }
+    ],
     advisors: [
-      { name: 'Sean Wilson', url: 'https://www.linkedin.com/in/sean-wilson-239420205/' }
+      { name: 'John Conklin', url: 'https://www.linkedin.com/in/john-conklin-56480b197/' }
     ],
     collaborators: [
-      { name: 'Mariam Misabishvili', url: 'https://www.linkedin.com/in/mariam-misabishvili/' }
+      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' }
     ],
-    tech: ['ROS2', 'Python', 'Autonomous Navigation', 'Mobile Robotics', 'Perception & Control'],
-    gallery: []
-  },
-  {
-    id: 'gt-statics-ai-tutor',
-    title: 'Open-Source Statics Course with an AI Tutor at Georgia Tech',
-    category: 'Engineering Education & AI',
-    gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1B2A4A 100%)',
-    shortDescription: 'Developing an open-source Statics course at Georgia Tech integrated with an interactive AI tutor to support undergraduate engineering students.',
-    fullDescription: 'Developing an open-source undergraduate Statics curriculum at Georgia Tech integrated with an AI tutor designed to guide students through free-body diagrams, equilibrium analysis, and problem-solving workflows.',
-    advisors: [
-      { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
-    ],
-    mentees: [
-      { name: 'Cayetana Salinas', url: 'https://www.linkedin.com/in/cayetana-salinas/' }
-    ],
-    tech: ['Statics', 'AI Tutoring', 'Open-Source Education', 'Curriculum Design', 'Georgia Tech'],
-    gallery: []
-  },
-  {
-    id: 'step-summer-camp',
-    title: 'STEP Summer Camp: Autonomous Boat & Rover Prototyping',
-    category: 'Robotics Mentorship & Embedded Systems',
-    icon: '🚤',
-    gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
-    shortDescription: 'Mentored 20+ groups of high school students in designing, building, and programming functional boat and rover prototypes using PVC and Arduino UNO.',
-    fullDescription: 'As a Graduate Teaching Assistant for the Georgia Tech STEP Summer Camp, I mentored over 20 teams of high school students through the end-to-end engineering design process, guiding them in fabricating structural frames out of PVC, wiring motors and sensors, and programming autonomous and remote-controlled boat and rover prototypes using Arduino UNO microcontrollers.',
-    advisors: [
-      { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
-    ],
-    tech: ['Arduino UNO', 'Robotics Prototyping', 'Embedded C/C++', 'PVC Fabrication', 'STEM Mentorship'],
-    gallery: []
-  },
-  {
-    id: 'ssdl-website-frontend',
-    title: 'Georgia Tech Space Systems Design Lab (SSDL) Website Front-End',
-    category: 'Web Development & UI Maintenance',
-    icon: '💻',
-    gradient: 'linear-gradient(135deg, #4A5568 0%, #2D3748 100%)',
-    shortDescription: 'Maintained and updated the front-end web architecture and research pages for the Georgia Tech Space Systems Design Lab.',
-    fullDescription: 'Served as the webmaster and front-end maintainer for the Georgia Tech Space Systems Design Lab (SSDL) website from 2023 to 2025. Managed content updates, mission profiles, publication directories, and responsive front-end layout improvements to showcase the lab’s satellite missions and graduate research.',
-    advisors: [
-      { name: 'Brian Gunter', url: 'https://www.linkedin.com/in/brian-gunter/' }
-    ],
-    tech: ['Front-End Development', 'HTML / CSS', 'JavaScript', 'Web Maintenance', 'UI Design'],
-    gallery: []
+    tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
+    gallery: [
+      { src: lisaComponentsLabeled, label: 'Labeled Discharging System Components (PCB, SM UV LED, Copper Base, Convex Lenses, Spacers, Cap & Casing)' },
+      { src: lisaComponentsUnlabeled, label: 'Manufactured Prototype Hardware & Optical Components' },
+      { src: lisaLensAssembly, label: 'Exploded CAD View of Dual-Lens & Spacer Stack Assembly' },
+      { src: lisaFullAssemblyCad, label: 'CAD Assembly of Copper Base, Lens Housing & M3 Fasteners' },
+      { src: lisaCopperBase, label: 'Machined High-Thermal-Conductivity Copper Base Plate' },
+      { src: lisaCopperBaseTapguide, label: 'Precision Machined M3 Tap & Mounting Interface on Copper Base' },
+      { src: lisaOuterCasingDiameter, label: 'Dimensional Tolerance Verification of Outer Casing (9.95 mm)' },
+      { src: lisaCapInnerDiameter, label: 'Caliper Tolerance Inspection of SMA Adapter Cap Inner Diameter (8.00 mm)' }
+    ]
   },
   {
     id: 'sample-return-lander',
@@ -335,6 +327,66 @@ const PROJECTS_DATA = [
     ]
   },
   {
+    id: 'turtlebot-automation',
+    title: 'TurtleBot Automation',
+    category: 'Robotics & Autonomous Navigation',
+    gradient: 'linear-gradient(135deg, #2C5282 0%, #1B2A4A 100%)',
+    shortDescription: 'Autonomous navigation, perception, and control algorithms implemented on a TurtleBot mobile robot using ROS2.',
+    fullDescription: 'Developed autonomous navigation, obstacle avoidance, perception, and control pipelines on a TurtleBot mobile robot platform using ROS2 and Python.',
+    advisors: [
+      { name: 'Sean Wilson', url: 'https://www.linkedin.com/in/sean-wilson-239420205/' }
+    ],
+    collaborators: [
+      { name: 'Mariam Misabishvili', url: 'https://www.linkedin.com/in/mariam-misabishvili/' }
+    ],
+    tech: ['ROS2', 'Python', 'Autonomous Navigation', 'Mobile Robotics', 'Perception & Control'],
+    gallery: []
+  },
+  {
+    id: 'gt-statics-ai-tutor',
+    title: 'Open-Source Statics Course with an AI Tutor at Georgia Tech',
+    category: 'Engineering Education & AI',
+    gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1B2A4A 100%)',
+    shortDescription: 'Developing an open-source Statics course at Georgia Tech integrated with an interactive AI tutor to support undergraduate engineering students.',
+    fullDescription: 'Developing an open-source undergraduate Statics curriculum at Georgia Tech integrated with an AI tutor designed to guide students through free-body diagrams, equilibrium analysis, and problem-solving workflows.',
+    advisors: [
+      { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
+    ],
+    mentees: [
+      { name: 'Cayetana Salinas', url: 'https://www.linkedin.com/in/cayetana-salinas/' }
+    ],
+    tech: ['Statics', 'AI Tutoring', 'Open-Source Education', 'Curriculum Design', 'Georgia Tech'],
+    gallery: []
+  },
+  {
+    id: 'step-summer-camp',
+    title: 'STEP Summer Camp: Autonomous Boat & Rover Prototyping',
+    category: 'Robotics Mentorship & Embedded Systems',
+    icon: '🚤',
+    gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
+    shortDescription: 'Mentored 20+ groups of high school students in designing, building, and programming functional boat and rover prototypes using PVC and Arduino UNO.',
+    fullDescription: 'As a Graduate Teaching Assistant for the Georgia Tech STEP Summer Camp, I mentored over 20 teams of high school students through the end-to-end engineering design process, guiding them in fabricating structural frames out of PVC, wiring motors and sensors, and programming autonomous and remote-controlled boat and rover prototypes using Arduino UNO microcontrollers.',
+    advisors: [
+      { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
+    ],
+    tech: ['Arduino UNO', 'Robotics Prototyping', 'Embedded C/C++', 'PVC Fabrication', 'STEM Mentorship'],
+    gallery: []
+  },
+  {
+    id: 'ssdl-website-frontend',
+    title: 'Georgia Tech Space Systems Design Lab (SSDL) Website Front-End',
+    category: 'Web Development & UI Maintenance',
+    icon: '💻',
+    gradient: 'linear-gradient(135deg, #4A5568 0%, #2D3748 100%)',
+    shortDescription: 'Maintained and updated the front-end web architecture and research pages for the Georgia Tech Space Systems Design Lab.',
+    fullDescription: 'Served as the webmaster and front-end maintainer for the Georgia Tech Space Systems Design Lab (SSDL) website from 2023 to 2025. Managed content updates, mission profiles, publication directories, and responsive front-end layout improvements to showcase the lab’s satellite missions and graduate research.',
+    advisors: [
+      { name: 'Brian Gunter', url: 'https://www.linkedin.com/in/brian-gunter/' }
+    ],
+    tech: ['Front-End Development', 'HTML / CSS', 'JavaScript', 'Web Maintenance', 'UI Design'],
+    gallery: []
+  },
+  {
     id: 'throttle-body-integration',
     title: 'Pipe Mating Plate Design & Throttle Body Integration',
     category: 'Mechanical & Fluid Systems',
@@ -350,58 +402,6 @@ const PROJECTS_DATA = [
       { label: '3D CAD Pipe Assembly', color: '#7B341E' },
       { label: 'Mating Plate Iterations', color: '#9C4221' },
       { label: 'Air Regulation Trade Study', color: '#DD6B20' }
-    ]
-  },
-  {
-    id: 'lisa-charge-management',
-    title: 'LISA Charge Management Device: Dual-Lens UV LED Discharging System',
-    category: 'Space Instrumentation & Optomechanical Design',
-    image: lisaComponentsUnlabeled,
-    gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2D3748 100%)',
-    shortDescription: 'Designed, manufactured, and characterized a fiber-coupled dual-convex-lens surface-mount UV LED system to discharge the free-falling gold test mass in the LISA gravitational wave mission.',
-    fullDescription: [
-      {
-        label: 'Mission',
-        text: 'The Laser Interferometer Space Antenna (LISA) mission complements ground-based detectors like LIGO using a three-spacecraft Michelson interferometer to detect gravitational waves. Inside each spacecraft, two gravitational reference sensors house free-falling gold test masses as the inertial end-points of the interferometer.'
-      },
-      {
-        label: 'Problem',
-        text: 'Cosmic rays and solar energetic particles cause charge accumulation on these floating gold test masses, introducing electrostatic forces that risk corrupting measurements.'
-      },
-      {
-        label: 'Solution',
-        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
-      },
-      {
-        label: 'Contribution',
-        text: 'Unlike legacy ball-lens UV LEDs (which had longer peak wavelengths and required pulsing drivers), Surface-Mount (SM) UV LEDs provide shorter wavelengths capable of overcoming the 5.28 eV barrier, but lack built-in focusing optics. To harness their full efficiency, I designed, prototyped, and characterized a custom two-lens optomechanical system in SolidWorks to collimate and converge the UV light into an SMA fiber coupler:'
-      },
-      {
-        bullet: 'Optomechanical Lens Housing: Engineered a resin-printed tubular housing containing two convex lenses separated by three spacers and a washer, capped with an SMA interface for fiber coupling.'
-      },
-      {
-        bullet: 'Thermal & Mechanical Copper Base: Machined a high-thermal-conductivity copper base adapted from the ball-lens architecture (central aperture + two M3 holes). Soldered the SM UV LED onto a breakout PCB using leaded solder to prevent vacuum tin whiskers and reduce thermal stress, while isolating the LED from mechanical strain and vibrations.'
-      },
-      {
-        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
-      }
-    ],
-    advisors: [
-      { name: 'John Conklin', url: 'https://www.linkedin.com/in/john-conklin-56480b197/' }
-    ],
-    collaborators: [
-      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' }
-    ],
-    tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
-    gallery: [
-      { src: lisaComponentsLabeled, label: 'Labeled Discharging System Components (PCB, SM UV LED, Copper Base, Convex Lenses, Spacers, Cap & Casing)' },
-      { src: lisaComponentsUnlabeled, label: 'Manufactured Prototype Hardware & Optical Components' },
-      { src: lisaLensAssembly, label: 'Exploded CAD View of Dual-Lens & Spacer Stack Assembly' },
-      { src: lisaFullAssemblyCad, label: 'CAD Assembly of Copper Base, Lens Housing & M3 Fasteners' },
-      { src: lisaCopperBase, label: 'Machined High-Thermal-Conductivity Copper Base Plate' },
-      { src: lisaCopperBaseTapguide, label: 'Precision Machined M3 Tap & Mounting Interface on Copper Base' },
-      { src: lisaOuterCasingDiameter, label: 'Dimensional Tolerance Verification of Outer Casing (9.95 mm)' },
-      { src: lisaCapInnerDiameter, label: 'Caliper Tolerance Inspection of SMA Adapter Cap Inner Diameter (8.00 mm)' }
     ]
   },
   {
@@ -467,8 +467,10 @@ function Projects() {
             onClick={() => setSelectedProject(project)}
           >
             <div className="card-image-wrapper" style={{ background: project.gradient }}>
-              {project.image && (
+              {project.image ? (
                 <img src={project.image} alt={project.title} className="card-cover-image" />
+              ) : (
+                <span className="card-coming-soon">Coming Soon</span>
               )}
               <div className="card-overlay-badge">Click for details</div>
             </div>
@@ -748,7 +750,7 @@ function Projects() {
       {/* LIGHTBOX FOR FULL-SIZE PROJECT GALLERY IMAGE */}
       {selectedGalleryImg && (
         <div className="project-lightbox-backdrop" onClick={() => setSelectedGalleryImg(null)}>
-          <div className="project-lightbox-content" onClick={(e) => e.stopPropagation()}>
+          <div className="project-lightbox-content">
             <button className="modal-close-btn" onClick={() => setSelectedGalleryImg(null)}>
               ✕
             </button>

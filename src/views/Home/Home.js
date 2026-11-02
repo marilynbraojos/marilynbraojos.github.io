@@ -7,6 +7,7 @@ import crinkleMatchaImg from "../../assets/recipes/crinkle_matcha.webp";
 import beefWellingtonImg from "../../assets/recipes/beef_wellington.webp";
 import pastelitoGuayabaImg from "../../assets/recipes/pastelito_de_guayaba.webp";
 import chickenParmImg from "../../assets/recipes/chicken_parm.webp";
+import cinnamonRollsImg from "../../assets/recipes/cinnamon_rolls.webp";
 
 const FAVORITE_RECIPES = [
   {
@@ -28,6 +29,10 @@ const FAVORITE_RECIPES = [
   {
     name: "Chicken Parm",
     src: chickenParmImg,
+  },
+  {
+    name: "Cinnamon Rolls Made with Japanese Milk Bread",
+    src: cinnamonRollsImg,
   },
 ];
 
@@ -261,7 +266,8 @@ function Home() {
                     25 new recipes each year. I love cooking and baking. Some of
                     my favorite dishes I've made include roasted tomato and
                     garlic ricotta pasta, matcha crinkle cookies, beef
-                    wellington, pastelitos de guayaba, and chicken parm:
+                    wellington, pastelitos de guayaba, chicken parm, and
+                    cinnamon rolls made with Japanese milk bread:
                   </p>
                 </div>
 
@@ -335,10 +341,7 @@ function Home() {
             </svg>
           </button>
 
-          <div
-            className="recipe-lightbox-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="recipe-lightbox-content">
             <button
               type="button"
               className="recipe-lightbox-close"

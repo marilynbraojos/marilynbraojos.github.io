@@ -83,6 +83,19 @@
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
 }
 
+.card-coming-soon {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+}
+
 .card-overlay-badge {
   position: absolute;
   bottom: 10px;
@@ -197,23 +210,32 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(27, 42, 74, 0.72);
+  backdrop-filter: blur(4px);
   color: #ffffff;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   width: 34px;
   height: 34px;
   border-radius: 50%;
   font-size: 1.1rem;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-content > .modal-close-btn {
+  position: sticky;
+  top: 15px;
+  float: right;
+  margin: 15px 15px -49px 0;
 }
 
 .modal-close-btn:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: #EC79B8;
+  transform: scale(1.06);
 }
 
 .modal-hero-banner {
