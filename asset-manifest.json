@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.702e7acd.css",
-    "main.js": "/static/js/main.00a999d1.js",
+    "main.css": "/static/css/main.26769e63.css",
+    "main.js": "/static/js/main.5b3216c3.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
@@ -10,10 +10,15 @@
     "static/media/cap_inner_diameter.webp": "/static/media/cap_inner_diameter.07c51dcd688fb48cbf0e.webp",
     "static/media/outer_casing_outer_diameter.webp": "/static/media/outer_casing_outer_diameter.911e6459781b8e1c4257.webp",
     "static/media/lens_components_labeled.webp": "/static/media/lens_components_labeled.c825cbaa81ce0a5556fe.webp",
+    "static/media/pastelito_de_guayaba.webp": "/static/media/pastelito_de_guayaba.ffd00f175cc9afc17f15.webp",
     "static/media/turtlebot.png": "/static/media/turtlebot.7c4bb7c1da047b175f82.png",
+    "static/media/ricotta_pasta.webp": "/static/media/ricotta_pasta.10e5e5d608e55b984bb3.webp",
+    "static/media/crinkle_matcha.webp": "/static/media/crinkle_matcha.9585074652445aa46767.webp",
     "static/media/lens_assembly.webp": "/static/media/lens_assembly.cdb4835c7e5049a5b7a0.webp",
     "static/media/husky.png": "/static/media/husky.e2e8c1d98eb940eb4ff7.png",
     "static/media/loop_algo.png": "/static/media/loop_algo.068a536c15925b6023f1.png",
+    "static/media/chicken_parm.webp": "/static/media/chicken_parm.f8170533276a5f069f46.webp",
+    "static/media/beef_wellington.webp": "/static/media/beef_wellington.73b5e5c01339f13fafbc.webp",
     "static/media/copper_base_tapguide.webp": "/static/media/copper_base_tapguide.2ce849ea39b17c4b32a1.webp",
     "static/media/loop_std.png": "/static/media/loop_std.7117a352cde6c28ed332.png",
     "static/media/milan.webp": "/static/media/milan.c410fb0b89dd469f1b26.webp",
@@ -73,12 +78,12 @@
     "static/media/dancing_marissa.webp": "/static/media/dancing_marissa.0451487a41f12e167972.webp",
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
-    "main.702e7acd.css.map": "/static/css/main.702e7acd.css.map",
-    "main.00a999d1.js.map": "/static/js/main.00a999d1.js.map",
+    "main.26769e63.css.map": "/static/css/main.26769e63.css.map",
+    "main.5b3216c3.js.map": "/static/js/main.5b3216c3.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.702e7acd.css",
-    "static/js/main.00a999d1.js"
+    "static/css/main.26769e63.css",
+    "static/js/main.5b3216c3.js"
   ]
 }
