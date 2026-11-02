@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.26769e63.css",
-    "main.js": "/static/js/main.5b3216c3.js",
+    "main.js": "/static/js/main.3b2ad1dc.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
@@ -13,6 +13,8 @@
     "static/media/pastelito_de_guayaba.webp": "/static/media/pastelito_de_guayaba.ffd00f175cc9afc17f15.webp",
     "static/media/turtlebot.png": "/static/media/turtlebot.7c4bb7c1da047b175f82.png",
     "static/media/ricotta_pasta.webp": "/static/media/ricotta_pasta.10e5e5d608e55b984bb3.webp",
+    "static/media/bestie_teresa.png": "/static/media/bestie_teresa.f19aa3eac04e3a4218d5.png",
+    "static/media/bestie_kimmy.png": "/static/media/bestie_kimmy.9b7d844cec544ef903ce.png",
     "static/media/crinkle_matcha.webp": "/static/media/crinkle_matcha.9585074652445aa46767.webp",
     "static/media/lens_assembly.webp": "/static/media/lens_assembly.cdb4835c7e5049a5b7a0.webp",
     "static/media/husky.png": "/static/media/husky.e2e8c1d98eb940eb4ff7.png",
@@ -79,11 +81,11 @@
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
     "main.26769e63.css.map": "/static/css/main.26769e63.css.map",
-    "main.5b3216c3.js.map": "/static/js/main.5b3216c3.js.map",
+    "main.3b2ad1dc.js.map": "/static/js/main.3b2ad1dc.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26769e63.css",
-    "static/js/main.5b3216c3.js"
+    "static/js/main.3b2ad1dc.js"
   ]
 }
