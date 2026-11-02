@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f2693260.css",
-    "main.js": "/static/js/main.f9b67f2a.js",
+    "main.css": "/static/css/main.69936cf5.css",
+    "main.js": "/static/js/main.cb26882c.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
@@ -15,6 +15,8 @@
     "static/media/turtlebot.png": "/static/media/turtlebot.7c4bb7c1da047b175f82.png",
     "static/media/ricotta_pasta.webp": "/static/media/ricotta_pasta.10e5e5d608e55b984bb3.webp",
     "static/media/bestie_teresa.png": "/static/media/bestie_teresa.f19aa3eac04e3a4218d5.png",
+    "static/media/after_wedding.webp": "/static/media/after_wedding.f2d163698b82d842dde0.webp",
+    "static/media/cinnamon_rolls.webp": "/static/media/cinnamon_rolls.9094aa0207dd9580a1c1.webp",
     "static/media/bestie_kimmy.png": "/static/media/bestie_kimmy.9b7d844cec544ef903ce.png",
     "static/media/crinkle_matcha.webp": "/static/media/crinkle_matcha.9585074652445aa46767.webp",
     "static/media/lens_assembly.webp": "/static/media/lens_assembly.cdb4835c7e5049a5b7a0.webp",
@@ -25,6 +27,7 @@
     "static/media/copper_base_tapguide.webp": "/static/media/copper_base_tapguide.2ce849ea39b17c4b32a1.webp",
     "static/media/loop_std.png": "/static/media/loop_std.7117a352cde6c28ed332.png",
     "static/media/milan.webp": "/static/media/milan.c410fb0b89dd469f1b26.webp",
+    "static/media/dancing_at_playground.webp": "/static/media/dancing_at_playground.6a278cf878a6e4d80a1b.webp",
     "static/media/pipeline.webp": "/static/media/pipeline.e642a6b6193f93786989.webp",
     "static/media/heat_game.webp": "/static/media/heat_game.4698be5b020071ef7758.webp",
     "static/media/cave_pr.webp": "/static/media/cave_pr.06e529251615d336c5b8.webp",
@@ -45,6 +48,7 @@
     "static/media/seaweed_art_cbl.webp": "/static/media/seaweed_art_cbl.2a4630cf318bcefcf50a.webp",
     "static/media/boeing.webp": "/static/media/boeing.8273d7f309bb66c5d353.webp",
     "static/media/suwon.webp": "/static/media/suwon.60af818973ca9455e5de.webp",
+    "static/media/dancing_marissa.webp": "/static/media/dancing_marissa.dc0021ee207f2a70befe.webp",
     "static/media/control_panel.webp": "/static/media/control_panel.d248ba457bca6c859562.webp",
     "static/media/bean.webp": "/static/media/bean.7d23a1fd7d07b7aafdaa.webp",
     "static/media/gps_data_types.webp": "/static/media/gps_data_types.1b60a5991d1f78102a18.webp",
@@ -86,15 +90,14 @@
     "static/media/pink_flower.webp": "/static/media/pink_flower.b0fa68e7580adef6589c.webp",
     "static/media/bella.webp": "/static/media/bella.b5795e60501cff5691f5.webp",
     "static/media/snowboarding.webp": "/static/media/snowboarding.5d1dc5905a373e85fb38.webp",
-    "static/media/dancing_marissa.webp": "/static/media/dancing_marissa.0451487a41f12e167972.webp",
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
-    "main.f2693260.css.map": "/static/css/main.f2693260.css.map",
-    "main.f9b67f2a.js.map": "/static/js/main.f9b67f2a.js.map",
+    "main.69936cf5.css.map": "/static/css/main.69936cf5.css.map",
+    "main.cb26882c.js.map": "/static/js/main.cb26882c.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2693260.css",
-    "static/js/main.f9b67f2a.js"
+    "static/css/main.69936cf5.css",
+    "static/js/main.cb26882c.js"
   ]
 }
