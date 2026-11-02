@@ -69,7 +69,15 @@ function Navbar() {
         ref={navRef}
         className={`navbar-container ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
       >
-        <Link to="/" className="navbar-brand" onClick={() => setMenuOpen(false)}> 
+        <Link
+          to="/"
+          className="navbar-brand"
+          onClick={() => {
+            setMenuOpen(false);
+            sessionStorage.setItem("homeBeyondLab", "false");
+            window.dispatchEvent(new Event("resetHome"));
+          }}
+        > 
           <img src={LOGO} className="app-logo" alt="logo" /> 
         </Link>
 
@@ -95,6 +103,12 @@ function Navbar() {
                 className={`nav-link ${isActive ? "active" : ""}`}
                 onClick={() => {
                   setMenuOpen(false);
+                  if (item.path === "/") {
+                    sessionStorage.setItem("homeBeyondLab", "false");
+                    window.dispatchEvent(new Event("resetHome"));
+                  } else {
+                    sessionStorage.setItem("homeBeyondLab", "false");
+                  }
                   if (item.path === "/gallery") {
                     window.dispatchEvent(new Event("resetGallery"));
                   }
