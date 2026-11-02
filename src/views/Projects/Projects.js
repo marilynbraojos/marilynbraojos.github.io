@@ -24,6 +24,13 @@ import terrainProposedPlan from '../../assets/projects/uncertainty_aware_terrain
 import terrainFaultResults from '../../assets/projects/uncertainty_aware_terrain_classification/fault_injection_results.png';
 import terrainEdlFramework from '../../assets/projects/uncertainty_aware_terrain_classification/proposed_edl_framework.png';
 
+import clockPipelineImg from '../../assets/projects/predicting_clock_bias/pipeline.webp';
+import clockGpsDataTypesImg from '../../assets/projects/predicting_clock_bias/gps_data_types.webp';
+import clockPlottedResultImg from '../../assets/projects/predicting_clock_bias/plotted_result.webp';
+import clockSingleDiffImg from '../../assets/projects/predicting_clock_bias/result_single_difference_preds.webp';
+import clockCombinedImg from '../../assets/projects/predicting_clock_bias/results_combined_preds.webp';
+import clockCorrectionOnlyImg from '../../assets/projects/predicting_clock_bias/results_correction_only_preds.webp';
+
 const PROJECTS_DATA = [
   {
     id: 'uncertainty-aware-kalman-filter',
@@ -94,41 +101,42 @@ const PROJECTS_DATA = [
     shortDescription: 'Evidential Deep Learning pipeline for proprioceptive terrain classification and epistemic uncertainty estimation robust to sensor faults on mobile rovers.',
     fullDescription: [
       {
-        italicNote: 'This work comprises the second aim of my doctoral research.'
+        label: 'Case Study',
+        text: 'In 2009, NASA’s Spirit rover became trapped in soft Martian soil with a failed wheel, preventing it from angling its solar panels toward the Sun and ending the mission in 2011. Traversing unmapped planetary environments requires control systems that can reliably identify terrain hazards and adapt to changing conditions.',
+        links: [
+          {
+            url: 'https://www.sciencealert.com/nasa-rovers-keep-getting-stuck-and-we-finally-know-why',
+            text: 'ScienceAlert'
+          },
+          {
+            url: 'https://www.space.com/7823-nasa-abandons-escape-attempts-stuck-mars-rover.html',
+            text: 'Space.com'
+          }
+        ]
       },
       {
-        label: 'Motivation',
-        text: 'Improving mobile robot resilience across unknown terrains requires three capabilities: (1) identifying the terrain being traversed to assess mobility hazards, (2) quantifying confidence in those classifications so the control system knows how heavily to weigh them, and (3) executing this pipeline efficiently. While exteroceptive sensors such as cameras and LiDAR are widely used for terrain assessment, they are sensitive to environmental degradation (dust storms, extreme lighting) and impose high computational, power, and processing demands that compound with deep-space communication delays.'
+        label: 'Problem',
+        text: 'Exteroceptive sensors (cameras, LiDAR) are sensitive to dust and lighting and require high power and compute. Proprioceptive CNN classifiers using IMU, motor current, and wheel odometry spectrograms (such as LaRocque et al. on the BorealTC Clearpath Husky dataset, which I validated at 93% to 96% accuracy) provide a lightweight complement. However, their softmax activation forces relative point-estimate probabilities between 0 and 1, causing overconfidence during sensor faults and out-of-distribution (OOD) conditions.'
       },
       {
-        label: 'Baseline & Problem',
-        text: 'Recent work from the Northern Robotics Laboratory (LaRocque et al.) introduced the BorealTC dataset, comprising 116 minutes of Clearpath Husky A200 runs across silty loam, snow, asphalt, floor, and ice, and showed that CNNs trained on proprioceptive spectrograms (IMU, motor current, and wheel odometry) outperform state-space Mamba models and achieve >90% terrain classification accuracy. In my cross-fold validation of their CNN architecture, accuracy ranged from 93% to 96%. However, because standard CNN classifiers rely on a softmax activation and cross-entropy loss, outputs are normalized into relative point-estimate probabilities between 0 and 1. This forces a classification and leaves the network vulnerable to overconfidence on out-of-distribution (OOD) sensor data and system faults.'
+        label: 'Solution',
+        text: 'Reformulate proprioceptive terrain classification using Evidential Deep Learning (EDL) to predict both terrain class and classification uncertainty in a single deterministic forward pass.'
       },
       {
-        label: 'Preliminary Fault-Injection Findings',
-        text: 'To evaluate the baseline architecture under sensor degradation, I induced incremental data dropouts (0%, 10%, 50%, and 100%) per sensor modality during testing:'
+        label: 'Approach & Contribution',
+        text: 'Using the BorealTC dataset, I characterized baseline fault vulnerabilities and am developing an EDL classification framework:'
       },
       {
-        bullet: 'Higher Reliance on IMU Signatures: Dropping IMU measurements caused classification accuracy to fall from 92.85% (0% dropout) to 53.20% (100% dropout), a much steeper decline than dropping wheel odometry and motor current (which fell from 92.85% to 72.12% at 100% dropout).'
+        bullet: 'Fault-Injection Baseline: Induced incremental sensor dropouts (0% to 100%) on the baseline CNN, showing a strong reliance on IMU data (accuracy fell from 92.85% to 53.20%, compared to 72.12% under odometry and current dropouts) while confidence on incorrect predictions remained ~87% to 90%.'
       },
       {
-        bullet: 'Persistent Overconfidence Under Faults: Across all dropout levels, the softmax-based model remained ~87% to 90% confident even when making incorrect terrain predictions.'
+        bullet: 'Softplus Evidence & Dirichlet Prior: Replaces softmax and cross-entropy loss with a softplus activation and regularized evidential loss, parameterizing a Dirichlet distribution to extract class belief masses and uncertainty in a single pass.'
       },
       {
-        label: 'Proposed Approach & Contribution',
-        text: 'I am reformulating the proprioceptive terrain classification pipeline on the BorealTC dataset using Evidential Deep Learning (EDL) to output both a terrain classification and its corresponding uncertainty in a single forward pass:'
+        bullet: 'Fault-Mode & Ensemble Benchmarking: Evaluates performance under sensor dropouts, multiplicative axis biases, and additive Gaussian noise, benchmarked against Deep Ensembles using accuracy, F1 score, and AUROC.'
       },
       {
-        bullet: 'Softplus Evidence & Dirichlet Parameterization: Replaces the softmax activation with a non-negative softplus function to generate an unbounded evidence vector that parameterizes a Dirichlet distribution over terrain classes. Grounded in belief theory and subjective logic, the network extracts class belief masses and an uncertainty mass inversely proportional to the gathered evidence.'
-      },
-      {
-        bullet: 'Single-Pass Deterministic Inference: Replaces cross-entropy loss with a regularized regression-based evidential loss, enabling deterministic uncertainty quantification in a single forward pass without the computational overhead and nondeterminism of Monte Carlo dropout sampling.'
-      },
-      {
-        bullet: 'Fault-Mode & Deep Ensemble Benchmarking: Evaluates robustness across three common fault modes: sensor dropouts, multiplicative biases per axis, and additive Gaussian noise per axis. Results are benchmarked against Deep Ensembles using classification accuracy, F1 score, and AUROC for discriminating between in-distribution and out-of-distribution sensor data.'
-      },
-      {
-        italicNote: 'Immediate next steps focus on training the evidential loss minimum viable product on a subset of the Husky sensor suite, with full results expected to be submitted to a peer-reviewed journal by my doctoral defense.'
+        italicNote: 'Results from this work are expected to be submitted to a peer-reviewed journal by my doctoral defense.'
       }
     ],
     advisors: [
@@ -141,6 +149,66 @@ const PROJECTS_DATA = [
       { src: terrainProposedPlan, label: 'End-to-End Proprioceptive Terrain Classification Pipeline (Husky Sensor Inputs, 5-Second Partitioning, Spectrograms & EDL Output Classes)' },
       { src: terrainFaultResults, label: 'Baseline CNN Fault-Injection Results Showing Persistent Overconfidence (~87–90%) Under IMU, Odometry, and Current Dropouts' },
       { src: terrainEdlFramework, label: 'Proposed Evidential Deep Learning (EDL) Architecture Replacing Softmax with Softplus to Output Terrain Class and Uncertainty' }
+    ]
+  },
+  {
+    id: 'clock-bias-correction',
+    title: 'Correcting Clock Bias with Predictive Intelligent Models',
+    category: 'Signal Processing & Deep Learning',
+    status: 'Awaiting Reviewer Comments from Peer-Reviewed Journal',
+    image: clockPipelineImg,
+    gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%)',
+    shortDescription: 'Autoregressive time-series and deep learning architectures to forecast satellite atomic clock bias and mitigate timing drift during extended communication outages.',
+    fullDescription: [
+      {
+        label: 'Case Study',
+        text: 'Deep-space communication relies on NASA’s Deep Space Network (DSN), which uses three complexes spaced ~120 degrees apart (California, Spain, and Australia) for continuous coverage. However, the DSN is severely oversubscribed. As a mission operator for JPL’s Lunar Flashlight CubeSat during my first PhD year, I saw firsthand how DSN scheduling bottlenecks and signal light-time delays (up to 40 minutes round-trip to Mars) restrict contact windows during critical anomaly investigations.',
+        links: [
+          {
+            url: 'https://oig.nasa.gov/wp-content/uploads/2023/12/ig-23-016.pdf',
+            text: 'NASA OIG DSN Audit'
+          },
+          {
+            url: 'https://www.nasa.gov/centers-and-facilities/goddard/space-communications-7-things-you-need-to-know/',
+            text: 'NASA Space Communications'
+          }
+        ]
+      },
+      {
+        label: 'Problem',
+        text: 'Spacecraft trilateration and one-way radiometric navigation depend on sub-nanosecond onboard clock synchronization. Ground stations update broadcast clock bias coefficients every 2 hours (~5 ns RMS accuracy), while higher-accuracy International GNSS Service (IGS) final products suffer from publication latency. Recent studies (such as Syam et al.) mapped broadcast ephemeris bias to IGS corrections over 2-hour horizons using ARIMA and Transformers, but retained dominant relativistic sinusoids in training and testing, grouped unbalanced satellite datasets, and set discontinuities to zero.'
+      },
+      {
+        label: 'Solution',
+        text: 'Develop an onboard-capable forecasting pipeline trained on curated, healthy GPS atomic clock measurements to autonomously predict and correct clock bias over 2-hour and 6-hour horizons during communication outages.'
+      },
+      {
+        label: 'Approach & Contribution',
+        text: 'I benchmarked classical and deep learning forecasting models (SMA, ARIMA, LSTM, and Transformer) across 12 GPS satellites representing each clock type and GPS block:'
+      },
+      {
+        bullet: 'Data Curation & Preprocessing: Filtered for healthy measurements across 12 representative GPS satellites, removed dominant relativistic sinusoids via single-differencing, rejected outliers with a Hampel median filter, linearly interpolated gaps, smoothed with a 2-week moving average, and applied MinMax normalization.'
+      },
+      {
+        bullet: 'Multi-Horizon Forecasting (2-Hour & 6-Hour): Evaluated three prediction formulations (single-difference IGS final bias, correction-only, and combined broadcast + correction) reconstructed via an anchor term and cumulative sum to track clock bias at sub-nanosecond resolution.'
+      },
+      {
+        bullet: 'Architecture Benchmarking: Demonstrated that ARIMA and LSTM models outperform Transformers across all projection formulations and horizons (achieving sub-nanosecond MAE/RMSE on correction-only forecasts and <2 ns on combined 2-hour forecasts), as LSTMs capture local clock drift dynamics while permutation-invariant Transformers accumulate broadcast bias rate errors.'
+      }
+    ],
+    advisors: [
+      { name: 'William Jun', url: 'https://www.linkedin.com/in/william-w-jun/' },
+      { name: 'Kar-Ming Cheung', url: 'https://www.linkedin.com/in/kar-ming-cheung-83a465262/' },
+      { name: 'Glenn Lightsey', url: 'https://www.linkedin.com/in/eglennlightsey/' }
+    ],
+    tech: ['Deep Learning', 'LSTM & ARIMA', 'Transformers', 'Time-Series Forecasting', 'Atomic Clocks', 'Python', 'PyTorch'],
+    gallery: [
+      { src: clockPipelineImg, label: 'Clock Bias Forecasting Pipeline Comparing SMA, ARIMA, LSTM, and Transformer Architectures' },
+      { src: clockGpsDataTypesImg, label: 'Derivation of Single-Difference IGS Final Clock Bias, Single-Difference Broadcast Bias, and Correction Values' },
+      { src: clockPlottedResultImg, label: 'Forecasted Clock Bias Tracking Against IGS Final Clock Bias and Broadcast Bias Across All Four Models' },
+      { src: clockSingleDiffImg, label: 'MAE and RMSE (ns) Across 2-Hour and 6-Hour Horizons for Single-Difference IGS Final Clock Bias Predictions' },
+      { src: clockCombinedImg, label: 'MAE and RMSE (ns) Across 2-Hour and 6-Hour Horizons for Combined Broadcast + Correction Predictions' },
+      { src: clockCorrectionOnlyImg, label: 'MAE and RMSE (ns) Across 2-Hour and 6-Hour Horizons for Clock Bias Correction-Only Predictions' }
     ]
   },
   {
@@ -158,27 +226,6 @@ const PROJECTS_DATA = [
     ],
     tech: ['ROS2', 'Python', 'Autonomous Navigation', 'Mobile Robotics', 'Perception & Control'],
     gallery: []
-  },
-  {
-    id: 'clock-bias-correction',
-    title: 'Correcting Clock Bias with Predictive Intelligent Models',
-    category: 'Signal Processing & Deep Learning',
-    status: 'Awaiting Reviewer Comments from Peer-Reviewed Journal',
-    icon: '⏱️',
-    gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%)',
-    shortDescription: 'Autoregressive deep learning and transformer architectures to predict long-term satellite atomic clock bias and mitigate timing drift in GNSS-limited environments.',
-    fullDescription: 'High-precision space systems and GPS satellites rely heavily on sub-nanosecond synchronization. This research develops autoregressive deep learning and transformer model architectures to predict and correct atomic clock drift and bias over extended time horizons (achieving <2 ns accuracy in GPS clock drift corrections and 6-hour time horizon predictions in GNSS-limited areas). Completed with peer-reviewed journal submission currently awaiting reviewer feedback.',
-    advisors: [
-      { name: 'William Jun', url: 'https://www.linkedin.com/in/william-w-jun/' },
-      { name: 'Kar-Ming Cheung', url: 'https://www.linkedin.com/in/kar-ming-cheung-83a465262/' },
-      { name: 'Glenn Lightsey', url: 'https://www.linkedin.com/in/eglennlightsey/' }
-    ],
-    tech: ['Deep Learning', 'Transformers', 'Time-Series Forecasting', 'Atomic Clocks', 'Python', 'PyTorch'],
-    gallery: [
-      { label: 'Clock Drift Prediction Curve', color: '#1A365D' },
-      { label: 'Residual Error Distribution', color: '#2B6CB0' },
-      { label: 'Sensor Sync Network Architecture', color: '#3182CE' }
-    ]
   },
   {
     id: 'gt-statics-ai-tutor',
@@ -503,6 +550,26 @@ function Projects() {
                                 >
                                   {item.link.text}
                                 </a>
+                                )
+                              </>
+                            )}
+                            {item.links && item.links.length > 0 && (
+                              <>
+                                {' '}
+                                (
+                                {item.links.map((lnk, lIdx) => (
+                                  <React.Fragment key={lIdx}>
+                                    <a
+                                      href={lnk.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="collaborator-link"
+                                    >
+                                      {lnk.text}
+                                    </a>
+                                    {lIdx < item.links.length - 1 ? '; ' : ''}
+                                  </React.Fragment>
+                                ))}
                                 )
                               </>
                             )}
