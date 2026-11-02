@@ -35,6 +35,12 @@ import msrMitMatUi from '../../assets/projects/msr_srl/ui_mitmat.png';
 import msrMitMatFlowchart from '../../assets/projects/msr_srl/mitigation_matrix_flowchart.png';
 import msrRedundancyMeme from '../../assets/projects/msr_srl/meme.png';
 
+import turtlebotFovImg from '../../assets/projects/turtlebot_automation/turtlebot_fov.webp';
+import turtlebotPathImg from '../../assets/projects/turtlebot_automation/turtlebot_path.webp';
+import turtlebotSignsImg from '../../assets/projects/turtlebot_automation/turtlebot_trajectory_with_signs.webp';
+import turtlebotObjectTrackingVid from '../../assets/projects/turtlebot_automation/object_tracking.mp4';
+import turtlebotObstacleAvoidanceVid from '../../assets/projects/turtlebot_automation/obstacle_avoidance.mp4';
+
 const PROJECTS_DATA = [
   {
     id: 'uncertainty-aware-kalman-filter',
@@ -360,17 +366,45 @@ const PROJECTS_DATA = [
     id: 'turtlebot-automation',
     title: 'TurtleBot Automation',
     category: 'Robotics & Autonomous Navigation',
+    image: turtlebotPathImg,
     gradient: 'linear-gradient(135deg, #2C5282 0%, #1B2A4A 100%)',
-    shortDescription: 'Autonomous navigation, perception, and control algorithms implemented on a TurtleBot mobile robot using ROS2.',
-    fullDescription: 'Developed autonomous navigation, obstacle avoidance, perception, and control pipelines on a TurtleBot mobile robot platform using ROS2 and Python.',
+    shortDescription: 'Autonomous object tracking, dead-reckoning obstacle avoidance, Nav2 waypoint navigation, and vision-guided maze traversal on a TurtleBot3 Burger in ROS2.',
+    fullDescription: [
+      {
+        label: 'Objective',
+        text: 'Design and deploy perception, localization, planning, and control pipelines in ROS2 (Humble) on a TurtleBot3 Burger mobile robot across progressively complex indoor autonomy challenges.'
+      },
+      {
+        label: 'Approach & Contribution',
+        text: 'Developed modular ROS2 nodes in Python fusing onboard camera vision, 2D LiDAR scans, wheel encoder odometry, and the Nav2 stack across four core tasks:'
+      },
+      {
+        bullet: 'Multi-Sensor Object Tracking & Following (Camera + LiDAR PID Control): Mapped camera pixel coordinates across the horizontal field of view to corresponding 2D LiDAR scan angles, feeding angular heading error and LiDAR range measurements into dual PID controllers to track and maintain a target standoff distance from a moving object.'
+      },
+      {
+        bullet: 'Odometry & Dead-Reckoning Goal Navigation with Obstacle Avoidance: Fused wheel encoder odometry and IMU heading to navigate toward target coordinates using dead reckoning while dynamically detecting and circumnavigating unmapped obstacles along the path.'
+      },
+      {
+        bullet: 'Multi-Waypoint Traversal with the ROS2 Nav2 Stack: Generated occupancy grid maps via SLAM and configured the ROS2 Nav2 stack to autonomously plan and execute collision-free trajectories across sequential goal waypoints.'
+      },
+      {
+        bullet: 'Autonomous Maze Navigation & Directional Sign Classification: Integrated real-time visual sign classification with LiDAR wall-following and localization to identify directional traffic signs (left, right, U-turn, stop, and goal) and autonomously navigate an unknown multi-turn maze to completion.'
+      }
+    ],
     advisors: [
       { name: 'Sean Wilson', url: 'https://www.linkedin.com/in/sean-wilson-239420205/' }
     ],
     collaborators: [
       { name: 'Mariam Misabishvili', url: 'https://www.linkedin.com/in/mariam-misabishvili/' }
     ],
-    tech: ['ROS2', 'Python', 'Autonomous Navigation', 'Mobile Robotics', 'Perception & Control'],
-    gallery: []
+    tech: ['ROS2', 'Nav2 Stack', 'PID Control', 'LiDAR & Camera Fusion', 'Dead Reckoning & Odometry', 'Computer Vision', 'Python'],
+    gallery: [
+      { src: turtlebotFovImg, label: 'Camera Pixel-to-LiDAR Field-of-View Mapping for PID Object Tracking and Distance Control' },
+      { src: turtlebotObjectTrackingVid, label: 'Video: Real-Time Object Tracking & Following with Camera and LiDAR PID Control', isVideo: true },
+      { src: turtlebotPathImg, label: 'TurtleBot3 Obstacle Course Setup for Odometry Dead-Reckoning & Obstacle Avoidance' },
+      { src: turtlebotObstacleAvoidanceVid, label: 'Video: Autonomous Goal Navigation & Obstacle Avoidance', isVideo: true },
+      { src: turtlebotSignsImg, label: 'Multi-Turn Maze Course with Directional Signs for Autonomous Sign Classification & Traversal' }
+    ]
   },
   {
     id: 'gt-statics-ai-tutor',
@@ -487,6 +521,32 @@ function Projects() {
     }
   };
 
+  const prevGalleryImg = (e) => {
+    if (e) e.stopPropagation();
+    if (!selectedProject || !selectedProject.gallery) return;
+    const validGallery = selectedProject.gallery.filter((item) => item.src);
+    if (validGallery.length === 0) return;
+    setSelectedGalleryImg((curr) => {
+      if (!curr) return null;
+      const idx = validGallery.findIndex((item) => item.src === curr.src && item.label === curr.label);
+      const prevIdx = (idx - 1 + validGallery.length) % validGallery.length;
+      return validGallery[prevIdx];
+    });
+  };
+
+  const nextGalleryImg = (e) => {
+    if (e) e.stopPropagation();
+    if (!selectedProject || !selectedProject.gallery) return;
+    const validGallery = selectedProject.gallery.filter((item) => item.src);
+    if (validGallery.length === 0) return;
+    setSelectedGalleryImg((curr) => {
+      if (!curr) return null;
+      const idx = validGallery.findIndex((item) => item.src === curr.src && item.label === curr.label);
+      const nextIdx = (idx + 1) % validGallery.length;
+      return validGallery[nextIdx];
+    });
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -495,10 +555,18 @@ function Projects() {
         } else {
           setSelectedProject(null);
         }
-      } else if (e.key === 'ArrowLeft' && !selectedGalleryImg) {
-        prevProject();
-      } else if (e.key === 'ArrowRight' && !selectedGalleryImg) {
-        nextProject();
+      } else if (e.key === 'ArrowLeft') {
+        if (selectedGalleryImg) {
+          prevGalleryImg();
+        } else {
+          prevProject();
+        }
+      } else if (e.key === 'ArrowRight') {
+        if (selectedGalleryImg) {
+          nextGalleryImg();
+        } else {
+          nextProject();
+        }
       }
     };
     if (selectedProject) {
@@ -799,7 +867,18 @@ function Projects() {
                           onClick={() => setSelectedGalleryImg(img)}
                         >
                           <div className="gallery-image-frame">
-                            <img src={img.src} alt={img.label} className="gallery-real-img" />
+                            {img.isVideo ? (
+                              <video
+                                src={img.src}
+                                className="gallery-real-img"
+                                muted
+                                loop
+                                playsInline
+                                autoPlay
+                              />
+                            ) : (
+                              <img src={img.src} alt={img.label} className="gallery-real-img" />
+                            )}
                           </div>
                           <span className="gallery-image-caption">{img.label}</span>
                         </div>
@@ -835,13 +914,47 @@ function Projects() {
       {/* LIGHTBOX FOR FULL-SIZE PROJECT GALLERY IMAGE */}
       {selectedGalleryImg && (
         <div className="project-lightbox-backdrop" onClick={() => setSelectedGalleryImg(null)}>
+          <button
+            type="button"
+            className="project-nav-arrow project-prev-arrow project-lightbox-arrow"
+            onClick={prevGalleryImg}
+            aria-label="Previous project image"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
           <div className="project-lightbox-content">
             <button className="modal-close-btn" onClick={() => setSelectedGalleryImg(null)}>
               ✕
             </button>
-            <img src={selectedGalleryImg.src} alt={selectedGalleryImg.label} className="project-lightbox-img" />
+            {selectedGalleryImg.isVideo ? (
+              <video
+                key={selectedGalleryImg.src}
+                src={selectedGalleryImg.src}
+                className="project-lightbox-img"
+                controls
+                autoPlay
+                playsInline
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <img src={selectedGalleryImg.src} alt={selectedGalleryImg.label} className="project-lightbox-img" />
+            )}
             <p className="project-lightbox-caption">{selectedGalleryImg.label}</p>
           </div>
+
+          <button
+            type="button"
+            className="project-nav-arrow project-next-arrow project-lightbox-arrow"
+            onClick={nextGalleryImg}
+            aria-label="Next project image"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
       )}
     </div>
