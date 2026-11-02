@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Projects.css';
 
 import lisaComponentsUnlabeled from '../../assets/projects/lisa/lens_components_unlabeled.webp';
@@ -30,6 +30,10 @@ import clockPlottedResultImg from '../../assets/projects/predicting_clock_bias/p
 import clockSingleDiffImg from '../../assets/projects/predicting_clock_bias/result_single_difference_preds.webp';
 import clockCombinedImg from '../../assets/projects/predicting_clock_bias/results_combined_preds.webp';
 import clockCorrectionOnlyImg from '../../assets/projects/predicting_clock_bias/results_correction_only_preds.webp';
+
+import msrMitMatUi from '../../assets/projects/msr_srl/ui_mitmat.png';
+import msrMitMatFlowchart from '../../assets/projects/msr_srl/mitigation_matrix_flowchart.png';
+import msrRedundancyMeme from '../../assets/projects/msr_srl/meme.png';
 
 const PROJECTS_DATA = [
   {
@@ -265,21 +269,47 @@ const PROJECTS_DATA = [
   },
   {
     id: 'sample-return-lander',
-    title: 'Mars Sample Return (SRL) Fault Protection Engineering Tools',
-    category: 'Aerospace & Systems Engineering',
-    icon: '🚀',
+    title: 'Mars Sample Return Fault Protection Tools',
+    category: 'Spacecraft Fault Protection & Systems Engineering',
+    image: msrMitMatUi,
     gradient: 'linear-gradient(135deg, #9B2C2C 0%, #742A2A 100%)',
-    shortDescription: 'Designed UI and functionality for the Mars Sample Return SRL mitigation matrix and developed FMECA and FTA across 12 subsystems at NASA JPL.',
-    fullDescription: 'During my Fault Protection Engineering internship at NASA Jet Propulsion Laboratory (JPL), I designed the user interface and core functionality for the Mars Sample Return Sample Retrieval Lander (SRL) mitigation matrix using FileMaker Pro. Additionally, I developed Failure Modes, Effects, and Criticality Analyses (FMECA) and Fault Tree Analyses (FTA) across 12 spacecraft subsystems to identify and mitigate single-point system failures.',
+    shortDescription: 'Built the relational FileMaker Pro Mitigation Matrix tool and multi-tier system redundancy schematic for the Mars Sample Return Sample Retrieval Lander (SRL) at NASA JPL.',
+    fullDescription: [
+      {
+        label: 'Mission',
+        text: 'The NASA-ESA Mars Sample Return (MSR) campaign retrieves Martian rock and soil samples for Earth delivery across four missions: Mars 2020 (Perseverance), the Earth Return Orbiter (ERO), the Sample Retrieval Lander (SRL, housing the Mars Launch System, Sample Transfer System, and Sample Recovery Helicopter), and the Sample Receiving Project.'
+      },
+      {
+        label: 'Problem',
+        text: 'Unlike standalone orbiters, SRL Fault Protection (FP) spans heritage and novel subsystems across internal and external partners. Entering Phase B/C toward Preliminary Design Review (PDR), bottom-up hardware FMECAs and top-down functional FTAs must be unified with clear Fault Containment Region (FCR) boundaries and redundancy definitions to prevent single-point failures.'
+      },
+      {
+        label: 'Solution',
+        text: 'Build two core tools for the SRL Fault Protection team at NASA JPL: (1) a FileMaker Pro Mitigation Matrix database and UI serving as FP\'s working dictionary linking credible faults to prevention and corrective actions prior to formal flight software (Helix) delivery, and (2) a standalone SRL redundancy schematic validating FMECA/FTA assumptions and FCR boundaries.'
+      },
+      {
+        label: 'Contribution',
+        text: 'During my Fault Protection Engineering internship at NASA JPL, I developed tools and analyses supporting SRL PDR deliverables and Verification and Validation (V&V) planning:'
+      },
+      {
+        bullet: 'SRL Mitigation Matrix Tool: Built the FileMaker Pro UI and relational database linking FMECA/FTA failure modes (likelihood, impact, risk, effects, and compensating provisions) to prevention tests, flight/ground monitors, local/ground responses, and contingency plans.'
+      },
+      {
+        bullet: 'Multi-Tier Redundancy Schematic: Led peer reviews across 12 spacecraft subsystems to classify hardware beyond binary redundant vs. single-string labels, distinguishing block-redundant, cross-strapped, functionally redundant (e.g., upper/lower HazCams), and internally redundant devices.'
+      },
+      {
+        bullet: 'PDR Lien Closeout & FMECA Alignment: Resolved redundancy inconsistencies across subsystem FMECAs and delivered the SRL redundancy schematic to close out a PDR lien, establishing a single source of truth for flight software dictionary development.'
+      }
+    ],
     mentors: [
       { name: 'Lauren DuCharme', url: 'https://www.linkedin.com/in/laurenducharme/' },
       { name: 'Julie Wertz', url: 'https://www.linkedin.com/in/julie-wertz-chen-319810230/' }
     ],
-    tech: ['Fault Protection (FDIR)', 'FMECA & FTA', 'FileMaker Pro UI', 'Systems Engineering', 'NASA JPL'],
+    tech: ['Fault Protection (FDIR)', 'FMECA & FTA', 'FileMaker Pro UI', 'Fault Containment Regions (FCR)', 'Redundancy Architecture', 'Systems Engineering', 'NASA JPL'],
     gallery: [
-      { label: 'Lander State Machine Diagram', color: '#742A2A' },
-      { label: 'Fault Tree Analysis Simulation', color: '#9B2C2C' },
-      { label: 'Telemetry Monitoring View', color: '#C53030' }
+      { src: msrMitMatUi, label: 'FileMaker Pro User Interface for the MSR Sample Retrieval Lander (SRL) Mitigation Matrix Tool' },
+      { src: msrMitMatFlowchart, label: 'Mitigation Matrix Decision Workflow Linking Fault Sets and Compensating Provisions to Monitors, Responses, and Ground Contingency Plans' },
+      { src: msrRedundancyMeme, label: 'Evolution of the SRL Redundancy Classification Scheme Meme' }
     ]
   },
   {
@@ -427,6 +457,35 @@ const PROJECTS_DATA = [
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
+  const modalContentRef = useRef(null);
+
+  const prevProject = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedGalleryImg(null);
+    setSelectedProject((curr) => {
+      if (!curr) return null;
+      const idx = PROJECTS_DATA.findIndex((p) => p.id === curr.id);
+      const prevIdx = (idx - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length;
+      return PROJECTS_DATA[prevIdx];
+    });
+    if (modalContentRef.current) {
+      modalContentRef.current.scrollTop = 0;
+    }
+  };
+
+  const nextProject = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedGalleryImg(null);
+    setSelectedProject((curr) => {
+      if (!curr) return null;
+      const idx = PROJECTS_DATA.findIndex((p) => p.id === curr.id);
+      const nextIdx = (idx + 1) % PROJECTS_DATA.length;
+      return PROJECTS_DATA[nextIdx];
+    });
+    if (modalContentRef.current) {
+      modalContentRef.current.scrollTop = 0;
+    }
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -436,6 +495,10 @@ function Projects() {
         } else {
           setSelectedProject(null);
         }
+      } else if (e.key === 'ArrowLeft' && !selectedGalleryImg) {
+        prevProject();
+      } else if (e.key === 'ArrowRight' && !selectedGalleryImg) {
+        nextProject();
       }
     };
     if (selectedProject) {
@@ -499,7 +562,18 @@ function Projects() {
       {/* MODAL POPUP */}
       {selectedProject && (
         <div className="modal-backdrop" onClick={() => { setSelectedGalleryImg(null); setSelectedProject(null); }}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className="project-nav-arrow project-prev-arrow"
+            onClick={prevProject}
+            aria-label="Previous project"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div ref={modalContentRef} className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close-btn" onClick={() => { setSelectedGalleryImg(null); setSelectedProject(null); }}>
               ✕
             </button>
@@ -744,6 +818,17 @@ function Projects() {
               )}
             </div>
           </div>
+
+          <button
+            type="button"
+            className="project-nav-arrow project-next-arrow"
+            onClick={nextProject}
+            aria-label="Next project"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
       )}
 
