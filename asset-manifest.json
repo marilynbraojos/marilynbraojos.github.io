@@ -1,14 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d5f0b8a.css",
-    "main.js": "/static/js/main.f85d15d1.js",
+    "main.css": "/static/css/main.87a97e25.css",
+    "main.js": "/static/js/main.390455b9.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
+    "static/media/obstacle_avoidance.mp4": "/static/media/obstacle_avoidance.a2a820846243a5847c2c.mp4",
     "static/media/copper_base.webp": "/static/media/copper_base.c90ddab0cf42cca055a6.webp",
     "static/media/lens_components_unlabeled.webp": "/static/media/lens_components_unlabeled.bdb0e31168061dc5f065.webp",
     "static/media/cap_inner_diameter.webp": "/static/media/cap_inner_diameter.07c51dcd688fb48cbf0e.webp",
     "static/media/outer_casing_outer_diameter.webp": "/static/media/outer_casing_outer_diameter.911e6459781b8e1c4257.webp",
+    "static/media/object_tracking.mp4": "/static/media/object_tracking.4519d49e5df8675b5fef.mp4",
     "static/media/lens_components_labeled.webp": "/static/media/lens_components_labeled.c825cbaa81ce0a5556fe.webp",
     "static/media/pastelito_de_guayaba.webp": "/static/media/pastelito_de_guayaba.ffd00f175cc9afc17f15.webp",
     "static/media/proposed_plan.png": "/static/media/proposed_plan.d3016f1e2266f52f2b5c.png",
@@ -21,7 +23,9 @@
     "static/media/crinkle_matcha.webp": "/static/media/crinkle_matcha.9585074652445aa46767.webp",
     "static/media/lens_assembly.webp": "/static/media/lens_assembly.cdb4835c7e5049a5b7a0.webp",
     "static/media/husky.png": "/static/media/husky.e2e8c1d98eb940eb4ff7.png",
+    "static/media/turtlebot_trajectory_with_signs.webp": "/static/media/turtlebot_trajectory_with_signs.9fe5e698021552eacb8b.webp",
     "static/media/loop_algo.png": "/static/media/loop_algo.068a536c15925b6023f1.png",
+    "static/media/turtlebot_path.webp": "/static/media/turtlebot_path.c89663fb7bd8f8b7fc29.webp",
     "static/media/meme.png": "/static/media/meme.6abd6a9f2d526c93d80f.png",
     "static/media/chicken_parm.webp": "/static/media/chicken_parm.f8170533276a5f069f46.webp",
     "static/media/beef_wellington.webp": "/static/media/beef_wellington.73b5e5c01339f13fafbc.webp",
@@ -85,6 +89,7 @@
     "static/media/basil.webp": "/static/media/basil.bc56ff2f4b22f81ad70c.webp",
     "static/media/fault_injection_results.png": "/static/media/fault_injection_results.dcafd04f82bcdb59061d.png",
     "static/media/jamil.webp": "/static/media/jamil.37a1eaa4e753cf517634.webp",
+    "static/media/turtlebot_fov.webp": "/static/media/turtlebot_fov.38bc90ce4243eb9566a9.webp",
     "static/media/lucy.webp": "/static/media/lucy.2668c879d173317114c8.webp",
     "static/media/full_assembly_cad.webp": "/static/media/full_assembly_cad.3d2e675261525e56ba29.webp",
     "static/media/renly.webp": "/static/media/renly.1109eaecef899c3db5e2.webp",
@@ -95,12 +100,12 @@
     "static/media/snowboarding.webp": "/static/media/snowboarding.5d1dc5905a373e85fb38.webp",
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
-    "main.7d5f0b8a.css.map": "/static/css/main.7d5f0b8a.css.map",
-    "main.f85d15d1.js.map": "/static/js/main.f85d15d1.js.map",
+    "main.87a97e25.css.map": "/static/css/main.87a97e25.css.map",
+    "main.390455b9.js.map": "/static/js/main.390455b9.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d5f0b8a.css",
-    "static/js/main.f85d15d1.js"
+    "static/css/main.87a97e25.css",
+    "static/js/main.390455b9.js"
   ]
 }
