@@ -36,7 +36,7 @@ const PROJECTS_DATA = [
     id: 'uncertainty-aware-kalman-filter',
     title: 'Uncertainty-Aware Closed-Loop Control in Mobile Robots',
     category: 'Robotics & State Estimation',
-    status: 'Just Started',
+    status: 'Early Progress',
     image: kalmanLoopAlgo,
     gradient: 'linear-gradient(135deg, #2C5282 0%, #1A365D 100%)',
     shortDescription: 'Real-time adaptive Extended Kalman Filter that scales measurement covariance using proprioceptive uncertainty estimates to maintain reliable closed-loop state estimation.',
@@ -154,7 +154,7 @@ const PROJECTS_DATA = [
   {
     id: 'clock-bias-correction',
     title: 'Correcting Clock Bias with Predictive Intelligent Models',
-    category: 'Signal Processing & Deep Learning',
+    category: 'Atomic Clock Modeling & Deep Learning',
     status: 'Awaiting Reviewer Comments from Peer-Reviewed Journal',
     image: clockPipelineImg,
     gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%)',

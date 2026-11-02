@@ -35,7 +35,7 @@ function Home() {
   const [isPersonalPage, setIsPersonalPage] = useState(
     () => sessionStorage.getItem("homeBeyondLab") === "true"
   );
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedRecipeIdx, setSelectedRecipeIdx] = useState(null);
 
   useEffect(() => {
     sessionStorage.setItem("homeBeyondLab", isPersonalPage ? "true" : "false");
@@ -44,11 +44,43 @@ function Home() {
   useEffect(() => {
     const handleResetHome = () => {
       setIsPersonalPage(false);
-      setSelectedRecipe(null);
+      setSelectedRecipeIdx(null);
     };
     window.addEventListener("resetHome", handleResetHome);
     return () => window.removeEventListener("resetHome", handleResetHome);
   }, []);
+
+  useEffect(() => {
+    if (selectedRecipeIdx === null) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        setSelectedRecipeIdx(
+          (prev) => (prev - 1 + FAVORITE_RECIPES.length) % FAVORITE_RECIPES.length
+        );
+      } else if (e.key === "ArrowRight") {
+        setSelectedRecipeIdx((prev) => (prev + 1) % FAVORITE_RECIPES.length);
+      } else if (e.key === "Escape") {
+        setSelectedRecipeIdx(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedRecipeIdx]);
+
+  const prevRecipe = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedRecipeIdx(
+      (prev) => (prev - 1 + FAVORITE_RECIPES.length) % FAVORITE_RECIPES.length
+    );
+  };
+
+  const nextRecipe = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedRecipeIdx((prev) => (prev + 1) % FAVORITE_RECIPES.length);
+  };
+
+  const selectedRecipe =
+    selectedRecipeIdx !== null ? FAVORITE_RECIPES[selectedRecipeIdx] : null;
 
   const turnToPersonalPage = () => {
     setIsPersonalPage(true);
@@ -234,16 +266,16 @@ function Home() {
                 </div>
 
                 <div className="recipes-gallery">
-                  {FAVORITE_RECIPES.map((recipe) => (
+                  {FAVORITE_RECIPES.map((recipe, idx) => (
                     <div
                       key={recipe.name}
                       className="recipe-card"
-                      onClick={() => setSelectedRecipe(recipe)}
+                      onClick={() => setSelectedRecipeIdx(idx)}
                       role="button"
                       tabIndex={0}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
-                          setSelectedRecipe(recipe);
+                          setSelectedRecipeIdx(idx);
                         }
                       }}
                     >
@@ -281,8 +313,28 @@ function Home() {
       {selectedRecipe && (
         <div
           className="recipe-lightbox-backdrop"
-          onClick={() => setSelectedRecipe(null)}
+          onClick={() => setSelectedRecipeIdx(null)}
         >
+          <button
+            type="button"
+            className="recipe-lightbox-arrow recipe-prev-arrow"
+            onClick={prevRecipe}
+            aria-label="Previous recipe photo"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
           <div
             className="recipe-lightbox-content"
             onClick={(e) => e.stopPropagation()}
@@ -290,7 +342,7 @@ function Home() {
             <button
               type="button"
               className="recipe-lightbox-close"
-              onClick={() => setSelectedRecipe(null)}
+              onClick={() => setSelectedRecipeIdx(null)}
               aria-label="Close recipe preview"
             >
               &times;
@@ -302,6 +354,26 @@ function Home() {
             />
             <p className="recipe-lightbox-caption">{selectedRecipe.name}</p>
           </div>
+
+          <button
+            type="button"
+            className="recipe-lightbox-arrow recipe-next-arrow"
+            onClick={nextRecipe}
+            aria-label="Next recipe photo"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
       )}
     </div>

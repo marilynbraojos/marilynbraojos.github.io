@@ -518,6 +518,61 @@
   color: #1B2A4A;
 }
 
+.recipe-lightbox-arrow {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  width: 52px;
+  height: 52px;
+  border-radius: 50% !important;
+  cursor: pointer;
+  z-index: 2030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+  user-select: none;
+  padding: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-lightbox-arrow svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.recipe-prev-arrow {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.recipe-prev-arrow:hover {
+  background: rgba(253, 251, 247, 0.45);
+  color: #ffffff;
+  border-color: rgba(253, 251, 247, 0.8);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 25px rgba(253, 251, 247, 0.7), 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.recipe-next-arrow {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.recipe-next-arrow:hover {
+  background: rgba(253, 251, 247, 0.45);
+  color: #ffffff;
+  border-color: rgba(253, 251, 247, 0.8);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 25px rgba(253, 251, 247, 0.7), 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 768px) {
   .hero-card {
     flex-direction: column;
@@ -580,5 +635,23 @@
 
   .personal-title {
     font-size: 1.65rem;
+  }
+
+  .recipe-lightbox-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .recipe-lightbox-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .recipe-prev-arrow {
+    left: 10px;
+  }
+
+  .recipe-next-arrow {
+    right: 10px;
   }
 }
