@@ -71,7 +71,7 @@ const GALLERY_ITEMS = [
   { id: 4, description: "Boeing Factory", location: "Seattle, WA", image: boeingImg, rotation: "1.6deg" },
   { id: 5, description: "UF Graduation", location: "Gainesville, FL", image: bsGradImg, rotation: "-1.5deg" },
   { id: 6, description: "Cruise to Canada", location: "Victoria, Canada", image: canadaImg, rotation: "2.3deg" },
-  { id: 7, description: "Exploring Caves", location: "San Juan, PR", image: cavePrImg, rotation: "-2.0deg" },
+  { id: 7, description: "Cavernas del Rio Camuy", location: "San Juan, PR", image: cavePrImg, rotation: "-2.0deg" },
   { id: 8, description: "Chattahoochee River National Park", location: "Atlanta, GA", image: chattahoocheeImg, rotation: "1.9deg" },
   { id: 9, description: "Skiing with Mark", location: "Breckenridge, CO", image: coloradoImg, rotation: "-1.7deg" },
   { id: 10, description: "Coolest Brother Ever", location: "Miami, FL", image: coolestBroImg, rotation: "1.8deg" },

@@ -41,6 +41,18 @@ import turtlebotSignsImg from '../../assets/projects/turtlebot_automation/turtle
 import turtlebotObjectTrackingVid from '../../assets/projects/turtlebot_automation/object_tracking.mp4';
 import turtlebotObstacleAvoidanceVid from '../../assets/projects/turtlebot_automation/obstacle_avoidance.mp4';
 
+import aiStaticsCoverImg from '../../assets/projects/ai_statics/website_coverpage.webp';
+
+import stepRoverImg from '../../assets/projects/step_summer/rover.webp';
+import stepYellowjacketRoverImg from '../../assets/projects/step_summer/yellowjacket_rover.webp';
+import step67RoverImg from '../../assets/projects/step_summer/6_7_rover.webp';
+import stepInProgressRoverImg from '../../assets/projects/step_summer/in_progress_iced_rover.webp';
+import stepBoatImg from '../../assets/projects/step_summer/boat.webp';
+import stepDragonArtImg from '../../assets/projects/step_summer/dragon_art.webp';
+import stepBoatObjectivesVid from '../../assets/projects/step_summer/boat_objectives.mp4';
+
+import ssdlCoverImg from '../../assets/projects/ssdl_lab_website_maintenance/site_coverpage.webp';
+
 const PROJECTS_DATA = [
   {
     id: 'uncertainty-aware-kalman-filter',
@@ -410,45 +422,74 @@ const PROJECTS_DATA = [
     id: 'gt-statics-ai-tutor',
     title: 'Open-Source Statics Course with an AI Tutor at Georgia Tech',
     category: 'Engineering Education & AI',
+    status: 'In Progress',
+    image: aiStaticsCoverImg,
     gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1B2A4A 100%)',
-    shortDescription: 'Developing an open-source Statics course at Georgia Tech integrated with an interactive AI tutor to support undergraduate engineering students.',
-    fullDescription: 'Developing an open-source undergraduate Statics curriculum at Georgia Tech integrated with an AI tutor designed to guide students through free-body diagrams, equilibrium analysis, and problem-solving workflows.',
+    shortDescription: 'Developing an open-source Statics course website at Georgia Tech with an embedded Microsoft Copilot Studio AI assistant while mentoring 5 undergraduate students.',
+    fullDescription: [
+      {
+        label: 'Objective',
+        text: 'Create an accessible, open-source Statics course platform to support Georgia Tech students alongside their coursework and allow prospective or non-Georgia Tech students to begin learning an essential foundational engineering subject early.'
+      },
+      {
+        label: 'Approach & Contribution',
+        text: 'Leading the AI integration and undergraduate development team to build and launch the open-source course platform:'
+      },
+      {
+        bullet: 'AI Assistant Integration (Microsoft Copilot Studio): Building and embedding a custom AI chatbot using Microsoft Copilot Studio to provide interactive concept explanations and guided problem-solving support across the Statics curriculum.'
+      },
+      {
+        bullet: 'Undergraduate Mentorship & Content Digitization: Mentoring a team of 5 undergraduate students to develop the course website and transcribe Dr. Kelly Griendling\'s Statics lecture notes and homework problems into structured online modules.'
+      }
+    ],
     advisors: [
       { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
     ],
-    mentees: [
+    collaborators: [
       { name: 'Cayetana Salinas', url: 'https://www.linkedin.com/in/cayetana-salinas/' }
     ],
-    tech: ['Statics', 'AI Tutoring', 'Open-Source Education', 'Curriculum Design', 'Georgia Tech'],
-    gallery: []
+    tech: ['Statics', 'AI Assistant', 'Microsoft Copilot Studio', 'Open-Source Education', 'Curriculum Design', 'Georgia Tech'],
+    gallery: [
+      { src: aiStaticsCoverImg, label: 'Georgia Tech Open-Source Statics Course Website Landing Page & Module Navigation' }
+    ]
   },
   {
     id: 'step-summer-camp',
     title: 'STEP Summer Camp: Autonomous Boat & Rover Prototyping',
     category: 'Robotics Mentorship & Embedded Systems',
-    icon: '🚤',
+    image: stepRoverImg,
     gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
     shortDescription: 'Mentored 20+ groups of high school students in designing, building, and programming functional boat and rover prototypes using PVC and Arduino UNO.',
     fullDescription: 'As a Graduate Teaching Assistant for the Georgia Tech STEP Summer Camp, I mentored over 20 teams of high school students through the end-to-end engineering design process, guiding them in fabricating structural frames out of PVC, wiring motors and sensors, and programming autonomous and remote-controlled boat and rover prototypes using Arduino UNO microcontrollers.',
     advisors: [
       { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
     ],
-    tech: ['Arduino UNO', 'Robotics Prototyping', 'Embedded C/C++', 'PVC Fabrication', 'STEM Mentorship'],
-    gallery: []
+    tech: ['Arduino UNO', 'Robotics Prototyping', 'Mentorship'],
+    gallery: [
+      { src: stepYellowjacketRoverImg, label: 'Yellow Jacket-Themed Student Rover Prototype with PVC Chassis and Arduino Electronics' },
+      { src: stepRoverImg, label: 'Completed Omni-Wheel Rover Prototype with Ultrasonic Sensor Head ("Iced Out" Rover)' },
+      { src: stepInProgressRoverImg, label: 'In-Progress Assembly and Wiring of the Omni-Wheel Student Rover Prototype' },
+      { src: step67RoverImg, label: 'Rear View of the Completed Student Rover Prototype' },
+      { src: stepBoatImg, label: 'Student-Built PVC and Dual-Thruster Autonomous Boat Prototype' },
+      { src: stepDragonArtImg, label: 'Top-Down View of Student Boat Prototype with Custom Dragon Artwork and Ball-Collection Mechanism' },
+      { src: stepBoatObjectivesVid, label: 'Video: Student Boat Prototype Testing on the Water Course', isVideo: true }
+    ]
   },
   {
     id: 'ssdl-website-frontend',
-    title: 'Georgia Tech Space Systems Design Lab (SSDL) Website Front-End',
+    title: 'Georgia Tech Space Systems Design Lab Website Front-End',
     category: 'Web Development & UI Maintenance',
-    icon: '💻',
+    image: ssdlCoverImg,
     gradient: 'linear-gradient(135deg, #4A5568 0%, #2D3748 100%)',
     shortDescription: 'Maintained and updated the front-end web architecture and research pages for the Georgia Tech Space Systems Design Lab.',
     fullDescription: 'Served as the webmaster and front-end maintainer for the Georgia Tech Space Systems Design Lab (SSDL) website from 2023 to 2025. Managed content updates, mission profiles, publication directories, and responsive front-end layout improvements to showcase the lab’s satellite missions and graduate research.',
     advisors: [
       { name: 'Brian Gunter', url: 'https://www.linkedin.com/in/brian-gunter/' }
     ],
-    tech: ['Front-End Development', 'HTML / CSS', 'JavaScript', 'Web Maintenance', 'UI Design'],
-    gallery: []
+    tech: ['Front-End Development', 'HTML / CSS', 'Web Maintenance', 'UI Design'],
+    gallery: [
+      { src: ssdlCoverImg, label: 'Georgia Tech Space Systems Design Lab Website Landing Page' }
+    ]
   },
   {
     id: 'throttle-body-integration',
@@ -463,16 +504,15 @@ const PROJECTS_DATA = [
     ],
     tech: ['SolidWorks', 'Mechanical Design', 'CAD Prototyping', 'Trade Study Analysis', 'Fluid Regulation'],
     gallery: [
-      { label: '3D CAD Pipe Assembly', color: '#7B341E' },
-      { label: 'Mating Plate Iterations', color: '#9C4221' },
-      { label: 'Air Regulation Trade Study', color: '#DD6B20' }
+      { label: 'Coming Soon', color: '#7B341E' },
+      { label: 'Coming Soon', color: '#9C4221' },
+      { label: 'Coming Soon', color: '#DD6B20' }
     ]
   },
   {
     id: 'appliance-modeling',
     title: 'CAD Modeling & GD&T of Common Appliance Parts',
     category: 'Mechanical Design & Manufacturing',
-    icon: '⚡',
     gradient: 'linear-gradient(135deg, #319795 0%, #234E52 100%)',
     shortDescription: 'Modeled common residential appliance components in SolidWorks using Geometric Dimensioning and Tolerancing (GD&T) and Model-Based Definition (MBD) at GE Appliances.',
     fullDescription: 'During my co-op as an Area Business Leader at General Electric (GE) Appliances, I modeled common residential appliance parts using SolidWorks, applying Geometric Dimensioning and Tolerancing (GD&T) standards and Model-Based Definitions (MBD) to support production quality, manufacturing tolerances, and assembly line operations.',
@@ -481,17 +521,28 @@ const PROJECTS_DATA = [
     ],
     tech: ['SolidWorks', 'GD&T', 'Model-Based Definition (MBD)', 'Manufacturing Operations', 'GE Appliances'],
     gallery: [
-      { label: 'SolidWorks Appliance Part CAD', color: '#234E52' },
-      { label: 'GD&T Tolerance Specifications', color: '#285E61' },
-      { label: 'Model-Based Definition View', color: '#319795' }
+      { label: 'Coming Soon', color: '#234E52' },
+      { label: 'Coming Soon', color: '#285E61' },
+      { label: 'Coming Soon', color: '#319795' }
     ]
   }
 ];
 
 function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(() => {
+    const savedId = sessionStorage.getItem('selectedProjectId');
+    return savedId ? PROJECTS_DATA.find((p) => p.id === savedId) || null : null;
+  });
   const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
   const modalContentRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      sessionStorage.setItem('selectedProjectId', selectedProject.id);
+    } else {
+      sessionStorage.removeItem('selectedProjectId');
+    }
+  }, [selectedProject]);
 
   const prevProject = (e) => {
     if (e) e.stopPropagation();
