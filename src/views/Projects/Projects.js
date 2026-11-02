@@ -20,6 +20,10 @@ import kalmanEkf from '../../assets/projects/uncertainty_aware_kalman_filter/ekf
 import kalmanHusky from '../../assets/projects/uncertainty_aware_kalman_filter/husky.png';
 import kalmanTurtlebot from '../../assets/projects/uncertainty_aware_kalman_filter/turtlebot.png';
 
+import terrainProposedPlan from '../../assets/projects/uncertainty_aware_terrain_classification/proposed_plan.png';
+import terrainFaultResults from '../../assets/projects/uncertainty_aware_terrain_classification/fault_injection_results.png';
+import terrainEdlFramework from '../../assets/projects/uncertainty_aware_terrain_classification/proposed_edl_framework.png';
+
 const PROJECTS_DATA = [
   {
     id: 'uncertainty-aware-kalman-filter',
@@ -66,9 +70,14 @@ const PROJECTS_DATA = [
         italicNote: 'Results from this work are expected to be submitted to a peer-reviewed journal around the time of my doctoral defense.'
       }
     ],
+    advisors: [
+      { name: 'Sean Wilson', url: 'https://www.linkedin.com/in/sean-wilson-239420205/' },
+      { name: 'Yashwanth Nakka', url: 'https://www.linkedin.com/in/nakka/' },
+      { name: 'Glenn Lightsey', url: 'https://www.linkedin.com/in/eglennlightsey/' }
+    ],
     tech: ['Extended Kalman Filter (EKF)', 'Adaptive State Estimation', 'Uncertainty Quantification', 'ROS / Gazebo', 'Clearpath Husky', 'TurtleBot', 'Python'],
     gallery: [
-      { src: kalmanLoopStd, label: 'Standard Autonomous Control Loop (Sensor Data, Kalman Filter, Planner, Low-Level Controller & Actuation)' },
+      { src: kalmanLoopStd, label: 'Standard Autonomous Control Loop' },
       { src: kalmanLoopAlgo, label: 'Proposed Uncertainty-Aware Control Loop with Detection Model Scaling the Kalman Filter' },
       { src: kalmanEkf, label: 'Extended Kalman Filter (EKF) Measurement Update & Time Prediction Architecture' },
       { src: kalmanHusky, label: 'Clearpath Husky A200 Mobile Robot Platform (Simulated in ROS Gazebo)' },
@@ -78,17 +87,60 @@ const PROJECTS_DATA = [
   {
     id: 'terrain-classification',
     title: 'Uncertainty-Aware Terrain Classification in Mobile Robots',
-    category: 'Robotics & Machine Learning',
+    category: 'Robotics & Uncertainty Estimation',
     status: 'In Progress',
-    icon: '🤖',
+    image: terrainEdlFramework,
     gradient: 'linear-gradient(135deg, #1B2A4A 0%, #2A4365 100%)',
-    shortDescription: 'End-to-end machine learning pipeline for proprioceptive terrain identification robust to sensor fault modes on mobile rovers.',
-    fullDescription: 'This project focuses on developing real-time, uncertainty-aware terrain classification algorithms for autonomous mobile rovers operating in unmapped and challenging environments. By designing an end-to-end machine learning pipeline robust to multiple sensor fault modes and quantifying prediction uncertainty alongside class probabilities, the rover can make safer, risk-informed navigation decisions.',
-    tech: ['Python', 'PyTorch', 'ROS2', 'Fault-Tolerant ML', 'Uncertainty Quantification'],
+    shortDescription: 'Evidential Deep Learning pipeline for proprioceptive terrain classification and epistemic uncertainty estimation robust to sensor faults on mobile rovers.',
+    fullDescription: [
+      {
+        italicNote: 'This work comprises the second aim of my doctoral research.'
+      },
+      {
+        label: 'Motivation',
+        text: 'Improving mobile robot resilience across unknown terrains requires three capabilities: (1) identifying the terrain being traversed to assess mobility hazards, (2) quantifying confidence in those classifications so the control system knows how heavily to weigh them, and (3) executing this pipeline efficiently. While exteroceptive sensors such as cameras and LiDAR are widely used for terrain assessment, they are sensitive to environmental degradation (dust storms, extreme lighting) and impose high computational, power, and processing demands that compound with deep-space communication delays.'
+      },
+      {
+        label: 'Baseline & Problem',
+        text: 'Recent work from the Northern Robotics Laboratory (LaRocque et al.) introduced the BorealTC dataset, comprising 116 minutes of Clearpath Husky A200 runs across silty loam, snow, asphalt, floor, and ice, and showed that CNNs trained on proprioceptive spectrograms (IMU, motor current, and wheel odometry) outperform state-space Mamba models and achieve >90% terrain classification accuracy. In my cross-fold validation of their CNN architecture, accuracy ranged from 93% to 96%. However, because standard CNN classifiers rely on a softmax activation and cross-entropy loss, outputs are normalized into relative point-estimate probabilities between 0 and 1. This forces a classification and leaves the network vulnerable to overconfidence on out-of-distribution (OOD) sensor data and system faults.'
+      },
+      {
+        label: 'Preliminary Fault-Injection Findings',
+        text: 'To evaluate the baseline architecture under sensor degradation, I induced incremental data dropouts (0%, 10%, 50%, and 100%) per sensor modality during testing:'
+      },
+      {
+        bullet: 'Higher Reliance on IMU Signatures: Dropping IMU measurements caused classification accuracy to fall from 92.85% (0% dropout) to 53.20% (100% dropout), a much steeper decline than dropping wheel odometry and motor current (which fell from 92.85% to 72.12% at 100% dropout).'
+      },
+      {
+        bullet: 'Persistent Overconfidence Under Faults: Across all dropout levels, the softmax-based model remained ~87% to 90% confident even when making incorrect terrain predictions.'
+      },
+      {
+        label: 'Proposed Approach & Contribution',
+        text: 'I am reformulating the proprioceptive terrain classification pipeline on the BorealTC dataset using Evidential Deep Learning (EDL) to output both a terrain classification and its corresponding uncertainty in a single forward pass:'
+      },
+      {
+        bullet: 'Softplus Evidence & Dirichlet Parameterization: Replaces the softmax activation with a non-negative softplus function to generate an unbounded evidence vector that parameterizes a Dirichlet distribution over terrain classes. Grounded in belief theory and subjective logic, the network extracts class belief masses and an uncertainty mass inversely proportional to the gathered evidence.'
+      },
+      {
+        bullet: 'Single-Pass Deterministic Inference: Replaces cross-entropy loss with a regularized regression-based evidential loss, enabling deterministic uncertainty quantification in a single forward pass without the computational overhead and nondeterminism of Monte Carlo dropout sampling.'
+      },
+      {
+        bullet: 'Fault-Mode & Deep Ensemble Benchmarking: Evaluates robustness across three common fault modes: sensor dropouts, multiplicative biases per axis, and additive Gaussian noise per axis. Results are benchmarked against Deep Ensembles using classification accuracy, F1 score, and AUROC for discriminating between in-distribution and out-of-distribution sensor data.'
+      },
+      {
+        italicNote: 'Immediate next steps focus on training the evidential loss minimum viable product on a subset of the Husky sensor suite, with full results expected to be submitted to a peer-reviewed journal by my doctoral defense.'
+      }
+    ],
+    advisors: [
+      { name: 'Sean Wilson', url: 'https://www.linkedin.com/in/sean-wilson-239420205/' },
+      { name: 'Yashwanth Nakka', url: 'https://www.linkedin.com/in/nakka/' },
+      { name: 'Glenn Lightsey', url: 'https://www.linkedin.com/in/eglennlightsey/' }
+    ],
+    tech: ['Python', 'PyTorch', 'Evidential Deep Learning (EDL)', 'Fault Tolerance', 'Uncertainty Quantification', 'Proprioceptive Sensing'],
     gallery: [
-      { label: 'Terrain Classification Heatmap', color: '#1B2A4A' },
-      { label: 'Vehicle Trajectory & Risk Map', color: '#2C5282' },
-      { label: 'Sensor Suite Setup', color: '#2B6CB0' }
+      { src: terrainProposedPlan, label: 'End-to-End Proprioceptive Terrain Classification Pipeline (Husky Sensor Inputs, 5-Second Partitioning, Spectrograms & EDL Output Classes)' },
+      { src: terrainFaultResults, label: 'Baseline CNN Fault-Injection Results Showing Persistent Overconfidence (~87–90%) Under IMU, Odometry, and Current Dropouts' },
+      { src: terrainEdlFramework, label: 'Proposed Evidential Deep Learning (EDL) Architecture Replacing Softmax with Softplus to Output Terrain Class and Uncertainty' }
     ]
   },
   {
@@ -98,6 +150,12 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #2C5282 0%, #1B2A4A 100%)',
     shortDescription: 'Autonomous navigation, perception, and control algorithms implemented on a TurtleBot mobile robot using ROS2.',
     fullDescription: 'Developed autonomous navigation, obstacle avoidance, perception, and control pipelines on a TurtleBot mobile robot platform using ROS2 and Python.',
+    advisors: [
+      { name: 'Sean Wilson', url: 'https://www.linkedin.com/in/sean-wilson-239420205/' }
+    ],
+    collaborators: [
+      { name: 'Mariam Misabishvili', url: 'https://www.linkedin.com/in/mariam-misabishvili/' }
+    ],
     tech: ['ROS2', 'Python', 'Autonomous Navigation', 'Mobile Robotics', 'Perception & Control'],
     gallery: []
   },
@@ -105,17 +163,38 @@ const PROJECTS_DATA = [
     id: 'clock-bias-correction',
     title: 'Correcting Clock Bias with Predictive Intelligent Models',
     category: 'Signal Processing & Deep Learning',
-    status: 'Completed — Peer-Reviewed Journal Submission Complete (Awaiting Reviewer Feedback)',
+    status: 'Awaiting Reviewer Comments from Peer-Reviewed Journal',
     icon: '⏱️',
     gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%)',
     shortDescription: 'Autoregressive deep learning and transformer architectures to predict long-term satellite atomic clock bias and mitigate timing drift in GNSS-limited environments.',
     fullDescription: 'High-precision space systems and GPS satellites rely heavily on sub-nanosecond synchronization. This research develops autoregressive deep learning and transformer model architectures to predict and correct atomic clock drift and bias over extended time horizons (achieving <2 ns accuracy in GPS clock drift corrections and 6-hour time horizon predictions in GNSS-limited areas). Completed with peer-reviewed journal submission currently awaiting reviewer feedback.',
+    advisors: [
+      { name: 'William Jun', url: 'https://www.linkedin.com/in/william-w-jun/' },
+      { name: 'Kar-Ming Cheung', url: 'https://www.linkedin.com/in/kar-ming-cheung-83a465262/' },
+      { name: 'Glenn Lightsey', url: 'https://www.linkedin.com/in/eglennlightsey/' }
+    ],
     tech: ['Deep Learning', 'Transformers', 'Time-Series Forecasting', 'Atomic Clocks', 'Python', 'PyTorch'],
     gallery: [
       { label: 'Clock Drift Prediction Curve', color: '#1A365D' },
       { label: 'Residual Error Distribution', color: '#2B6CB0' },
       { label: 'Sensor Sync Network Architecture', color: '#3182CE' }
     ]
+  },
+  {
+    id: 'gt-statics-ai-tutor',
+    title: 'Open-Source Statics Course with an AI Tutor at Georgia Tech',
+    category: 'Engineering Education & AI',
+    gradient: 'linear-gradient(135deg, #2B6CB0 0%, #1B2A4A 100%)',
+    shortDescription: 'Developing an open-source Statics course at Georgia Tech integrated with an interactive AI tutor to support undergraduate engineering students.',
+    fullDescription: 'Developing an open-source undergraduate Statics curriculum at Georgia Tech integrated with an AI tutor designed to guide students through free-body diagrams, equilibrium analysis, and problem-solving workflows.',
+    advisors: [
+      { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
+    ],
+    mentees: [
+      { name: 'Cayetana Salinas', url: 'https://www.linkedin.com/in/cayetana-salinas/' }
+    ],
+    tech: ['Statics', 'AI Tutoring', 'Open-Source Education', 'Curriculum Design', 'Georgia Tech'],
+    gallery: []
   },
   {
     id: 'step-summer-camp',
@@ -125,6 +204,9 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
     shortDescription: 'Mentored 20+ groups of high school students in designing, building, and programming functional boat and rover prototypes using PVC and Arduino UNO.',
     fullDescription: 'As a Graduate Teaching Assistant for the Georgia Tech STEP Summer Camp, I mentored over 20 teams of high school students through the end-to-end engineering design process, guiding them in fabricating structural frames out of PVC, wiring motors and sensors, and programming autonomous and remote-controlled boat and rover prototypes using Arduino UNO microcontrollers.',
+    advisors: [
+      { name: 'Kelly Griendling', url: 'https://www.linkedin.com/in/kelly-griendling-8756b73/' }
+    ],
     tech: ['Arduino UNO', 'Robotics Prototyping', 'Embedded C/C++', 'PVC Fabrication', 'STEM Mentorship'],
     gallery: []
   },
@@ -136,6 +218,9 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #4A5568 0%, #2D3748 100%)',
     shortDescription: 'Maintained and updated the front-end web architecture and research pages for the Georgia Tech Space Systems Design Lab.',
     fullDescription: 'Served as the webmaster and front-end maintainer for the Georgia Tech Space Systems Design Lab (SSDL) website from 2023 to 2025. Managed content updates, mission profiles, publication directories, and responsive front-end layout improvements to showcase the lab’s satellite missions and graduate research.',
+    advisors: [
+      { name: 'Brian Gunter', url: 'https://www.linkedin.com/in/brian-gunter/' }
+    ],
     tech: ['Front-End Development', 'HTML / CSS', 'JavaScript', 'Web Maintenance', 'UI Design'],
     gallery: []
   },
@@ -147,6 +232,10 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #9B2C2C 0%, #742A2A 100%)',
     shortDescription: 'Designed UI and functionality for the Mars Sample Return SRL mitigation matrix and developed FMECA and FTA across 12 subsystems at NASA JPL.',
     fullDescription: 'During my Fault Protection Engineering internship at NASA Jet Propulsion Laboratory (JPL), I designed the user interface and core functionality for the Mars Sample Return Sample Retrieval Lander (SRL) mitigation matrix using FileMaker Pro. Additionally, I developed Failure Modes, Effects, and Criticality Analyses (FMECA) and Fault Tree Analyses (FTA) across 12 spacecraft subsystems to identify and mitigate single-point system failures.',
+    mentors: [
+      { name: 'Lauren DuCharme', url: 'https://www.linkedin.com/in/laurenducharme/' },
+      { name: 'Julie Wertz', url: 'https://www.linkedin.com/in/julie-wertz-chen-319810230/' }
+    ],
     tech: ['Fault Protection (FDIR)', 'FMECA & FTA', 'FileMaker Pro UI', 'Systems Engineering', 'NASA JPL'],
     gallery: [
       { label: 'Lander State Machine Diagram', color: '#742A2A' },
@@ -188,8 +277,8 @@ const PROJECTS_DATA = [
         bullet: 'Desktop Control Panel GUI: Designed a Python Tkinter graphical user interface consolidating device connections, CSV trajectory uploads, live target vs. encoder readouts, and operator controls into a standalone desktop application.'
       }
     ],
-    collaborators: [
-      { name: 'Dr. Jeff Livas (NASA GSFC)' }
+    advisors: [
+      { name: 'Jeff Livas', url: 'https://www.linkedin.com/in/jeffrey-livas-b64b5/' }
     ],
     tech: ['Python', 'Tkinter GUI', '6-DOF Hexapod Control', 'Optical Interferometry', 'Wavefront Error (WFE) Testing', 'Hardware-in-the-Loop'],
     gallery: [
@@ -206,6 +295,9 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #DD6B20 0%, #7B341E 100%)',
     shortDescription: 'Designed three iterations of a custom pipe mating plate in SolidWorks to adapt a throttle body into a pipe system and conducted a 20+ product trade study at Raytheon Technologies.',
     fullDescription: 'During my Mechanical Engineering internship at Raytheon Technologies, I designed three iterations of a custom pipe mating plate using SolidWorks to seamlessly adapt a throttle body assembly into an existing pressurized pipe system for air regulation. Alongside the CAD modeling and mechanical integration, I completed a comprehensive trade study evaluating over 20 off-the-shelf (OTS) products for pipe system air regulation.',
+    advisors: [
+      { name: 'Savannah Smith', url: 'https://www.linkedin.com/in/savannah-smith-08440b169/' }
+    ],
     tech: ['SolidWorks', 'Mechanical Design', 'CAD Prototyping', 'Trade Study Analysis', 'Fluid Regulation'],
     gallery: [
       { label: '3D CAD Pipe Assembly', color: '#7B341E' },
@@ -247,9 +339,11 @@ const PROJECTS_DATA = [
         bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
       }
     ],
-    collaborators: [
-      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' },
+    advisors: [
       { name: 'John Conklin', url: 'https://www.linkedin.com/in/john-conklin-56480b197/' }
+    ],
+    collaborators: [
+      { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' }
     ],
     tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
     gallery: [
@@ -271,6 +365,9 @@ const PROJECTS_DATA = [
     gradient: 'linear-gradient(135deg, #319795 0%, #234E52 100%)',
     shortDescription: 'Modeled common residential appliance components in SolidWorks using Geometric Dimensioning and Tolerancing (GD&T) and Model-Based Definition (MBD) at GE Appliances.',
     fullDescription: 'During my co-op as an Area Business Leader at General Electric (GE) Appliances, I modeled common residential appliance parts using SolidWorks, applying Geometric Dimensioning and Tolerancing (GD&T) standards and Model-Based Definitions (MBD) to support production quality, manufacturing tolerances, and assembly line operations.',
+    advisors: [
+      { name: 'Dwight Young', url: 'https://www.linkedin.com/in/dwight-young-706559100/' }
+    ],
     tech: ['SolidWorks', 'GD&T', 'Model-Based Definition (MBD)', 'Manufacturing Operations', 'GE Appliances'],
     gallery: [
       { label: 'SolidWorks Appliance Part CAD', color: '#234E52' },
@@ -437,9 +534,86 @@ function Projects() {
                   <p className="modal-description">{selectedProject.fullDescription}</p>
                 )}
 
+                {selectedProject.advisors && selectedProject.advisors.length > 0 && (
+                  <p className="modal-collaborators">
+                    <strong className="modal-desc-label">
+                      {selectedProject.advisors.length === 1 ? 'Advisor: ' : 'Advisors: '}
+                    </strong>
+                    {selectedProject.advisors.map((advisor, idx) => (
+                      <React.Fragment key={idx}>
+                        {advisor.url ? (
+                          <a
+                            href={advisor.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="collaborator-link"
+                          >
+                            {advisor.name}
+                          </a>
+                        ) : (
+                          <span>{advisor.name}</span>
+                        )}
+                        {idx < selectedProject.advisors.length - 1 ? ', ' : ''}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
+
+                {selectedProject.mentors && selectedProject.mentors.length > 0 && (
+                  <p className="modal-collaborators">
+                    <strong className="modal-desc-label">
+                      {selectedProject.mentors.length === 1 ? 'Mentor: ' : 'Mentors: '}
+                    </strong>
+                    {selectedProject.mentors.map((mentor, idx) => (
+                      <React.Fragment key={idx}>
+                        {mentor.url ? (
+                          <a
+                            href={mentor.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="collaborator-link"
+                          >
+                            {mentor.name}
+                          </a>
+                        ) : (
+                          <span>{mentor.name}</span>
+                        )}
+                        {idx < selectedProject.mentors.length - 1 ? ', ' : ''}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
+
+                {selectedProject.mentees && selectedProject.mentees.length > 0 && (
+                  <p className="modal-collaborators">
+                    <strong className="modal-desc-label">
+                      {selectedProject.mentees.length === 1 ? 'Mentee: ' : 'Mentees: '}
+                    </strong>
+                    {selectedProject.mentees.map((mentee, idx) => (
+                      <React.Fragment key={idx}>
+                        {mentee.url ? (
+                          <a
+                            href={mentee.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="collaborator-link"
+                          >
+                            {mentee.name}
+                          </a>
+                        ) : (
+                          <span>{mentee.name}</span>
+                        )}
+                        {idx < selectedProject.mentees.length - 1 ? ', ' : ''}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
+
                 {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
                   <p className="modal-collaborators">
-                    <strong className="modal-desc-label">Collaborators: </strong>
+                    <strong className="modal-desc-label">
+                      {selectedProject.collaborators.length === 1 ? 'Collaborator: ' : 'Collaborators: '}
+                    </strong>
                     {selectedProject.collaborators.map((collab, idx) => (
                       <React.Fragment key={idx}>
                         {collab.url ? (
