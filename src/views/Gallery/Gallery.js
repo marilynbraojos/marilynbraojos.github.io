@@ -63,7 +63,7 @@ const GALLERY_ITEMS = [
   { id: 26, description: "Snowboarding", location: "Breckenridge, CO", image: snowboardingImg, rotation: "2.1deg" },
   { id: 35, description: "Botanical Garden with Kimmy", location: "Miami, FL", image: bestieKimmyImg, rotation: "-1.8deg" },
   { id: 36, description: "Engagement Celebration with Teresa", location: "Atlanta, GA", image: bestieTeresaImg, rotation: "2.0deg" },
-  { id: 38, description: "After Getting Married", location: "St. Petersburg, FL", image: afterWeddingImg, rotation: "-1.8deg" },
+  { id: 38, description: "Wedding After Party", location: "St. Petersburg, FL", image: afterWeddingImg, rotation: "-1.8deg" },
   { id: 37, description: "Dancing at Playground LA", location: "Los Angeles, CA", image: dancingAtPlaygroundImg, rotation: "1.7deg" },
   { id: 34, description: "Private with Marissa", location: "Los Angeles, CA", image: dancingMarissaImg, rotation: "-1.9deg" },
   { id: 2, description: "Barbie World", location: "Los Angeles, CA", image: barbieImg, rotation: "2.1deg" },
