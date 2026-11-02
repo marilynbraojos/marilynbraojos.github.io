@@ -19,7 +19,7 @@
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(12px);
   border-radius: 24px;
-  padding: 40px 40px 76px 40px;
+  padding: 40px 40px 96px 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -281,7 +281,7 @@
   flex-direction: column;
   align-items: stretch;
   text-align: left;
-  padding: 38px 40px 84px 40px;
+  padding: 38px 40px 96px 40px;
 }
 
 .personal-page-content {
@@ -521,9 +521,35 @@
 @media (max-width: 768px) {
   .hero-card {
     flex-direction: column;
-    padding: 24px 20px 84px 20px;
+    padding: 24px 20px 108px 20px;
     gap: 24px;
     text-align: center;
+  }
+
+  .page-back {
+    padding: 24px 20px 108px 20px;
+  }
+
+  .page-turn-trigger {
+    gap: 10px;
+  }
+
+  .page-turn-prompt {
+    font-size: 0.84rem;
+    padding: 7px 12px;
+    margin-bottom: 12px;
+    max-width: calc(100vw - 140px);
+    text-align: right;
+  }
+
+  .page-turn-prev .page-turn-prompt {
+    text-align: left;
+  }
+
+  .page-curl-corner,
+  .page-curl-corner-left {
+    width: 56px;
+    height: 56px;
   }
 
   .headshot {

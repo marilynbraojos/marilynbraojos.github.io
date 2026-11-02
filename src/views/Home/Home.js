@@ -191,7 +191,7 @@ function Home() {
                   <h3>Staying Active</h3>
                   <p>
                     I love staying active, whether through snowboarding trips in
-                    Colorado or skating by the beach. I also really enjoy
+                    Colorado or longboarding by the beach. I also really enjoy
                     hiking, rock climbing, and strength training.
                   </p>
                 </div>
