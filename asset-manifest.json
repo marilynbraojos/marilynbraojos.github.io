@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.382eaf44.css",
-    "main.js": "/static/js/main.cbe6a7af.js",
+    "main.css": "/static/css/main.f2693260.css",
+    "main.js": "/static/js/main.f9b67f2a.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
@@ -89,12 +89,12 @@
     "static/media/dancing_marissa.webp": "/static/media/dancing_marissa.0451487a41f12e167972.webp",
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
-    "main.382eaf44.css.map": "/static/css/main.382eaf44.css.map",
-    "main.cbe6a7af.js.map": "/static/js/main.cbe6a7af.js.map",
+    "main.f2693260.css.map": "/static/css/main.f2693260.css.map",
+    "main.f9b67f2a.js.map": "/static/js/main.f9b67f2a.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.382eaf44.css",
-    "static/js/main.cbe6a7af.js"
+    "static/css/main.f2693260.css",
+    "static/js/main.f9b67f2a.js"
   ]
 }
