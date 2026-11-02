@@ -51,13 +51,17 @@ import ssdlImg from '../../assets/gallery/ssdl_fall2025.webp';
 import streetlightImg from '../../assets/gallery/streetlight.webp';
 import suwonImg from '../../assets/gallery/suwon.webp';
 import zooImg from '../../assets/gallery/zoo_san_diego.webp';
+import bestieKimmyImg from '../../assets/gallery/bestie_kimmy.png';
+import bestieTeresaImg from '../../assets/gallery/bestie_teresa.png';
 
 // Main Gallery Items
 const GALLERY_ITEMS = [
   { id: 1, description: "Allatoona Trail", location: "Atlanta, GA", image: allatoonaImg, rotation: "-1.8deg" },
-  { id: 2, description: "Barbie World", location: "Los Angeles, CA", image: barbieImg, rotation: "2.1deg" },
   { id: 29, description: "SpaceX Tour", location: "Brownsville, TX", image: spacexTourImg, rotation: "-1.9deg" },
   { id: 26, description: "Snowboarding", location: "Breckenridge, CO", image: snowboardingImg, rotation: "2.1deg" },
+  { id: 35, description: "Botanical Garden with Kimmy", location: "Miami, FL", image: bestieKimmyImg, rotation: "-1.8deg" },
+  { id: 36, description: "Engagement Celebration with Teresa", location: "Atlanta, GA", image: bestieTeresaImg, rotation: "2.0deg" },
+  { id: 2, description: "Barbie World", location: "Los Angeles, CA", image: barbieImg, rotation: "2.1deg" },
   { id: 3, description: "Janaki's Bachelorette", location: "Chicago, IL", image: beanImg, rotation: "-2.4deg" },
   { id: 4, description: "Boeing Factory", location: "Seattle, WA", image: boeingImg, rotation: "1.6deg" },
   { id: 5, description: "UF Graduation", location: "Gainesville, FL", image: bsGradImg, rotation: "-1.5deg" },
