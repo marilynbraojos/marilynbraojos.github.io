@@ -57,10 +57,10 @@ const PROJECTS_DATA = [
         bullet: 'Proprioceptive Uncertainty Extraction: Uses IMU, motor current, and wheel odometry signatures to quantify real-time measurement uncertainty.'
       },
       {
-        bullet: 'Exponential Covariance Scaling: Scales the measurement covariance matrix (R) by the exponential of the extracted uncertainty. When uncertainty is zero, the filter fully trusts the sensor measurement; as uncertainty increases, the Kalman gain approaches zero and the filter weights the predicted state over the corrupted measurement.'
+        bullet: 'Exponential Covariance Scaling: Scales the measurement covariance matrix (R) by the exponential of the extracted uncertainty. When uncertainty is zero, the filter fully trusts the sensor measurement; as uncertainty increases, the Kalman gain approaches zero and the filter weighs the predicted state over the corrupted measurement.'
       },
       {
-        bullet: 'Simulation & Hardware Validation: Implemented in ROS and Gazebo using the Clearpath Husky model to benchmark against existing literature under high-fidelity physics, followed by hardware demonstration on a TurtleBot platform. Performance is evaluated against a baseline static-R EKF by measuring trajectory tracking error under fault-injection scenarios.'
+        bullet: 'Simulation & Hardware Validation: Implementing in ROS and Gazebo using the Clearpath Husky model to benchmark against existing literature under high-fidelity physics, followed by hardware demonstration on a TurtleBot platform. Performance is evaluated against a baseline static-R EKF by measuring trajectory tracking error under fault-injection scenarios.'
       },
       {
         italicNote: 'Results from this work are expected to be submitted to a peer-reviewed journal around the time of my doctoral defense.'
