@@ -273,6 +273,12 @@ const PROJECTS_DATA = [
     collaborators: [
       { name: 'Julia Schindler', url: 'https://www.linkedin.com/in/julia-schindler-56954b175/' }
     ],
+    publications: [
+      {
+        title: 'Short Wavelength UV LED Lens System to Attenuate Noise in LISA (AIAA SciTech 2023)',
+        url: 'https://arc.aiaa.org/doi/abs/10.2514/6.2023-1602'
+      }
+    ],
     tech: ['SolidWorks', 'Optomechanical Design', 'UV Photonics', 'WinCamD Beam Profiling', 'Spaceflight Hardware', 'Thermal & Mechanical Manufacturing', 'AIAA Published'],
     gallery: [
       { src: lisaComponentsLabeled, label: 'Labeled Discharging System Components (PCB, SM UV LED, Copper Base, Convex Lenses, Spacers, Cap & Casing)' },
@@ -891,6 +897,31 @@ function Projects() {
                           <span>{collab.name}</span>
                         )}
                         {idx < selectedProject.collaborators.length - 1 ? ', ' : ''}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
+
+                {selectedProject.publications && selectedProject.publications.length > 0 && (
+                  <p className="modal-collaborators">
+                    <strong className="modal-desc-label">
+                      {selectedProject.publications.length === 1 ? 'Publication: ' : 'Publications: '}
+                    </strong>
+                    {selectedProject.publications.map((pub, idx) => (
+                      <React.Fragment key={idx}>
+                        {pub.url ? (
+                          <a
+                            href={pub.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="collaborator-link"
+                          >
+                            {pub.title}
+                          </a>
+                        ) : (
+                          <span>{pub.title}</span>
+                        )}
+                        {idx < selectedProject.publications.length - 1 ? '; ' : ''}
                       </React.Fragment>
                     ))}
                   </p>
