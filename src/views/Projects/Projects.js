@@ -456,7 +456,7 @@ const PROJECTS_DATA = [
   {
     id: 'step-summer-camp',
     title: 'STEP Summer Camp: Autonomous Boat & Rover Prototyping',
-    category: 'Robotics Mentorship & Embedded Systems',
+    category: 'Robotics & STEM Mentorship',
     image: stepRoverImg,
     gradient: 'linear-gradient(135deg, #EC79B8 0%, #B83280 100%)',
     shortDescription: 'Mentored 20+ groups of high school students in designing, building, and programming functional boat and rover prototypes using PVC and Arduino UNO.',
