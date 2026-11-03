@@ -80,7 +80,7 @@ const PROJECTS_DATA = [
       },
       {
         label: 'Solution',
-        text: 'Integrate real-time uncertainty awareness directly into the vehicle state estimation loop via an adaptive hybrid EKF that dynamically scales sensor trust.'
+        text: 'Integrate real-time uncertainty awareness directly into the vehicle state estimation loop with an adaptive hybrid EKF that dynamically scales sensor trust.'
       },
       {
         label: 'Approach & Contribution',
@@ -209,10 +209,10 @@ const PROJECTS_DATA = [
         text: 'I benchmarked classical and deep learning forecasting models (SMA, ARIMA, LSTM, and Transformer) across 12 GPS satellites representing each clock type and GPS block:'
       },
       {
-        bullet: 'Data Curation & Preprocessing: Filtered for healthy measurements across 12 representative GPS satellites, removed dominant relativistic sinusoids via single-differencing, rejected outliers with a Hampel median filter, linearly interpolated gaps, smoothed with a 2-week moving average, and applied MinMax normalization.'
+        bullet: 'Data Curation & Preprocessing: Filtered for healthy measurements across 12 representative GPS satellites, removed dominant relativistic sinusoids with single-differencing, rejected outliers with a Hampel median filter, linearly interpolated gaps, smoothed with a 2-week moving average, and applied MinMax normalization.'
       },
       {
-        bullet: 'Multi-Horizon Forecasting (2-Hour & 6-Hour): Evaluated three prediction formulations (single-difference IGS final bias, correction-only, and combined broadcast + correction) reconstructed via an anchor term and cumulative sum to track clock bias at sub-nanosecond resolution.'
+        bullet: 'Multi-Horizon Forecasting (2-Hour & 6-Hour): Evaluated three prediction formulations (single-difference IGS final bias, correction-only, and combined broadcast + correction) reconstructed with an anchor term and cumulative sum to track clock bias at sub-nanosecond resolution.'
       },
       {
         bullet: 'Architecture Benchmarking: Demonstrated that ARIMA and LSTM models outperform Transformers across all projection formulations and horizons (achieving sub-nanosecond MAE/RMSE on correction-only forecasts and <2 ns on combined 2-hour forecasts), as LSTMs capture local clock drift dynamics while permutation-invariant Transformers accumulate broadcast bias rate errors.'
@@ -251,7 +251,7 @@ const PROJECTS_DATA = [
       },
       {
         label: 'Solution',
-        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass via the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
+        text: 'The Charge Management Device (CMD) uses UV light to discharge the test mass with the photoelectric effect, requiring photon energies above the ~5.28 eV work function of polluted gold surfaces.'
       },
       {
         label: 'Contribution',
@@ -403,7 +403,7 @@ const PROJECTS_DATA = [
         bullet: 'Odometry & Dead-Reckoning Goal Navigation with Obstacle Avoidance: Fused wheel encoder odometry and IMU heading to navigate toward target coordinates using dead reckoning while dynamically detecting and circumnavigating unmapped obstacles along the path.'
       },
       {
-        bullet: 'Multi-Waypoint Traversal with the ROS2 Nav2 Stack: Generated occupancy grid maps via SLAM and configured the ROS2 Nav2 stack to autonomously plan and execute collision-free trajectories across sequential goal waypoints.'
+        bullet: 'Multi-Waypoint Traversal with the ROS2 Nav2 Stack: Generated occupancy grid maps with SLAM and configured the ROS2 Nav2 stack to autonomously plan and execute collision-free trajectories across sequential goal waypoints.'
       },
       {
         bullet: 'Autonomous Maze Navigation & Directional Sign Classification: Integrated real-time visual sign classification with LiDAR wall-following and localization to identify directional traffic signs (left, right, U-turn, stop, and goal) and autonomously navigate an unknown multi-turn maze to completion.'
