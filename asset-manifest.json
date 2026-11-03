@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3ae035a2.css",
-    "main.js": "/static/js/main.e84410ee.js",
+    "main.js": "/static/js/main.029407d9.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
@@ -32,7 +32,6 @@
     "static/media/turtlebot_trajectory_with_signs.webp": "/static/media/turtlebot_trajectory_with_signs.9fe5e698021552eacb8b.webp",
     "static/media/loop_algo.png": "/static/media/loop_algo.068a536c15925b6023f1.png",
     "static/media/turtlebot_path.webp": "/static/media/turtlebot_path.c89663fb7bd8f8b7fc29.webp",
-    "static/media/meme.png": "/static/media/meme.6abd6a9f2d526c93d80f.png",
     "static/media/6_7_rover.webp": "/static/media/6_7_rover.a53dcca3def6327a63a8.webp",
     "static/media/chicken_parm.webp": "/static/media/chicken_parm.f8170533276a5f069f46.webp",
     "static/media/beef_wellington.webp": "/static/media/beef_wellington.73b5e5c01339f13fafbc.webp",
@@ -107,11 +106,11 @@
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
     "main.3ae035a2.css.map": "/static/css/main.3ae035a2.css.map",
-    "main.e84410ee.js.map": "/static/js/main.e84410ee.js.map",
+    "main.029407d9.js.map": "/static/js/main.029407d9.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ae035a2.css",
-    "static/js/main.e84410ee.js"
+    "static/js/main.029407d9.js"
   ]
 }
