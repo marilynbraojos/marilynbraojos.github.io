@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3ae035a2.css",
-    "main.js": "/static/js/main.92b920aa.js",
+    "main.js": "/static/js/main.e84410ee.js",
     "static/js/453.e2428e9c.chunk.js": "/static/js/453.e2428e9c.chunk.js",
     "static/media/bs_grad.webp": "/static/media/bs_grad.24d378518a67eb5e3abf.webp",
     "static/media/barbie_world.webp": "/static/media/barbie_world.ac27d00b171bfe09390c.webp",
@@ -53,7 +53,6 @@
     "static/media/skagway_ak.webp": "/static/media/skagway_ak.36ca6f61e8905e25e90c.webp",
     "static/media/jpl_intern.webp": "/static/media/jpl_intern.3788661dd38115388ce4.webp",
     "static/media/plotted_result.webp": "/static/media/plotted_result.47baa8ab76aa482a5eb8.webp",
-    "static/media/ui_mitmat.png": "/static/media/ui_mitmat.95527a9176be4ec0695d.png",
     "static/media/phd_grad.webp": "/static/media/phd_grad.6d4f289962332d372916.webp",
     "static/media/jpl_girlies.webp": "/static/media/jpl_girlies.47aa0dcbf5a21bc99e32.webp",
     "static/media/ms_grad.webp": "/static/media/ms_grad.69f9fe274ff4eb3abf9c.webp",
@@ -73,7 +72,6 @@
     "static/media/turtle_skippy.webp": "/static/media/turtle_skippy.d483cf0a23b1d67e7213.webp",
     "static/media/streetlight.webp": "/static/media/streetlight.4992ab8968aa0233b81d.webp",
     "static/media/dinka_maria.webp": "/static/media/dinka_maria.f9d004b6168e795ea580.webp",
-    "static/media/telescope_setup.webp": "/static/media/telescope_setup.914ece56c195707cb3c4.webp",
     "static/media/ekf.png": "/static/media/ekf.c22bb4736676198bd373.png",
     "static/media/lauren.webp": "/static/media/lauren.9da570ab14919aba79d9.webp",
     "static/media/favicon.png": "/static/media/favicon.17cb3e52aa8d9397fa6b.png",
@@ -94,7 +92,6 @@
     "static/media/coolest_bro.webp": "/static/media/coolest_bro.55b6ed9dfa0115da7fd9.webp",
     "static/media/results_combined_preds.webp": "/static/media/results_combined_preds.a0d79150831ca623bdb1.webp",
     "static/media/gpod.webp": "/static/media/gpod.a1d3a6e1732b129db6c8.webp",
-    "static/media/hexapod.webp": "/static/media/hexapod.84e605087e892cd75cff.webp",
     "static/media/basil.webp": "/static/media/basil.bc56ff2f4b22f81ad70c.webp",
     "static/media/fault_injection_results.png": "/static/media/fault_injection_results.dcafd04f82bcdb59061d.png",
     "static/media/jamil.webp": "/static/media/jamil.37a1eaa4e753cf517634.webp",
@@ -110,11 +107,11 @@
     "static/media/guiness_pluto.webp": "/static/media/guiness_pluto.1d06e8971600158dfff3.webp",
     "index.html": "/index.html",
     "main.3ae035a2.css.map": "/static/css/main.3ae035a2.css.map",
-    "main.92b920aa.js.map": "/static/js/main.92b920aa.js.map",
+    "main.e84410ee.js.map": "/static/js/main.e84410ee.js.map",
     "453.e2428e9c.chunk.js.map": "/static/js/453.e2428e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ae035a2.css",
-    "static/js/main.92b920aa.js"
+    "static/js/main.e84410ee.js"
   ]
 }
