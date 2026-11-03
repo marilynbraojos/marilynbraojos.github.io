@@ -10,9 +10,7 @@ import lisaCopperBaseTapguide from '../../assets/projects/lisa/copper_base_tapgu
 import lisaCapInnerDiameter from '../../assets/projects/lisa/cap_inner_diameter.webp';
 import lisaOuterCasingDiameter from '../../assets/projects/lisa/outer_casing_outer_diameter.webp';
 
-import lisaTelescopeSetup from '../../assets/projects/lisa_telescope/telescope_setup.webp';
 import lisaTelescopeControlPanel from '../../assets/projects/lisa_telescope/control_panel.webp';
-import lisaTelescopeGimbalMount from '../../assets/projects/lisa_telescope/hexapod.webp';
 
 import kalmanLoopAlgo from '../../assets/projects/uncertainty_aware_kalman_filter/loop_algo.png';
 import kalmanLoopStd from '../../assets/projects/uncertainty_aware_kalman_filter/loop_std.png';
@@ -31,7 +29,6 @@ import clockSingleDiffImg from '../../assets/projects/predicting_clock_bias/resu
 import clockCombinedImg from '../../assets/projects/predicting_clock_bias/results_combined_preds.webp';
 import clockCorrectionOnlyImg from '../../assets/projects/predicting_clock_bias/results_correction_only_preds.webp';
 
-import msrMitMatUi from '../../assets/projects/msr_srl/ui_mitmat.png';
 import msrMitMatFlowchart from '../../assets/projects/msr_srl/mitigation_matrix_flowchart.png';
 import msrRedundancyMeme from '../../assets/projects/msr_srl/meme.png';
 
@@ -295,7 +292,7 @@ const PROJECTS_DATA = [
     id: 'sample-return-lander',
     title: 'Mars Sample Return Fault Protection Tools',
     category: 'Spacecraft Fault Protection & Systems Engineering',
-    image: msrMitMatUi,
+    image: msrMitMatFlowchart,
     gradient: 'linear-gradient(135deg, #9B2C2C 0%, #742A2A 100%)',
     shortDescription: 'Built the relational FileMaker Pro Mitigation Matrix tool and multi-tier system redundancy schematic for the Mars Sample Return Sample Retrieval Lander (SRL) at NASA JPL.',
     fullDescription: [
@@ -331,7 +328,6 @@ const PROJECTS_DATA = [
     ],
     tech: ['Fault Protection (FDIR)', 'FMECA & FTA', 'FileMaker Pro UI', 'Fault Containment Regions (FCR)', 'Redundancy Architecture', 'Systems Engineering', 'NASA JPL'],
     gallery: [
-      { src: msrMitMatUi, label: 'FileMaker Pro User Interface for the MSR Sample Retrieval Lander (SRL) Mitigation Matrix Tool' },
       { src: msrMitMatFlowchart, label: 'Mitigation Matrix Decision Workflow Linking Fault Sets and Compensating Provisions to Monitors, Responses, and Ground Contingency Plans' },
       { src: msrRedundancyMeme, label: 'Evolution of the SRL Redundancy Classification Scheme Meme' }
     ]
@@ -340,7 +336,7 @@ const PROJECTS_DATA = [
     id: 'lisa-test-automation',
     title: 'LISA Telescope Optical Test Automation',
     category: 'Space Instrumentation & Robotics Automation',
-    image: lisaTelescopeSetup,
+    image: lisaTelescopeControlPanel,
     gradient: 'linear-gradient(135deg, #4A5568 0%, #1A202C 100%)',
     shortDescription: 'Automated multi-device optical testing and Tkinter GUI control panel for verifying wavefront error performance across the LISA space telescope flight units.',
     fullDescription: [
@@ -375,9 +371,7 @@ const PROJECTS_DATA = [
     ],
     tech: ['Python', 'Tkinter GUI', '6-DOF Hexapod Control', 'Optical Interferometry', 'Wavefront Error (WFE) Testing', 'Hardware-in-the-Loop'],
     gallery: [
-      { src: lisaTelescopeSetup, label: 'LISA Telescope Optical Test Setup Assembly (ACF Mirror Gimbal Mount, Telescope, Nanopositioners, Interferometer & Hexapod)' },
-      { src: lisaTelescopeControlPanel, label: 'Python Tkinter GUI Control Panel for LISA Telescope Optical Testing' },
-      { src: lisaTelescopeGimbalMount, label: 'Motorized Gimbal Mount for the Autocollimating Flat (ACF) Mirror' }
+      { src: lisaTelescopeControlPanel, label: 'Python Tkinter GUI Control Panel for LISA Telescope Optical Testing' }
     ]
   },
   {
