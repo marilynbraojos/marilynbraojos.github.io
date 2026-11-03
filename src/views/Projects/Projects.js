@@ -30,7 +30,6 @@ import clockCombinedImg from '../../assets/projects/predicting_clock_bias/result
 import clockCorrectionOnlyImg from '../../assets/projects/predicting_clock_bias/results_correction_only_preds.webp';
 
 import msrMitMatFlowchart from '../../assets/projects/msr_srl/mitigation_matrix_flowchart.png';
-import msrRedundancyMeme from '../../assets/projects/msr_srl/meme.png';
 
 import turtlebotFovImg from '../../assets/projects/turtlebot_automation/turtlebot_fov.webp';
 import turtlebotPathImg from '../../assets/projects/turtlebot_automation/turtlebot_path.webp';
@@ -328,8 +327,7 @@ const PROJECTS_DATA = [
     ],
     tech: ['Fault Protection (FDIR)', 'FMECA & FTA', 'FileMaker Pro UI', 'Fault Containment Regions (FCR)', 'Redundancy Architecture', 'Systems Engineering', 'NASA JPL'],
     gallery: [
-      { src: msrMitMatFlowchart, label: 'Mitigation Matrix Decision Workflow Linking Fault Sets and Compensating Provisions to Monitors, Responses, and Ground Contingency Plans' },
-      { src: msrRedundancyMeme, label: 'Evolution of the SRL Redundancy Classification Scheme Meme' }
+      { src: msrMitMatFlowchart, label: 'Mitigation Matrix Decision Workflow Linking Fault Sets and Compensating Provisions to Monitors, Responses, and Ground Contingency Plans' }
     ]
   },
   {
@@ -346,7 +344,7 @@ const PROJECTS_DATA = [
       },
       {
         label: 'Problem',
-        text: 'Confirming that the telescopes meet optical performance specifications requires wavefront error (WFE) measurements across a 5 x 5 grid of field angles (25 measurements per run) over multiple clocking orientations to eliminate gravity effects. With two telescopes per spacecraft plus spares (~8 flight units total), manual testing is impractical for obtaining reproducible results.'
+        text: 'Confirming that the telescopes meet optical performance specifications requires wavefront error (WFE) measurements across a grid of field angles over multiple clocking orientations to eliminate gravity effects. With two telescopes per spacecraft plus spares, manual testing is impractical for obtaining reproducible results.'
       },
       {
         label: 'Solution',
