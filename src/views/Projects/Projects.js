@@ -260,7 +260,7 @@ const PROJECTS_DATA = [
         bullet: 'Thermal & Mechanical Copper Base: Machined a high-thermal-conductivity copper base adapted from the ball-lens architecture (central aperture + two M3 holes). Soldered the SM UV LED onto a breakout PCB using leaded solder to prevent vacuum tin whiskers and reduce thermal stress, while isolating the LED from mechanical strain and vibrations.'
       },
       {
-        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding an optimal 10 mm inter-lens spacing that boosted fiber-coupled optical power from 79 µW to 130 µW (+65%).'
+        bullet: 'Optical Characterization: Performed IVP scans (20 mA max current) and WinCamD beam profiling across linear step scans, finding the optimal inter-lens spacing.'
       }
     ],
     advisors: [
@@ -297,28 +297,28 @@ const PROJECTS_DATA = [
     fullDescription: [
       {
         label: 'Mission',
-        text: 'The NASA-ESA Mars Sample Return (MSR) campaign retrieves Martian rock and soil samples for Earth delivery across four missions: Mars 2020 (Perseverance), the Earth Return Orbiter (ERO), the Sample Retrieval Lander (SRL, housing the Mars Launch System, Sample Transfer System, and Sample Recovery Helicopter), and the Sample Receiving Project.'
+        text: 'The NASA-ESA Mars Sample Return (MSR) campaign aims to retrieve Martian rock and soil samples for Earth delivery.'
       },
       {
         label: 'Problem',
-        text: 'Unlike standalone orbiters, SRL Fault Protection (FP) spans heritage and novel subsystems across internal and external partners. Entering Phase B/C toward Preliminary Design Review (PDR), bottom-up hardware FMECAs and top-down functional FTAs must be unified with clear Fault Containment Region (FCR) boundaries and redundancy definitions to prevent single-point failures.'
+        text: 'Unlike standalone orbiters, the sample retrieval lander (SRL) fault protection (FP) includes heritage and novel subsystems across internal and external partners. Entering the Preliminary Design Review (PDR) during my internship, a bottom-up hardware FMECA and top-down functional FTA must be unified with clear Fault Containment Region (FCR) boundaries and redundancy definitions to prevent single-point failures.'
       },
       {
         label: 'Solution',
-        text: 'Build two core tools for the SRL Fault Protection team at NASA JPL: (1) a FileMaker Pro Mitigation Matrix database and UI serving as FP\'s working dictionary linking credible faults to prevention and corrective actions prior to formal flight software (Helix) delivery, and (2) a standalone SRL redundancy schematic validating FMECA/FTA assumptions and FCR boundaries.'
+        text: 'Build two core tools for the SRL Fault Protection team at NASA JPL: (1) an app to host the FMECA and FTA database, serving as FP\'s working dictionary linking credible faults to prevention and corrective actions prior to formal flight software delivery, and (2) a standalone SRL redundancy schematic validating FMECA/FTA assumptions and FCR boundaries.'
       },
       {
         label: 'Contribution',
         text: 'During my Fault Protection Engineering internship at NASA JPL, I developed tools and analyses supporting SRL PDR deliverables and Verification and Validation (V&V) planning:'
       },
       {
-        bullet: 'SRL Mitigation Matrix Tool: Built the FileMaker Pro UI and relational database linking FMECA/FTA failure modes (likelihood, impact, risk, effects, and compensating provisions) to prevention tests, flight/ground monitors, local/ground responses, and contingency plans.'
+        bullet: 'SRL Mitigation Matrix Tool: Built the relational database linking FMECA/FTA failure modes (likelihood, impact, risk, effects, and compensating provisions) to prevention tests, flight/ground monitors, local/ground responses, and contingency plans.'
       },
       {
-        bullet: 'Multi-Tier Redundancy Schematic: Led peer reviews across 12 spacecraft subsystems to classify hardware beyond binary redundant vs. single-string labels, distinguishing block-redundant, cross-strapped, functionally redundant (e.g., upper/lower HazCams), and internally redundant devices.'
+        bullet: 'Multi-Tier Redundancy Schematic: Led peer reviews across 12 spacecraft subsystems to classify hardware beyond binary redundant vs. single-string labels, distinguishing block-redundant, cross-strapped, functionally redundant, and internally redundant devices.'
       },
       {
-        bullet: 'PDR Lien Closeout & FMECA Alignment: Resolved redundancy inconsistencies across subsystem FMECAs and delivered the SRL redundancy schematic to close out a PDR lien, establishing a single source of truth for flight software dictionary development.'
+        bullet: 'PDR Lien Closeout & FMECA Alignment: Resolved redundancy inconsistencies across subsystem FMECAs and delivered the SRL redundancy schematic, establishing a single source of truth for flight software dictionary development.'
       }
     ],
     mentors: [
@@ -355,10 +355,10 @@ const PROJECTS_DATA = [
         text: 'During my internship at NASA Goddard Space Flight Center, I developed Python automation software and an integrated control interface for the optical testbench:'
       },
       {
-        bullet: '6-DOF Hexapod Trajectory Automation: Built and validated a Python program using an emulator to step the hexapod through custom CSV trajectories and lookup tables while supporting the interferometer with high stiffness and stability. Implemented operator pause/resume controls, mode switching, and automatic logging of desired positions alongside encoder readouts to quantify positioning error.'
+        bullet: '6-DOF Hexapod Trajectory Automation: Built and validated a Python program using an emulator to step the hexapod through custom CSV trajectories and lookup tables while supporting the interferometer.'
       },
       {
-        bullet: 'Motorized Gimbal Mount & Interferometer Integration: Evaluated baseline control software for the motorized gimbal mount to electronically adjust the ACF mirror, double-passing the beam through the telescope to null the interferometer at new field angles. Established network interface baselines for 4D Technology 4Sight software to automate iterative phase interferogram capture.'
+        bullet: 'Motorized Gimbal Mount & Interferometer Integration: Evaluated baseline control software for the motorized gimbal mount to electronically adjust the ACF mirror. Established network interface baselines for 4Sight software to automate iterative phase interferogram capture.'
       },
       {
         bullet: 'Desktop Control Panel GUI: Designed a Python Tkinter graphical user interface consolidating device connections, CSV trajectory uploads, live target vs. encoder readouts, and operator controls into a standalone desktop application.'
@@ -496,7 +496,7 @@ const PROJECTS_DATA = [
     icon: '⚙️',
     gradient: 'linear-gradient(135deg, #DD6B20 0%, #7B341E 100%)',
     shortDescription: 'Designed three iterations of a custom pipe mating plate in SolidWorks to adapt a throttle body into a pipe system and conducted a 20+ product trade study at Raytheon Technologies.',
-    fullDescription: 'During my Mechanical Engineering internship at Raytheon Technologies, I designed three iterations of a custom pipe mating plate using SolidWorks to seamlessly adapt a throttle body assembly into an existing pressurized pipe system for air regulation. Alongside the CAD modeling and mechanical integration, I completed a comprehensive trade study evaluating over 20 off-the-shelf (OTS) products for pipe system air regulation.',
+    fullDescription: 'During my Mechanical Engineering internship at Raytheon Technologies, I designed three iterations of a custom pipe mating plate using SolidWorks to adapt a throttle body assembly into an existing pipe system for air regulation. Alongside the CAD modeling and mechanical integration, I completed a comprehensive trade study evaluating over 20 off-the-shelf (OTS) products for pipe system air regulation.',
     advisors: [
       { name: 'Savannah Smith', url: 'https://www.linkedin.com/in/savannah-smith-08440b169/' }
     ],
@@ -513,7 +513,7 @@ const PROJECTS_DATA = [
     category: 'Mechanical Design & Manufacturing',
     gradient: 'linear-gradient(135deg, #319795 0%, #234E52 100%)',
     shortDescription: 'Modeled common residential appliance components in SolidWorks using Geometric Dimensioning and Tolerancing (GD&T) and Model-Based Definition (MBD) at GE Appliances.',
-    fullDescription: 'During my co-op as an Area Business Leader at General Electric (GE) Appliances, I modeled common residential appliance parts using SolidWorks, applying Geometric Dimensioning and Tolerancing (GD&T) standards and Model-Based Definitions (MBD) to support production quality, manufacturing tolerances, and assembly line operations.',
+    fullDescription: 'During my co-op as an Area Business Leader at General Electric (GE) Appliances, in Spring 2020, I modeled common residential appliance parts using SolidWorks, applying Geometric Dimensioning and Tolerancing (GD&T) standards and Model-Based Definitions (MBD) to support production quality, manufacturing tolerances, and assembly line operations.',
     advisors: [
       { name: 'Dwight Young', url: 'https://www.linkedin.com/in/dwight-young-706559100/' }
     ],
